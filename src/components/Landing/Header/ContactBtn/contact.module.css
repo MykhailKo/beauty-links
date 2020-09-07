@@ -1,11 +1,11 @@
 .contactBtn {
     position: relative;
     width: 3.1em;
-    height: 3.1em; 
+    height: 3.1em;
     border-radius: 100%;
     padding: 0.2em;
     background-color: var(--main-blue);
-    background-image: url('../../.././../assets/img/icons/comment.png');
+    background-image: url('/assets/img/icons/comment.png');
     background-size: 70%;
     background-position: center;
     background-repeat: no-repeat;
@@ -20,5 +20,5 @@
     width: 3.5em;
     height: 3.5em;
     border-radius: 100%;
-    border: 0.1em solid var(--border-color); 
+    border: 0.1em solid var(--border-color);
 }
