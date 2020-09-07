@@ -11,6 +11,7 @@
     background-repeat: no-repeat;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 .contactBtn::before {
     content: '';

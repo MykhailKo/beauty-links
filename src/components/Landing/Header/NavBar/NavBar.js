@@ -18,8 +18,8 @@ const NavBar = () => {
         <div className={styles.navBar}>
             <ul className={styles.navBarMenu}>
                 {
-                    menuItems.map(item => {
-                        return <MenuItem text={item.text} />
+                    menuItems.map((item, key) => {
+                        return <MenuItem text={item.text} key={key}/>
                     })
                 }
             </ul>

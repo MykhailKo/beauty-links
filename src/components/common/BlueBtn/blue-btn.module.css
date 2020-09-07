@@ -1,0 +1,19 @@
+.blueBtn {
+    display: inline-block;
+    padding: 0.35em 1em;
+    min-width: 7em;
+    border-radius: 0.3em;
+    background-color: var(--main-blue);
+    color: var(--btn-text-color);
+    font-size: 1.222em;
+    font-family: 'Gilroy';
+    border-radius: 0.55em;
+    transition: 0.3s background-color;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.blueBtn:hover {
+    background-color: var(--btn-hover-bg-color);
+}

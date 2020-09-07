@@ -2,4 +2,5 @@
     font-family: 'Gilroy Extra Bold';
     font-size: 1em;
     color: var(--text-color);
+    cursor: pointer;
 }
