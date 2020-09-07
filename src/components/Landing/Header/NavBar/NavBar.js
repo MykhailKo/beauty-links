@@ -14,7 +14,6 @@ const menuItems = [
 ];
 
 const NavBar = () => {
-<<<<<<< HEAD
     return(
         <div className={styles.navBar}>
             <ul className={styles.navBarMenu}>
@@ -27,19 +26,5 @@ const NavBar = () => {
         </div>
     )
 }
-=======
-	return (
-		<div className={styles.navBar}>
-			<ul className={styles.navBarMenu}>
-				{
-					menuItems.map(item => {
-						return <MenuItem text={item.text}/>;
-					})
-				}
-			</ul>
-		</div>
-	);
-};
->>>>>>> 9f05ceb8e18d87085403534df45dbb2c34643439
 
 export default NavBar;

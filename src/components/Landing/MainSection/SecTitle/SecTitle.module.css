@@ -1,0 +1,9 @@
+.secTitle {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  font-size: 1.222em;
+  font-family: 'Gilroy';
+  color: var(--text-color);
+  margin: 1em 0;
+}
