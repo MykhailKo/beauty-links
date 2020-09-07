@@ -1,0 +1,6 @@
+.langBlock {
+    width: 7em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}

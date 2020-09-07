@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './pop-up-btn.module.css';
 
 const PopUpBtn = () => {
     return(
-        <div>
-            How it works?
+        <div className={styles.popUpBtn}>
+            Как это работает?
         </div>
     )
 }

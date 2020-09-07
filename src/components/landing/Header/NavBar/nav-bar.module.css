@@ -1,0 +1,16 @@
+.navBar {
+    width: 100%;
+    height: 2.5em;
+    font-size: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--main-blue);
+}
+.navBarMenu {
+    width: 95%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}

@@ -5,11 +5,11 @@ import PopUpBtn from '../PopUpBtn/PopUpBtn';
 import Registration from '../Registration/Registration';
 import LanguageBlock from '../LanguageBlock/LanguageBlock';
 import ContactBtn from '../ContactBtn/ContactBtn';
+import styles from './top-header.module.css';
 
 const TopHeader = () => {
     return (
-        <div>
-            <h2>TopHeader</h2>
+        <div className={styles.topHeader}>
             <Logo />
             <Search />
             <PopUpBtn />

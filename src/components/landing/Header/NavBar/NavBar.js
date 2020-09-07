@@ -1,14 +1,27 @@
 import React from 'react';
 import MenuItem from '../MenuItem/MenuItem';
+import styles from './nav-bar.module.css';
+
+const menuItems = [
+    { text: 'Уход за волосами' },
+    { text: 'Уход за ногтями' },
+    { text: 'Косметолог' },
+    { text: 'Макияж' },
+    { text: 'Брови и ресницы' },
+    { text: 'Уход за телом' },
+    { text: 'Барберы' },
+    { text: 'Удаление волос' },
+]
 
 const NavBar = () => {
     return(
-        <div>
-            <h2>NavBar</h2>
-            <ul>
-                <MenuItem text={'Hair'} />
-                <MenuItem text={'Body'} />
-                <MenuItem text={'Nails'} />
+        <div className={styles.navBar}>
+            <ul className={styles.navBarMenu}>
+                {
+                    menuItems.map(item => {
+                        return <MenuItem text={item.text} />
+                    })
+                }
             </ul>
         </div>
     )

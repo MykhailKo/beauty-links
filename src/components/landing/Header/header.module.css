@@ -1,0 +1,7 @@
+.header {
+    width: 100vw;
+    height: 7.5em;
+    font-size: 18px;
+    display: flex;
+    flex-flow: column;
+}
