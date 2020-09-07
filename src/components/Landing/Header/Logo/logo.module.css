@@ -1,0 +1,8 @@
+.logo {
+    width: 10em;
+    height: 3.5em;
+    background-image: url('/assets/img/logo-01.png');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}

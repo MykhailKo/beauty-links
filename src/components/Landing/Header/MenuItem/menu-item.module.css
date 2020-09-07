@@ -1,0 +1,5 @@
+.menuItem {
+    text-decoration: none;
+    color: var(--btn-text-color);
+    font-family: 'Gilroy';
+}

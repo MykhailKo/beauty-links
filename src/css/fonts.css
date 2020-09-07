@@ -1,10 +1,10 @@
 @font-face {
-    src: url('../fonts/gilroy/Gilroy-Light.otf');
+    src: url('/assets/fonts/gilroy/Gilroy-Light.otf');
     font-family: 'Gilroy';
     font-weight: bold;
 }
 
 @font-face {
-    src: url('../fonts/gilroy/Gilroy-ExtraBold.otf');
+    src: url('/assets/fonts/gilroy/Gilroy-ExtraBold.otf');
     font-family: 'Gilroy Extra Bold';
 }
