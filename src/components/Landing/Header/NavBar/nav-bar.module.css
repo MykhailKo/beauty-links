@@ -8,6 +8,7 @@
     justify-content: space-around;
     background-color: var(--main-blue);
 }
+
 .navBarMenu {
     width: 95%;
     display: flex;

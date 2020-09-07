@@ -13,6 +13,7 @@
     outline: none;
     cursor: pointer;
 }
+
 .contactBtn::before {
     content: '';
     position: absolute;

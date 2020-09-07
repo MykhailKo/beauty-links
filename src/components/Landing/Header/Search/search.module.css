@@ -4,6 +4,7 @@
     flex-flow: row;
     border-radius: 1em;
 }
+
 .searchInput {
     width: 18vw;
     height: 100%;
@@ -15,6 +16,7 @@
     border-bottom-left-radius: 0.7em;
     padding-left: 1em;
 }
+
 .searchBtn {
     width: 4em;
     height: 100%;
@@ -27,6 +29,7 @@
     border-bottom-right-radius: 0.7em;
     cursor: pointer;
 }
+
 .searchBtn, .searchInput {
     border: none;
     outline: none;
