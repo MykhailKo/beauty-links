@@ -8,16 +8,16 @@ import ContactBtn from '../ContactBtn/ContactBtn';
 import styles from './top-header.module.css';
 
 const TopHeader = () => {
-    return (
-        <div className={styles.topHeader}>
-            <Logo />
-            <Search />
-            <PopUpBtn />
-            <Registration />
-            <LanguageBlock />
-            <ContactBtn />
-        </div>
-    )
-}
+	return (
+		<div className={styles.topHeader}>
+			<Logo/>
+			<Search/>
+			<PopUpBtn/>
+			<Registration/>
+			<LanguageBlock/>
+			<ContactBtn/>
+		</div>
+	);
+};
 
-export default TopHeader
+export default TopHeader;

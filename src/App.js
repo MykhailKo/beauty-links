@@ -1,14 +1,13 @@
-import React from "react";
-import Header from "./components/landing/Header/Header";
-import Footer from "./components/landing/Footer/Footer";
+import React from 'react';
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Footer />
-    </div>
-  );
-}
+import Header from './components/Landing/Header/Header';
+import Footer from './components/Landing/Footer/Footer';
+
+const App = () => (
+	<>
+	  <Header/>
+	  <Footer/>
+	</>
+);
 
 export default App;

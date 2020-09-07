@@ -12,6 +12,7 @@
     border: none;
     outline: none;
 }
+
 .contactBtn::before {
     content: '';
     position: absolute;
