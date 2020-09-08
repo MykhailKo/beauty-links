@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex: 1 1 0px;
   @media (min-width: $break-md) {
     flex-direction: column;
   }
