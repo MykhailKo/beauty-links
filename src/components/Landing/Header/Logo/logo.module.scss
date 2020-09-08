@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/widths';
+
 .logo {
     width: 10em;
     height: 3.5em;
@@ -6,4 +8,8 @@
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    @media (max-width: $break-sm) {
+        height: 2.5em;
+        width: 8em;
+    }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './lang-btn.module.css';
+import styles from './lang-btn.module.scss';
 
-const LangBtn = ({ langCode, active }) => {
+const LangBtn = ({ langCode, active=false }) => {
 	return (
-		<div className={styles.langBtn} style={active ? { color: '#000' } : { color: '#555' }}>
+		<div className={active ? styles.langBtnActive : styles.langBtn}>
 			{langCode}
 		</div>
 	);

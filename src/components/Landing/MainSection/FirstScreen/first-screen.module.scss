@@ -7,9 +7,10 @@
     display: flex;
     flex-flow: column wrap;
     @media (max-width: $break-sm) {
-        height: 28em;
+        height: 30em;
         margin-bottom: 3em;
         padding: 0 0.8em;
+        overflow-x: hidden;
     }
 }
 

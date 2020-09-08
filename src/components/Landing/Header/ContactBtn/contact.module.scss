@@ -12,6 +12,9 @@
     border: none;
     outline: none;
     cursor: pointer;
+    @media (max-width: 600px) {
+        display: none;
+    }
 }
 
 .contactBtn::before {

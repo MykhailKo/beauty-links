@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './menu-item.module.css';
+import styles from './menu-item.module.scss';
 
 const TopHeader = ({ text }) => {
 	return (

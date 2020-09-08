@@ -1,6 +1,6 @@
 import React from 'react';
 import LangBtn from '../LangBtn/LangBtn';
-import styles from './lang.module.css';
+import styles from './lang.module.scss';
 
 const LanguageBlock = () => {
 	return (
