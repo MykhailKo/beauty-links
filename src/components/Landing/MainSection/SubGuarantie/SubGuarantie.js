@@ -1,14 +1,14 @@
 import React from "react";
 
-import style from "./SubGuarantie.module.scss";
+import styles from "./SubGuarantie.module.scss";
 
 const SubGuarantie = (props) => {
   return (
-    <div className={style.SubGuarantie}>
-      <div className={style.image}>
+    <div className={styles.SubGuarantie}>
+      <div className={styles.image}>
         <img src={props.imgLink} alt={props.imgAlt} />
       </div>
-      <div className={style.title}>{props.title}</div>
+      <div className={styles.title}>{props.title}</div>
     </div>
   );
 };

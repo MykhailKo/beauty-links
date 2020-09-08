@@ -3,13 +3,13 @@ import React from "react";
 import SecTitle from "../SecTitle/SecTitle";
 import SubGuarantie from "../SubGuarantie/SubGuarantie";
 
-import style from "./GuarantiesBlock.module.scss";
+import styles from "./GuarantiesBlock.module.scss";
 
 const GuarantiesBlock = () => {
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       <SecTitle title={"Быстро, качественно, безопасно"} />
-      <div className={style.GuarantiesBlock}>
+      <div className={styles.GuarantiesBlock}>
         <SubGuarantie
           title={"Удобный поиск по геолокации"}
           imgLink={"/assets/img/location.png"}
