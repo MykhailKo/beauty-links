@@ -1,17 +1,30 @@
 @import "../../../assets/scss/fonts";
+@import "../../../assets/scss/widths";
 
 .Footer {
   width: 100%;
   background: #272727;
-  padding: 1rem 7.5rem 1.625rem 7.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 10px;
+  @media (min-width: $break-lg) {
+    padding: 10px;
+  }
+  @media (min-width: $break-xl) {
+    padding: 1rem 7.5rem 1.625rem 7.5rem;
+  }
+}
+
+.mobileFooterLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .BlockLink {
   display: block;
-  font-family: $Gilroy;
+  font-family: "Gilroy";
   font-style: normal;
   font-weight: 800;
   font-size: 16px;

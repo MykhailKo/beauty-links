@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './first-screen.module.css';
-import BlueBtn from '../../../common/BlueBtn/BlueBtn';
-import BlueInput from '../../../common/BlueInput/BlueInput';
+import React from "react";
+import styles from "./first-screen.module.css";
+import BlueBtn from "../../../common/BlueBtn/BlueBtn";
+import BlueInput from "../../../common/BlueInput/BlueInput";
 
 const FirstScreen = () => {
     return(
