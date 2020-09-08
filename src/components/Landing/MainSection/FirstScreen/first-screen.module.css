@@ -6,7 +6,7 @@
 }
 
 .titleBlock {
-    width: 40vw;
+    width: 50%;
     padding-top: 4em;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .searchForm {
-    width: 30vw;
+    width: 35%;
     height: 9em;
     display: flex;
     flex-flow: column;
@@ -34,7 +34,7 @@
 }
 
 .imageBlock {
-    width: 49vw;
+    width: 60%;
     height: 37em;
 }
 

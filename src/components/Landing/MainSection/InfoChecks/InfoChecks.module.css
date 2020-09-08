@@ -7,7 +7,7 @@
 
 .checksBlockTop, .checksBlockBottom {
     position: relative;
-    width: 56vw;
+    width: 75%;
     border: 1px solid var(--main-blue);
 }
 
