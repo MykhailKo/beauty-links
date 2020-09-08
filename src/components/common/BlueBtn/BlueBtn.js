@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './blue-btn.module.css';
+import styles from './blue-btn.module.scss';
 
-const BlueBtn = ({ text }) => {
+const BlueBtn = ({ text, filled=true }) => {
 	return (
-		<button className={styles.blueBtn}>
+		<button className={filled ? styles.filledBtn : styles.plainBtn}>
 			{text}
 		</button>
 	);

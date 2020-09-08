@@ -29,7 +29,7 @@ const ServiceCatList = ({ secTitle }) => {
           })
         }
         </ul>
-        <BlueBtn text={'Посмтореть все услуги'} />
+        <BlueBtn text={'Посмотреть все услуги'} />
       </section>
     </div>
   )
