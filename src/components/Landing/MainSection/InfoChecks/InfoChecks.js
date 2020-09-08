@@ -34,4 +34,4 @@ const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }
   )
 }
 
-export default InfoChecks
+export default InfoChecks;
