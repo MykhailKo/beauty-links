@@ -5,6 +5,7 @@ import BlueInput from '../../../common/BlueInput/BlueInput';
 
 const FirstScreen = () => {
     return(
+        <div className={'container'}>
         <section className={styles.firstScreenSec}> 
             <div className={styles.titleBlock}>
                 <h1 className={styles.mainTitle}>Мастера красоты и здоровья вашего города</h1>
@@ -19,6 +20,7 @@ const FirstScreen = () => {
                 <div className={styles.girlImg}></div>
             </div>
         </section>
+        </div>
     )
 }
 

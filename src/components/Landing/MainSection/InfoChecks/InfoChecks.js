@@ -6,6 +6,7 @@ import styles from './InfoChecks.module.css';
 
 const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }) => {
   return(
+    <div className={'container'}>
     <section className={styles.checksSec}>
       <SecTitle title={secTitle} />
       <div className={styles.checksBlockTop}>
@@ -29,6 +30,7 @@ const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }
         </ul>
       </div>
     </section>
+    </div>
   )
 }
 
