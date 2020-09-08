@@ -14,17 +14,17 @@ const menuItems = [
 ];
 
 const NavBar = () => {
-    return(
-        <div className={styles.navBar}>
-            <ul className={styles.navBarMenu}>
-                {
-                    menuItems.map((item, key) => {
-                        return <MenuItem text={item.text} key={key}/>
-                    })
-                }
-            </ul>
-        </div>
-    )
-}
+	return (
+		<div className={styles.navBar}>
+			<ul className={styles.navBarMenu}>
+				{
+					menuItems.map((item, key) => {
+						return <MenuItem text={item.text} key={key}/>;
+					})
+				}
+			</ul>
+		</div>
+	);
+};
 
 export default NavBar;
