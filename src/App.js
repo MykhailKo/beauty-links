@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import Header from './components/Landing/Header/Header';
-import Footer from './components/Landing/Footer/Footer';
-import MainSection from './components/Landing/MainSection/MainSection';
+import Header from "./components/Landing/Header/Header";
+import Footer from "./components/Landing/Footer/Footer";
+import MainSection from "./components/Landing/MainSection/MainSection";
 
 function App() {
   return (
     <div>
       <Header />
       <MainSection />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
