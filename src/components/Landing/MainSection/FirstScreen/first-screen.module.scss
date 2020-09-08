@@ -1,0 +1,96 @@
+@import '../../../../assets/scss/widths';
+
+.firstScreenSec {
+    position: relative;
+    margin-top: 0.2em;
+    height: 37em;
+    display: flex;
+    flex-flow: column wrap;
+    @media (max-width: $break-sm) {
+        height: 28em;
+        margin-bottom: 3em;
+        padding: 0 0.8em;
+    }
+}
+
+.titleBlock {
+    position: relative;
+    width: 50%;
+    padding-top: 4em;
+    z-index: 3;
+    @media (max-width: $break-md) {
+        width: 70%;
+    }
+}
+
+.mainTitle {
+    font-family: 'Gilroy';
+    font-weight: 800;
+    color: var(--text-color);
+    font-size: 2.2em;
+    @media (max-width: $break-md) {
+        font-size: 1.8em;
+        font-weight: 600;
+    }
+    @media (max-width: $break-sm) {
+        font-size: 1.3em;
+    }
+}
+
+.secondaryTitle {
+    font-family: 'Gilroy';
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1.222em;
+    margin-top: 1em;
+    @media (max-width: $break-md) {
+        width: 70%;
+        font-weight: 500;
+    }
+    @media (max-width: $break-sm) {
+        font-size: 1em;
+    }
+}
+
+.searchForm {
+    position: relative;
+    width: 35%;
+    height: 9em;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 2em;
+    z-index: 3;
+    @media (max-width: $break-md) {
+        width: 60%;
+        height: 10em;
+    }
+}
+
+.imageBlock {
+    width: 60%;
+    height: 37em;
+    @media (max-width: $break-md) {
+        width: 90%;
+        position: absolute;
+        top: 0;
+        right: -35%;
+        z-index: 1;
+    }
+    @media (max-width: $break-sm) {
+        width: 100%;
+        height: 30em;
+    }
+}
+
+.girlImg {
+    position: relative;
+    width: 100%;
+    height: 95%;
+    background-image: url('/assets/img/girl.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+

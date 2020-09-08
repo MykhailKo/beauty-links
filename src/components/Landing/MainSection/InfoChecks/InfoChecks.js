@@ -2,7 +2,7 @@ import React from "react";
 
 import SecTitle from "../SecTitle/SecTitle";
 
-import styles from "./InfoChecks.module.css";
+import styles from "./InfoChecks.module.scss";
 
 const InfoChecks = ({
   secTitle,

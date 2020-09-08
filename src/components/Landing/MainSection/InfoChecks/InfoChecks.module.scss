@@ -1,14 +1,23 @@
+@import '../../../../assets/scss/widths';
+
 .checksSec {
   padding: 1em 3vw;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  @media (max-width: $break-md) {
+    margin-bottom: 4em;
+  }
 }
 
 .checksBlockTop, .checksBlockBottom {
     position: relative;
     width: 75%;
     border: 1px solid var(--main-blue);
+    @media (max-width: $break-md) {
+        width: 100%;
+        border: none;
+    }
 }
 
 .checksBlockTop::before, .checksBlockBottom::before {
@@ -23,6 +32,23 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
+    @media (max-width: $break-md) {
+        width: 10em;
+        height: 10em;
+        left: 60%;
+        top: -30%;
+        z-index: 4;
+    }
+}
+
+.checksBlockBottom::before {
+    @media (max-width: $break-md) {
+        width: 7.2em;
+        height: 7.2em;
+        left: 70%;
+        top: -20%;
+        z-index: 4;
+    }
 }
 
 .checksBlockTop {
@@ -30,29 +56,38 @@
 }
 
 .checksBlockBottom {
-    transform: translateX(40%) translateY(-3.7em);
+    @media (min-width: $break-md) {
+        transform: translateX(40%) translateY(-3.7em);
+    }
 }
 
 .checksTitle {
+    width: 75%;
     position: relative;
-    width: 60%;
-    height: 3em;
-    display: flex;
-    align-items: center;
-    padding-left: 2em;
     font-family: 'Gilroy';
     font-weight: 800;
     font-size: 1.222em;
     border-bottom: 1px solid var(--main-blue);
-    border-right: 1px solid var(--main-blue);
     z-index: 3;
+    @media(min-width: $break-md){
+        width: 60%;
+        height: 3em;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid var(--main-blue);
+        padding-left: 2em;
+    }
 }
 
 .checksList {
     position: relative;
     width: 100%;
-    padding: 1em 1vw 3em 5vw;
-    z-index: 3;
+    z-index: 5;
+    padding: 1em 0 1em 0.5em;
+    @media (min-width: $break-md) {
+        padding: 1em 1vw 3em 5vw;
+        z-index: 3;
+    }
 }
 
 .checksLi {

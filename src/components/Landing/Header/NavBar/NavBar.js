@@ -17,13 +17,13 @@ const NavBar = () => {
 	return (
 		<div className={styles.navBar}>
 			<div className={styles.container}>
-			<ul className={styles.navBarMenu}>
+			<nav className={styles.navBarMenu}>
 				{
 					menuItems.map((item, key) => {
 						return <MenuItem text={item.text} key={key}/>;
 					})
 				}
-			</ul>
+			</nav>
 			</div>
 		</div>
 	);

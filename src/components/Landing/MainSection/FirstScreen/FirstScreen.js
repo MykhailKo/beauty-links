@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./first-screen.module.css";
+import styles from "./first-screen.module.scss";
 import Button from "../../../common/Button/Button";
 import Input from "../../../common/Input/Input";
 
