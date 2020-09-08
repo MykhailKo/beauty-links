@@ -3,6 +3,8 @@ import React from 'react';
 import FirstScreen from './FirstScreen/FirstScreen';
 import InfoChecks from './InfoChecks/InfoChecks';
 import ServiceCatList from './ServiceCatList/ServiceCatList';
+import SearchBanner from './SearchBanner/SearchBanner';
+
 
 const list1 = [
   { text: 'поиск по геолокации, возможность вызова мастера на дом' },
@@ -55,6 +57,7 @@ const MainSection = () => {
       <InfoChecks secTitle={'Почему именно мы?'}
                   firstTitle={'Клиентам'} firstList={list3}
                   secondTitle={'Специалистам'} secondList={list4}/>
+      <SearchBanner title={'Там, где вам удобно'}/>
     </main>
   );
 };
