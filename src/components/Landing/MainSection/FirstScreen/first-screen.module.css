@@ -43,22 +43,10 @@
 .girlImg {
     position: relative;
     width: 100%;
-    height: 80%;
+    height: 95%;
     background-image: url('/assets/img/girl.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 
-.girlImg::after {
-    content: '';
-    position: absolute;
-    width: 92%;
-    height: 25%;
-    left: -2em;
-    top: 90%;
-    background-image: url('/assets/img/hot.png');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
