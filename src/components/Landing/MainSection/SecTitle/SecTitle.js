@@ -4,9 +4,7 @@ import styles from './SecTitle.module.css';
 
 const SecTitle = ({ title }) => {
 	return (
-		<div className={'container'}>
-			<h2 className={styles.secTitle}>{title}</h2>
-		</div>
+		<h2 className={styles.secTitle}>{title}</h2>
 	);
 };
 

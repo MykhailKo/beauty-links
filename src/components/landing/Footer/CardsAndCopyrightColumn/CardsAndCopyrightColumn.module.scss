@@ -1,8 +1,15 @@
+@import "../../../../assets/scss/widths";
+
 .Column {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   text-align: right;
+  flex: 1 1 0px;
+  padding: 0px;
+  @media (min-width: $break-sm) {
+    padding: 0px 1rem;
+  }
 }
 
 .Copyright {
