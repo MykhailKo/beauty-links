@@ -5,34 +5,40 @@
     display: flex;
     flex-flow: column wrap;
 }
+
 .titleBlock {
     width: 40vw;
     padding-top: 4em;
 }
+
 .mainTitle {
     font-family: 'Gilroy Extra Bold';
     color: var(--text-color);
     font-size: 2.2em;
 }
+
 .secondaryTitle {
     font-family: 'Gilroy';
     color: var(--text-color);
     font-size: 1.222em;
     margin-top: 1em;
 }
+
 .searchForm {
     width: 30vw;
     height: 9em;
     display: flex;
     flex-flow: column;
     justify-content: space-around;
-    align-items: flex-start;   
+    align-items: flex-start;
     margin-top: 2em;
 }
+
 .imageBlock {
     width: 49vw;
     height: 37em;
 }
+
 .girlImg {
     position: relative;
     width: 100%;
@@ -42,6 +48,7 @@
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
 .girlImg::after {
     content: '';
     position: absolute;
