@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./first-screen.module.css";
-import BlueBtn from "../../../common/BlueBtn/BlueBtn";
-import BlueInput from "../../../common/BlueInput/BlueInput";
+import Button from "../../../common/Button/Button";
+import Input from "../../../common/Input/Input";
 
 const FirstScreen = () => {
   return (
@@ -16,9 +16,9 @@ const FirstScreen = () => {
           </h2>
         </div>
         <form className={styles.searchForm}>
-          <BlueInput placeholder={"Введите адрес"} />
-          <BlueInput placeholder={"Выберете услугу"} />
-          <BlueBtn text={"Поиск"} />
+          <Input placeholder={"Введите адрес"} />
+          <Input placeholder={"Выберете услугу"} />
+          <Button text={"Поиск"} />
         </form>
         <div className={styles.imageBlock}>
           <div className={styles.girlImg}></div>
