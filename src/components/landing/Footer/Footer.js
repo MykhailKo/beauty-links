@@ -7,6 +7,7 @@ import useWindowSize from "../../../hooks/useWindowSize";
 
 import style from "./Footer.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
+
 const Footer = () => {
   const [width] = useWindowSize();
   return (
