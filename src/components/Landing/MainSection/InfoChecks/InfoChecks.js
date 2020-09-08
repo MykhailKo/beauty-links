@@ -7,14 +7,14 @@ import styles from './InfoChecks.module.css';
 const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }) => {
   return(
     <div className={'container'}>
-    <SecTitle title={secTitle} />
     <section className={styles.checksSec}>
+      <SecTitle title={secTitle} />
       <div className={styles.checksBlockTop}>
         <h3 className={styles.checksTitle}>{firstTitle}</h3>
         <ul className={styles.checksList}>
           {
             firstList.map((item, key) => {
-              return <li className={styles.checksLi} key={key}>{item.text}</li>
+              return <li className={styles.checksLi}>{item.text}</li>
             })
           }
         </ul>
@@ -24,7 +24,7 @@ const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }
         <ul className={styles.checksList}>
           {
             secondList.map((item, key) => {
-              return <li className={styles.checksLi} key={key}>{item.text}</li>
+              return <li className={styles.checksLi}>{item.text}</li>
             })
           }
         </ul>

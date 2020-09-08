@@ -1,9 +1,10 @@
 .secTitle {
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: center;
     font-size: 1.222em;
     font-family: 'Gilroy';
+    font-weight: 500;
     color: var(--text-color);
     margin: 1em 0 2em 0;
 }

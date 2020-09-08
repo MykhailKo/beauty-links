@@ -2,4 +2,5 @@
     text-decoration: none;
     color: var(--btn-text-color);
     font-family: 'Gilroy';
+    font-weight: 500;
 }

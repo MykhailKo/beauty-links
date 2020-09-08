@@ -12,8 +12,8 @@ const Footer = () => {
   return (
     <footer className={style.Footer}>
       {width > parseInt(widths.break_lg) ? (
-        <>
-          <div>
+        <div className={style.container}>
+          <div className={style.FooterColumn}>
             <div>
               <BlockTitle text={"О нас"} />
               <a href={"/"} className={style.BlockLink}>
@@ -30,7 +30,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div>
+          <div className={style.FooterColumn}>
             <div>
               <BlockTitle text={"Услуги"} />
               <a href={"/"} className={style.BlockLink}>
@@ -60,7 +60,7 @@ const Footer = () => {
             </div>
           </div>
           <BeautyLinksColumn />
-          <div>
+          <div className={style.FooterColumn}>
             <div>
               <BlockTitle text={"Поддержка"} />
               <a href={"/"} className={style.BlockLink}>
@@ -81,9 +81,9 @@ const Footer = () => {
             </div>
           </div>
           <CardsAndCopyrightColumn />
-        </>
+        </div>
       ) : (
-        <>
+        <div className={style.container}>
           <div className={style.mobileFooterLinks}>
             <BlockTitle text={"О нас"} link={""} />
             <BlockTitle text={"Клиенту/специалисту"} />
@@ -93,7 +93,7 @@ const Footer = () => {
           <BeautyLinksColumn />
 
           <CardsAndCopyrightColumn />
-        </>
+        </div>
       )}
     </footer>
   );

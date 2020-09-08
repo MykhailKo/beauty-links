@@ -1,5 +1,6 @@
 .popUpBtn {
-    font-family: 'Gilroy Extra Bold';
+    font-family: 'Gilroy';
+    font-weight: 600;
     font-size: 1em;
     color: var(--text-color);
     cursor: pointer;

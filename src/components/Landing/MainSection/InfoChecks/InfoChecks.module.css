@@ -40,7 +40,8 @@
     display: flex;
     align-items: center;
     padding-left: 2em;
-    font-family: 'Gilroy Extra Bold';
+    font-family: 'Gilroy';
+    font-weight: 800;
     font-size: 1.222em;
     border-bottom: 1px solid var(--main-blue);
     border-right: 1px solid var(--main-blue);
@@ -58,6 +59,7 @@
     list-style: none;
     font-size: 1em;
     font-family: 'Gilroy';
+    font-weight: 500;
     display: flex;
     align-items: center;
 }
