@@ -1,9 +1,15 @@
 @import "../../../../assets/scss/colors";
 @import "../../../../assets/scss/fonts";
+@import "../../../../assets/scss/widths";
 
 .BlockTitle {
-  font-family: "Mont";
-  font-size: 18px;
-  line-height: 23px;
+  font-family: "Gilroy";
+  font-weight: bold;
   color: #ffffff;
+  font-size: 10px;
+  line-height: 13px;
+  @media (min-width: $break-sm) {
+    font-size: 18px;
+    line-height: 23px;
+  }
 }
