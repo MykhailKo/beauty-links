@@ -8,7 +8,7 @@ const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }
   return(
     <section className={styles.checksSec}>
       <SecTitle title={secTitle} />
-      <div className={styles.chacksBlock}>
+      <div className={styles.checksBlockTop}>
         <h3 className={styles.checksTitle}>{firstTitle}</h3>
         <ul className={styles.checksList}>
           {
@@ -18,7 +18,7 @@ const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }
           }
         </ul>
       </div>
-      <div className={styles.chacksBlock}>
+      <div className={styles.checksBlockBottom}>
         <h3 className={styles.checksTitle}>{secondTitle}</h3>
         <ul className={styles.checksList}>
           {
@@ -31,3 +31,5 @@ const InfoChecks = ({ secTitle, firstTitle, secondTitle, firstList, secondList }
     </section>
   )
 }
+
+export default InfoChecks
