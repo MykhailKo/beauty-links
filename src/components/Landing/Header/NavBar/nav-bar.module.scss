@@ -1,0 +1,30 @@
+.navBar {
+    width: 100%;
+    padding: 0.8em 0;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    background-color: var(--main-blue);
+    .container {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+        @media (min-width: 768px) {
+              width: 850px;
+        }
+        @media (min-width: 992px) {
+            width: 1070px;
+        }
+        @media (min-width: 1200px) {
+            width: 1300px;
+        }
+    }
+}
+
+.navBarMenu {
+    width: 95%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}

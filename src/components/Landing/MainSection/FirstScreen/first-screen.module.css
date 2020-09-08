@@ -1,5 +1,5 @@
 .firstScreenSec {
-    width: 100vw;
+    margin-top: 0.2em;
     height: 37em;
     display: flex;
     flex-flow: column wrap;
