@@ -1,14 +1,14 @@
 import React from "react";
 
-import style from "./BeautyLinksColumn.module.scss";
+import styles from "./BeautyLinksColumn.module.scss";
 
 const BeautyLinksColumn = (props) => {
   return (
-    <div className={style.BeautyColumn}>
-      <div className={style.MainLogoBlock}>
+    <div className={styles.BeautyColumn}>
+      <div className={styles.MainLogoBlock}>
         <img src={"/assets/img/logo-02.png"} alt="logo-2" />
       </div>
-      <div className={style.Contacts}>
+      <div className={styles.Contacts}>
         <a href="#">
           <img src={"/assets/img/icons/fb.png"} alt="facebook-link"></img>
         </a>

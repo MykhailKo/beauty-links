@@ -1,11 +1,11 @@
 import React from "react";
 
-import FirstScreen from './FirstScreen/FirstScreen';
-import InfoChecks from './InfoChecks/InfoChecks';
-import ServiceCatList from './ServiceCatList/ServiceCatList';
-import SearchBanner from './SearchBanner/SearchBanner';
+import FirstScreen from "./FirstScreen/FirstScreen";
+import InfoChecks from "./InfoChecks/InfoChecks";
+import ServiceCatList from "./ServiceCatList/ServiceCatList";
+import SearchBanner from "./SearchBanner/SearchBanner";
 import GuarantiesBlock from "./GuarantiesBlock/GuarantiesBlock";
-
+import RegisterNow from "./RegisterNow/RegisterNow";
 
 const list1 = [
   { text: "поиск по геолокации, возможность вызова мастера на дом" },
@@ -71,7 +71,7 @@ const list4 = [
 const MainSection = () => {
   return (
     <main>
-      <FirstScreen/>
+      <FirstScreen />
       <InfoChecks
         secTitle={"Чем мы будем полезны"}
         firstTitle={"Клиентам"}
@@ -79,7 +79,7 @@ const MainSection = () => {
         secondTitle={"Мастерам-специалистам"}
         secondList={list2}
       />
-      <ServiceCatList secTitle={'Услуги, которые пользуются популярностью'} />
+      <ServiceCatList secTitle={"Услуги, которые пользуются популярностью"} />
       <InfoChecks
         secTitle={"Почему именно мы?"}
         firstTitle={"Клиентам"}
@@ -87,7 +87,8 @@ const MainSection = () => {
         secondTitle={"Специалистам"}
         secondList={list4}
       />
-      <SearchBanner title={'Там, где вам удобно'}/>
+      <SearchBanner title={"Там, где вам удобно"} />
+      <RegisterNow />
       <GuarantiesBlock />
     </main>
   );

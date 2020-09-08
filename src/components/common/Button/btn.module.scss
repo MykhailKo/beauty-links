@@ -16,7 +16,7 @@
   @extend %Button;
   background-color: var(--main-blue);
   color: var(--btn-text-color);
-  transition: 0.3s text-shadow;
+  transition: 0.3s background-color;
   &:hover {
     background-color: var(--btn-hover-bg-color);
   }
