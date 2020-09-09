@@ -5,16 +5,22 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  @media (min-width: $break-lg) {
+    flex: 1 0 50%;
+    align-items: flex-end;
+    &:last-child,
+    &:nth-last-child(2) {
+      padding-left: 7rem;
+    }
+  }
 }
 
 .Index {
   position: relative;
   & img {
-    // width: 100%;
-    // height: 100%;
     width: 85px;
 
-    @media (min-width: $break-md) {
+    @media (min-width: $break-lg) {
       width: 172px;
     }
   }
@@ -30,7 +36,7 @@
     font-size: 40px;
     line-height: 51px;
     color: #ffffff;
-    @media (min-width: $break-md) {
+    @media (min-width: $break-lg) {
       font-family: Gilroy;
       font-style: normal;
       font-weight: 300;
@@ -49,7 +55,7 @@
   font-size: 14px;
   line-height: 18px;
   color: #000000;
-  @media (min-width: $break-md) {
+  @media (min-width: $break-lg) {
     font-family: "Gilroy";
     font-style: normal;
     font-weight: 800;
@@ -57,5 +63,8 @@
     line-height: 22px;
 
     color: #000000;
+    max-width: 60%;
+    margin-left: -3rem;
+    z-index: 2;
   }
 }
