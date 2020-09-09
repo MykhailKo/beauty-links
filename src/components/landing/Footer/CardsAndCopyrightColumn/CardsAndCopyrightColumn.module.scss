@@ -20,10 +20,17 @@
 }
 
 .Copyright {
+  font-family: "Gilroy";
   font-style: normal;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 21px;
-
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  // text-align: center;
   color: #ffffff;
+  @media (min-width: $break-md) {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+  }
 }
