@@ -1,3 +1,5 @@
+@import "../../../assets/scss/widths";
+
 %Button {
   display: inline-block;
   padding: 0.37em 1em;
@@ -5,11 +7,14 @@
   border-radius: 0.3em;
   font-size: 1.2em;
   font-family: "Gilroy";
-  border-radius: 0.55em;
+  border-radius: 20px;
   transition: 0.3s background-color;
   cursor: pointer;
   border: none;
   outline: none;
+  @media (min-width: $break-md) {
+    border-radius: 0.55em;
+  }
 }
 
 .filledButton {
