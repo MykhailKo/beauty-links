@@ -1,0 +1,12 @@
+@import "../../../../assets/scss/common";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Steps {
+  display: flex;
+  flex-direction: column;
+}

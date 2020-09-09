@@ -6,6 +6,7 @@ import ServiceCatList from "./ServiceCatList/ServiceCatList";
 import SearchBanner from "./SearchBanner/SearchBanner";
 import GuarantiesBlock from "./GuarantiesBlock/GuarantiesBlock";
 import RegisterNow from "./RegisterNow/RegisterNow";
+import HowItWorks from "./HowItWorks/HowItWorks";
 
 const list1 = [
   { text: "поиск по геолокации, возможность вызова мастера на дом" },
@@ -88,6 +89,7 @@ const MainSection = () => {
         secondList={list4}
       />
       <SearchBanner title={"Там, где вам удобно"} />
+      <HowItWorks />
       <RegisterNow />
       <GuarantiesBlock />
     </main>
