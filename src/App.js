@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "./components/Landing/Header/Header";
-import Footer from "./components/Landing/Footer/Footer";
+// import Footer from "./components/Landing/Footer/Footer";
 import MainSection from "./components/Landing/MainSection/MainSection";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header />
       <MainSection />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
