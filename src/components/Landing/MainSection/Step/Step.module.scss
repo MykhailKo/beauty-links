@@ -7,7 +7,7 @@
   align-items: center;
   @media (min-width: $break-lg) {
     flex: 1 0 50%;
-    align-items: flex-end;
+    align-items: center;
     &:last-child,
     &:nth-last-child(2) {
       @media (min-width: $break-md) {
@@ -64,10 +64,10 @@
     font-weight: 800;
     font-size: 18px;
     line-height: 22px;
-
     color: #000000;
-    max-width: 60%;
+    max-width: 70%;
     margin-left: -3rem;
+    margin-top: 1.5rem;
     z-index: 2;
   }
 }
