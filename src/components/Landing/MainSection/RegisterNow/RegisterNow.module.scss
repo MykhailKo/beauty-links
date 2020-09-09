@@ -60,6 +60,9 @@
     @media (min-width: $break-sm) {
       padding: 1rem;
     }
+    @media (min-width: 545px) {
+      padding: 0rem 1.5rem;
+    }
     @media (min-width: $break-md) {
       max-width: 30%;
     }
