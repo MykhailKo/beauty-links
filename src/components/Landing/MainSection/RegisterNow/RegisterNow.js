@@ -28,10 +28,10 @@ const RegisterNow = () => {
         </div>
         <div className={styles.ButtonsCategory}>
           <div>
-            <Button text={"узнать больше"} filled={false} />
+            <Button text={"Узнать больше"} filled={false} />
           </div>
           <div>
-            <Button text={"зарегистрироваться"} />
+            <Button text={"Зарегистрироваться"} />
           </div>
         </div>
       </div>
