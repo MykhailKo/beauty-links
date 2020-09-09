@@ -4,6 +4,7 @@ $break-md: 768px;
 $break-lg: 992px;
 $break-xl: 1200px;
 :export {
+  break-xs: $break-xs;
   break_sm: $break-sm;
   break_md: $break-md;
   break_lg: $break_lg;
