@@ -9,8 +9,15 @@ const RegisterNow = () => {
       <div className={styles.container}>
         <SecTitle title={"Зарегистрируйтесь сейчас бесплатно!"} />
         <div className={styles.MainCategory}>
-          <div></div>
-          <img src="/assets/img/girl2.png" alt="girl2" />
+          <div className={styles.quote}>
+            <span>
+              Заработок от данного сайта помог мне оплатить семейный отдых в
+              этом году.
+            </span>
+          </div>
+          <div className={styles.girl}>
+            <img src="/assets/img/girl2.png" alt="girl2" />
+          </div>
           <div className={styles.Description}>
             <div className={styles.name}>Анна</div>
             <div className={styles.profession}>Визажист</div>
