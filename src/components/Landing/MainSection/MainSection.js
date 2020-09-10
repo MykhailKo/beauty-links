@@ -8,6 +8,7 @@ import GuarantiesBlock from "./GuarantiesBlock/GuarantiesBlock";
 import RegisterNow from "./RegisterNow/RegisterNow";
 import HowItWorks from "./HowItWorks/HowItWorks";
 
+
 const list1 = [
   { text: "поиск по геолокации, возможность вызова мастера на дом" },
   { text: "онлайн оплата, безопасная сделка" },

@@ -3,7 +3,7 @@ import React from 'react';
 import Search from '../Search/Search';
 import Logo from '../Logo/Logo';
 import PopUpBtn from '../PopUpBtn/PopUpBtn';
-import Registration from '../Registration/Registration';
+import Registration from '../RegistrationBtn/RegistrationBtn';
 import LanguageBlock from '../LanguageBlock/LanguageBlock';
 import ContactBtn from '../ContactBtn/ContactBtn';
 import useWindowSize from '../../../../hooks/useWindowSize';
