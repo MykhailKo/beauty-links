@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   flex-flow: column; 
+  margin: 0.7em 0;
   .inputLabel {
     color: var(--label-color);
     font-family: 'Gilroy';
@@ -18,10 +19,10 @@
     border: none;
     border-bottom: 1px solid var(--pale-text-color);
     outline: none;
-    padding: 0;
+    padding: 0 0 0.15em 0;
     transition: 0.3s padding;
     &:focus {
-      padding: 0.4em 0 0.1em 0;
+      padding: 0.4em 0 0.15em 0;
     }
   }
   .inputError {

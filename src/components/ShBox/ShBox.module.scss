@@ -1,7 +1,10 @@
 .shBox {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   width: 100%;
   height: inherit;
   padding: 0.5em;
-  box-shadow: 0px -1px 10px #d2d2d2;
-  border-radius: 1em;
+  box-shadow: 0px -1px 20px #d2d2d2;
+  border-radius: 0.7em;
 }
