@@ -1,0 +1,19 @@
+.radioLabel {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  font-family: 'Gilroy';
+  font-weight: 500;
+  font-size: 1.333em;
+  cursor: pointer;
+  .radioBtn {
+    width: 1em;
+    height: 1em;
+    border-radius: 10%;
+    border: 1px solid var(--main-blue);
+    margin-right: 0.5em;
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+  }
+}
