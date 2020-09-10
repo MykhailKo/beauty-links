@@ -1,0 +1,23 @@
+.timeWrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .timeLabel {
+    font-family: 'Gilroy';
+    font-size: 0.78em;
+    color: var(--pale-text-color);
+    font-weight: 400;
+    margin-right: 0.5em;
+  }
+  .timeInput {
+    font-family: 'Gilroy';
+    font-size: 0.78em;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 0.25em 1.2em;
+    border: 1px solid var(--label-color);
+    border-radius: 0.3em;
+    outline: none;
+  }
+}

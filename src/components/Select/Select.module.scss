@@ -1,0 +1,32 @@
+.selectWrap {
+  width: 100%;
+  display: flex;
+  flex-flow: column; 
+  .selectLabel {
+    color: var(--label-color);
+    font-family: 'Gilroy';
+    font-weight: 400;
+    font-size: 1em;
+  }
+  .select {
+    width: 100%;
+    color: var(--text-color);
+    font-family: 'Gilroy';
+    font-size: 1.333em;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid var(--pale-text-color);
+    outline: none;
+    padding: 0.1em 0;
+    transition: 0.3s padding;
+    &:focus {
+      padding: 0.4em 0 0.1em 0;
+    }
+  }
+  .selectError {
+    color: var(--error-color);
+    font-family: 'Gilroy';
+    font-size: 0.666em;
+    font-weight: 500;
+  }
+}
