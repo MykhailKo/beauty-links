@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 
 import BaseReg from './BaseReg/BaseReg';
+import ChooseYourFighter from "./ChooseYourFighter/ChooseYourFighter";
+import Stepper from './Stepper/Stepper';
 
 import styles from "./Registration.module.scss";
-import ChooseYourFighter from "./ChooseYourFighter/ChooseYourFighter";
 
 const Registration = () => {
 
@@ -14,6 +15,7 @@ const Registration = () => {
       <div className={styles.regWrap}>
         {regStep === 1 && <BaseReg nextStep={setRegStep} />}
         {regStep === 2 && <ChooseYourFighter nextStep={setRegStep} />}
+        {regStep === 3 && <Stepper nextStep={setRegStep} />} 
       </div>
     </main>
   );
