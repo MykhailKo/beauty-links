@@ -1,0 +1,19 @@
+@import "../../../assets/scss/widths";
+
+.secTitle {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  width: 100%;
+  color: var(--text-color);
+  margin: 0 0 1em 0;
+  @media (min-width: $break-sm) {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 25px;
+    margin: 1em 0 2em 0;
+  }
+}

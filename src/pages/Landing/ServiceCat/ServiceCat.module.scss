@@ -1,0 +1,33 @@
+@import "../../../assets/scss/widths";
+
+.serviceCatBlock {
+  width: 11.6em;
+  height: 10.6em;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5em 0;
+  margin: 0.5em;
+  @media (min-width: $break-md) {
+    height: 11.6em;
+    border: 1px solid var(--main-blue);
+  }
+}
+.serviceCatImg {
+  width: 50%;
+  height: 72%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+.serviceCatTitle {
+  font-family: "Gilroy";
+  font-weight: 800;
+  color: var(--text-color);
+  font-size: 1em;
+  @media (max-width: $break-md) {
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+}
