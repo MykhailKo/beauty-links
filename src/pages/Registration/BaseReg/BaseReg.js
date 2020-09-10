@@ -10,7 +10,7 @@ import validateForm from '../validateForm';
 
 import styles from './BaseReg.module.scss';
 
-const BaseReg = () => {
+const BaseReg = ({ nextStep }) => {
   return(
       <ShBox padding={'2em 0'}>
         <RegTitle text={'Регистрация нового пользователя'} />
@@ -25,7 +25,10 @@ const BaseReg = () => {
             </span>
           </div>
           <Button text={'Регистрация'} onClick={() => { 
-            if(validateForm('baseRegForm')) alert('Valid');
+            if(validateForm('baseRegForm')){
+              nextStep(2);
+              // send data to server
+            }
           }}/>
         </form>
         <div className={styles.loginMes}>

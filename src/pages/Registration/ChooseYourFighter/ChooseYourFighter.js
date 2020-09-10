@@ -6,7 +6,7 @@ import RegTitle from "../RegTitle/RegTitle";
 import styles from "./ChooseYourFighter.module.scss";
 import SideSelect from "../../../components/SideSelect/SideSelect";
 
-const ChooseYourFighter = () => {
+const ChooseYourFighter = ({ nextStep }) => {
   return (
     <ShBox padding={'2em 0 4em 0'}>
       <RegTitle text={"Почти готово!"} />
@@ -19,6 +19,7 @@ const ChooseYourFighter = () => {
             imagePath={"/assets/img/master.png"}
             buttonClick={() => {
               alert("начинаем мастера");
+              nextStep(3);
             }}
             buttonText={"Начать как мастер"}
           />
@@ -26,6 +27,7 @@ const ChooseYourFighter = () => {
             imagePath={"/assets/img/client.png"}
             buttonClick={() => {
               alert("начинаем клиента");
+              nextStep(3);
             }}
             buttonText={"Начать как клиент"}
           />
