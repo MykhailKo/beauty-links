@@ -1,0 +1,18 @@
+@import "../../../assets/scss/widths";
+
+.regBtn {
+  width: 12.2em;
+  height: 2.7em;
+  border-radius: 1em;
+  background-color: var(--main-blue);
+  color: var(--btn-text-color);
+  font-size: 0.888em;
+  font-family: "Gilroy";
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  @media (max-width: $break-sm) {
+    display: none;
+  }
+}

@@ -1,0 +1,32 @@
+@import "../../../assets/scss/widths";
+
+.textBlock {
+  width: 26em;
+  @media (max-width: $break-md) {
+    width: 24em;
+  }
+}
+.textTitle,
+.text {
+  font-family: "Gilroy";
+  font-size: 1em;
+}
+.textTitle {
+  padding-left: 4vw;
+  font-weight: 500;
+  @media (max-width: $break-md) {
+    padding-left: 0;
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+}
+.text {
+  font-weight: 600;
+  margin-top: 1.5em;
+  line-height: 1.4em;
+  margin-bottom: 2em;
+  @media (max-width: $break-md) {
+    font-weight: 500;
+    margin-top: 1em;
+  }
+}
