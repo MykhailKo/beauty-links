@@ -1,17 +1,17 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Landing from "./pages/Landing/Landing";
-import Registration from "./pages/Registration/Registartion";
+import getRoutes from "./routes";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <Landing />
+      {getRoutes(false)}
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 
