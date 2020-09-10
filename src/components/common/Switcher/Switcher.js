@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Switch.module.scss';
+import styles from './Switcher.module.scss';
 
 const Switch = ({state, switchState}) => {  
   return(

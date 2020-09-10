@@ -9,6 +9,7 @@ import useWindowSize from '../../../hooks/useWindowSize';
 import styles from './Header.module.scss';
 import widths from '../../../assets/scss/_widths.scss';
 
+
 const Header = () => {
 
 	const [width] = useWindowSize();	
