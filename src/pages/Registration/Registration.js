@@ -3,6 +3,7 @@ import React from "react";
 import ShBox from "../../components/ShBox/ShBox";
 
 import styles from "./Registration.module.scss";
+import ChooseYourFighter from "./ChooseYourFighter/ChooseYourFighter";
 
 const Registration = () => {
   return (
@@ -11,6 +12,7 @@ const Registration = () => {
         <ShBox>
           <h1>Registartion</h1>
         </ShBox>
+        <ChooseYourFighter />
       </div>
     </main>
   );
