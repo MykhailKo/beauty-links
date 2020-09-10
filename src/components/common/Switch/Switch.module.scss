@@ -1,0 +1,19 @@
+@import '../../../assets/scss/widths';
+
+.switchBody {
+  width: 2.85em;
+  height: 2.2em;
+  display: flex;
+  border-radius: 30% / 50%;
+  align-items: center;
+  padding: 0.12em;
+  .switcher {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background-color: var(--btn-text-color);
+    box-shadow: -1px 1px 3px #d2d2d2;
+    transition: 0.3s transform;
+    cursor: pointer;
+  }
+}
