@@ -1,0 +1,22 @@
+@import "../../../assets/scss/widths";
+@import "../../../assets/scss/fonts";
+
+.SubTitle {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #4c4c4c;
+}
+
+.SelectorBlock {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $break-md) {
+    padding: 0px 6rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
