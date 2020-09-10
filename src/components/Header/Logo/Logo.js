@@ -1,11 +1,13 @@
-import React from 'react';
-import { logo } from './logo.module.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import { logo } from "./logo.module.scss";
 
 const Logo = () => {
-	return (
-		<div className={logo}>
-		</div>
-	);
+  return (
+    <Link to={"/"}>
+      <div className={logo}></div>
+    </Link>
+  );
 };
 
 export default Logo;

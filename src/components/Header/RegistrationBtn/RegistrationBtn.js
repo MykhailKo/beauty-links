@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './reg.module.scss';
+import React from "react";
+import styles from "./reg.module.scss";
 
-const Registration = () => {
-	return (
-		<button className={styles.regBtn}>
-			Зарегистрироваться
-		</button>
-	);
+const Registration = (props) => {
+  return (
+    <button className={styles.regBtn} onClick={props.onClick}>
+      Зарегистрироваться
+    </button>
+  );
 };
 
 export default Registration;
