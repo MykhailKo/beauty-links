@@ -1,4 +1,4 @@
-@import '../../../assets/scss/colors';
+@import "../../assets/scss/colors";
 
 .stepsContainer {
   position: relative;
@@ -7,7 +7,7 @@
   flex-flow: row;
   justify-content: space-between;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 95%;
     height: 1px;
@@ -34,14 +34,14 @@
       background-size: 30%;
       background-repeat: no-repeat;
       color: $white;
-      font-family: 'Gilroy';
+      font-family: "Gilroy";
       font-size: 1em;
       font-weight: 500;
     }
     .stepDesc {
       width: 100%;
       font-size: 0.666em;
-      font-family: 'Gilroy';
+      font-family: "Gilroy";
       font-weight: 400;
       color: $pale-text-color;
       text-align: center;
