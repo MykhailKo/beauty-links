@@ -6,7 +6,7 @@ import Button from '../../../components/Button/Button';
 import RegInput from '../../../components/RegInput/RegInput';
 import CheckBox from '../../../components/CheckBox/CheckBox';
 
-import validateForm from '../validateForm';
+import {validateForm, checkSimilar} from '../validateForm';
 
 import styles from './BaseReg.module.scss';
 
@@ -25,6 +25,7 @@ const BaseReg = ({ nextStep }) => {
             </span>
           </div>
           <Button text={'Регистрация'} onClick={() => { 
+            checkSimilar('passwordConf', 'password', 'Пароли должны совпадать!')
             if(validateForm('baseRegForm')){
               nextStep(2);
               // send data to server
