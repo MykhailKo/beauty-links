@@ -1,0 +1,12 @@
+@import '../../../assets/scss/colors';
+
+.regSubTitle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1.5em 0;
+  font-size: 1em;
+  color: $pale-text-color;
+  font-family: 'Gilroy';
+  font-weight: 400;
+}
