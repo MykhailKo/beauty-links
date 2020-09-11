@@ -27,13 +27,27 @@ const RegPersData = ({ step, nextStep }) => {
         text={"Эти данные будут отображены в вашем профиле мастера."}
       />
       <form className={styles.persDataForm} id={"persForm"}>
-        <RegInput label={"Имя"} name={"firstName"} required={true} />
-        <RegInput label={"Фамилия"} name={"lastName"} required={true} />
+        <RegInput
+          label={"Имя"}
+          name={"firstName"}
+          required={true}
+          minLength={1}
+          maxlength={30}
+        />
+        <RegInput
+          label={"Фамилия"}
+          name={"lastName"}
+          required={true}
+          minLength={1}
+          maxlength={30}
+        />
         <RegInput
           label={"Телефон"}
           type={"tell"}
           name={"phoneNumber"}
           required={true}
+          pattern={"38-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"}
+          title={"Телефон в формате 38-ХХХ-ХХХ-ХХ-ХХ"}
         />
         <div className={styles.radioBlock}>
           <label className={styles.radiosLabel}>Пол</label>

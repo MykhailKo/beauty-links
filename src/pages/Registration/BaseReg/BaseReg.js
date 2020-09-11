@@ -26,12 +26,16 @@ const BaseReg = ({ nextStep }) => {
           label={"Пароль"}
           name={"password"}
           required={true}
+          minLength={8}
+          maxlength={16}
         />
         <RegInput
           type={"password"}
           label={"Подтвердите пароль"}
           name={"passwordConf"}
           required={true}
+          minLength={8}
+          maxlength={16}
         />
         <div className={styles.confPols}>
           <CheckBox id={"politics"} required={true} />

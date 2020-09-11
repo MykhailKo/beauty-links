@@ -7,6 +7,10 @@ const RegInput = ({
   name,
   type = "text",
   required = false,
+  minLength = 0,
+  maxlength = 200,
+  pattern = ".*",
+  title = "",
   error = null,
 }) => {
   const [visible, setVisible] = useState(false);
@@ -22,6 +26,10 @@ const RegInput = ({
           id={name}
           name={name}
           className={styles.regInput}
+          minlength={minLength}
+          maxLength={maxlength}
+          pattern={pattern}
+          title={title}
           required
         />
       ) : (
@@ -30,6 +38,10 @@ const RegInput = ({
           id={name}
           name={name}
           className={styles.regInput}
+          minlength={minLength}
+          maxLength={maxlength}
+          title={title}
+          pattern={pattern}
         />
       )}
       {type == "password" && (
