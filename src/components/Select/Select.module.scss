@@ -1,17 +1,18 @@
 .selectWrap {
   width: 100%;
   display: flex;
-  flex-flow: column; 
+  flex-flow: column;
+  padding: 1em 0;
   .selectLabel {
     color: var(--label-color);
-    font-family: 'Gilroy';
+    font-family: "Gilroy";
     font-weight: 400;
     font-size: 1em;
   }
   .select {
     width: 100%;
     color: var(--text-color);
-    font-family: 'Gilroy';
+    font-family: "Gilroy";
     font-size: 1.333em;
     font-weight: 500;
     border: none;
@@ -25,7 +26,7 @@
   }
   .selectError {
     color: var(--error-color);
-    font-family: 'Gilroy';
+    font-family: "Gilroy";
     font-size: 0.666em;
     font-weight: 500;
   }

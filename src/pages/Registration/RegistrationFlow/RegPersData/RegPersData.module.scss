@@ -1,0 +1,30 @@
+@import "../../../../assets/scss/colors";
+
+.persDataForm {
+  width: 100%;
+  padding: 0 3.5em;
+  .radioBlock {
+    width: 100%;
+    padding: 1.5em 0 0 0;
+    .radiosLabel {
+      color: $text-color;
+      font-size: 1.333em;
+      font-family: "Gilroy";
+      font-weight: 500;
+    }
+    .radiosList {
+      width: 60%;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em 0 1.5em 0;
+    }
+  }
+  .btnWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+  }
+}

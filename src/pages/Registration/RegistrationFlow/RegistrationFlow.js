@@ -6,6 +6,8 @@ import Stepper from "../../../components/Stepper/Stepper";
 import RegPersData from "./RegPersData/RegPersData";
 import RegLocationData from "./RegLocationData/RegLocationData";
 
+import { validateForm } from "../../../components/validateForm";
+
 import styles from "./RegistrationFlow.module.scss";
 
 const RegistrationFlow = ({ nextStep }) => {
@@ -18,7 +20,7 @@ const RegistrationFlow = ({ nextStep }) => {
     <ShBox padding={"3em 3em"}>
       <Stepper step={step} />
       <div className={styles.stepperContent}>
-        {step === 1 && <RegPersData />}
+        {step === 1 && <RegPersData step={step} nextStep={setStep} />}
         {step === 3 && (
           <RegLocationData
             regFullData={regFullData}
@@ -29,12 +31,6 @@ const RegistrationFlow = ({ nextStep }) => {
           />
         )}
       </div>
-      <Button
-        text={"Продолжить"}
-        onClick={() => {
-          step < 6 ? setStep(step + 1) : nextStep(4);
-        }}
-      />
     </ShBox>
   );
 };
