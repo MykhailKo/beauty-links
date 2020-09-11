@@ -4,6 +4,7 @@ import Button from "../../../components/Button/Button";
 import ShBox from "../../../components/ShBox/ShBox";
 import Stepper from "../../../components/Stepper/Stepper";
 import RegPersData from "./RegPersData/RegPersData";
+import RegServiceData from "./RegServicesData/RegServiceData";
 import RegLocationData from "./RegLocationData/RegLocationData";
 
 import { validateForm } from "../../../components/validateForm";
@@ -21,6 +22,7 @@ const RegistrationFlow = ({ nextStep }) => {
       <Stepper step={step} />
       <div className={styles.stepperContent}>
         {step === 1 && <RegPersData step={step} nextStep={setStep} />}
+        {step === 2 && <RegServiceData step={step} nextStep={setStep} />}
         {step === 3 && (
           <RegLocationData
             regFullData={regFullData}
