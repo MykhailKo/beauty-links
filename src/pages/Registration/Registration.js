@@ -15,8 +15,16 @@ const Registration = () => {
     <main className={"container"}>
       <div className={styles.regWrap}>
         {regStep === 1 && <BaseReg nextStep={setRegStep} />}
-        {regStep === 2 && <ChooseYourFighter nextStep={setRegStep} setProfileType={setProfileType}/>}
-        {regStep === 3 && profileType === 1 && <RegistrationFlow nextStep={setRegStep} />}
+        {regStep === 2 && (
+          <ChooseYourFighter
+            nextStep={setRegStep}
+            setProfileType={setProfileType}
+          />
+        )}
+        {regStep === 3 && profileType === 1 && (
+          <RegistrationFlow nextStep={setRegStep} />
+        )}
+        <RegistrationFlow nextStep={setRegStep} />
       </div>
     </main>
   );
