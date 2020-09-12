@@ -1,0 +1,26 @@
+@import "../../../../assets/scss/widths";
+.LocationForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.WorkType {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  @media (max-width: $break-sm) {
+    align-self: start;
+  }
+  & .title {
+    margin-right: 2rem;
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #4c4c4c;
+  }
+}

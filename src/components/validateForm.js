@@ -3,7 +3,7 @@ export const validateForm = (formId) =>
 
 export const checkSimilar = (input, sample, errorMes) => {
   if (
-    document.getElementById(input).value !=
+    document.getElementById(input).value !==
     document.getElementById(sample).value
   )
     document.getElementById(input).setCustomValidity(errorMes);
