@@ -38,11 +38,20 @@ const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
           />
         </div>
         <RegInput
-          value=""
-          onChange={() => alert("changed")}
+          value={LocationData.SalonName}
+          onChange={(e) =>
+            setLocationData({ ...LocationData, SalonName: e.target.value })
+          }
           label={"Название вашего салона (необязательно)"}
         />
-        <RegInput label={"Найдите адрес вашего салона"} required={true} />
+        <RegInput
+          value={LocationData.SalonAddress}
+          onChange={(e) =>
+            setLocationData({ ...LocationData, SalonAddress: e.target.value })
+          }
+          label={"Найдите адрес вашего салона"}
+          required={true}
+        />
         <Button onClick={nextStep} text="Продолжить" />
       </form>
     </div>

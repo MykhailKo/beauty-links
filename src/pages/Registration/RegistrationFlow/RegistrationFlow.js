@@ -24,6 +24,8 @@ const RegistrationFlow = ({ nextStep }) => {
     LocationData: {
       exitService: false,
       workAtSalon: true,
+      SalonName: "",
+      SalonAddress: "",
     },
   });
   return (

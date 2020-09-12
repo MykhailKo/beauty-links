@@ -12,39 +12,32 @@ const RegInput = ({
   pattern = ".*",
   title = "",
   error = null,
+  value,
+  onChange,
 }) => {
   const [visible, setVisible] = useState(false);
 
   return (
     <div className={styles.inputWrap}>
-      <label for={name} className={styles.inputLabel}>
+      <label htmlFor={name} className={styles.inputLabel}>
         {label}
       </label>
-      {required ? (
-        <input
-          type={visible ? "text" : type}
-          id={name}
-          name={name}
-          className={styles.regInput}
-          minlength={minLength}
-          maxLength={maxlength}
-          pattern={pattern}
-          title={title}
-          required
-        />
-      ) : (
-        <input
-          type={visible ? "text" : type}
-          id={name}
-          name={name}
-          className={styles.regInput}
-          minlength={minLength}
-          maxLength={maxlength}
-          title={title}
-          pattern={pattern}
-        />
-      )}
-      {type == "password" && (
+
+      <input
+        type={visible ? "text" : type}
+        id={name}
+        name={name}
+        className={styles.regInput}
+        minLength={minLength}
+        maxLength={maxlength}
+        pattern={pattern}
+        title={title}
+        required={required}
+        value={value}
+        onChange={onChange}
+      />
+
+      {type === "password" && (
         <div
           className={styles.seePassword}
           onClick={() => setVisible(!visible)}
