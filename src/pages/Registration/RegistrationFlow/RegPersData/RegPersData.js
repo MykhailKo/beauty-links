@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import RegTitle from "../../RegTitle/RegTitle";
 import RegSubTitle from "../../RegSubTitle/RegSubTitle";
@@ -12,14 +12,12 @@ import { validateForm } from "../../../../components/validateForm";
 
 const calendarOptions = [
   { text: "Google Calendar" },
-  { text: "Google Calendar" },
+  { text: "Apple Calendar" },
 ];
 
 const howYouKnowOptions = [{ text: "По рекомендации" }, { text: "Из соцсети" }];
 
-const RegPersData = ({ step, nextStep }) => {
-  const [gender, setGender] = useState("gender3");
-
+const RegPersData = ({ PersData, setPersData, nextStep }) => {
   return (
     <div>
       <RegTitle text={"Укажите свои личные данные"} />
@@ -28,6 +26,8 @@ const RegPersData = ({ step, nextStep }) => {
       />
       <form className={styles.persDataForm} id={"persForm"}>
         <RegInput
+          value={PersData.name}
+          onChange={(e) => setPersData({ ...PersData, name: e.target.value })}
           label={"Имя"}
           name={"firstName"}
           required={true}
@@ -35,6 +35,10 @@ const RegPersData = ({ step, nextStep }) => {
           maxlength={30}
         />
         <RegInput
+          value={PersData.surname}
+          onChange={(e) =>
+            setPersData({ ...PersData, surname: e.target.value })
+          }
           label={"Фамилия"}
           name={"lastName"}
           required={true}
@@ -42,6 +46,8 @@ const RegPersData = ({ step, nextStep }) => {
           maxlength={30}
         />
         <RegInput
+          value={PersData.phone}
+          onChange={(e) => setPersData({ ...PersData, phone: e.target.value })}
           label={"Телефон"}
           type={"tell"}
           name={"phoneNumber"}
@@ -57,24 +63,24 @@ const RegPersData = ({ step, nextStep }) => {
               name={"gender"}
               id={"gender1"}
               value={"male"}
-              checkedId={gender}
-              setChecked={setGender}
+              checkedId={PersData.gender}
+              setChecked={(e) => setPersData({ ...PersData, gender: e })}
             />
             <RadioBtn
               label={"Женский"}
               name={"gender"}
               id={"gender2"}
               value={"female"}
-              checkedId={gender}
-              setChecked={setGender}
+              checkedId={PersData.gender}
+              setChecked={(e) => setPersData({ ...PersData, gender: e })}
             />
             <RadioBtn
               label={"Не важно"}
               name={"gender"}
               id={"gender3"}
               value={"male"}
-              checkedId={gender}
-              setChecked={setGender}
+              checkedId={PersData.gender}
+              setChecked={(e) => setPersData({ ...PersData, gender: e })}
             />
           </ul>
         </div>
@@ -82,18 +88,26 @@ const RegPersData = ({ step, nextStep }) => {
           label={"Выберите тип календаря, который будет вам удобен"}
           id={"calendarType"}
           options={calendarOptions}
+          value={PersData.preferredCalendar}
           required={true}
+          onChange={(e) =>
+            setPersData({ ...PersData, preferredCalendar: e.target.value })
+          }
         />
         <Select
           label={"Откуда вы о нас узнали?"}
           id={"howYouKnow"}
           options={howYouKnowOptions}
+          value={PersData.howYouKnow}
+          onChange={(e) =>
+            setPersData({ ...PersData, howYouKnow: e.target.value })
+          }
         />
         <div className={styles.btnWrap}>
           <Button
             text={"Продолжить"}
             onClick={() => {
-              if (validateForm("persForm")) nextStep(step + 1);
+              if (validateForm("persForm")) nextStep();
             }}
           />
         </div>

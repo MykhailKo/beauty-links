@@ -6,7 +6,7 @@ import RegSubTitle from "../../RegSubTitle/RegSubTitle";
 
 import styles from "./RegServiceData.module.scss";
 
-const RegServiceData = ({ step, nextStep }) => {
+const RegServiceData = ({ nextStep }) => {
   return (
     <div className={styles.regServiceWrap}>
       <RegTitle text={"Давайте перенесём ваш бизнес в онлайн!"} />
@@ -16,12 +16,7 @@ const RegServiceData = ({ step, nextStep }) => {
         }
       />
 
-      <Button
-        text={"Продолжить"}
-        onClick={() => {
-          nextStep(step + 1);
-        }}
-      />
+      <Button text={"Продолжить"} onClick={nextStep} />
     </div>
   );
 };
