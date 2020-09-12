@@ -5,13 +5,14 @@ import Stepper from "../../../components/Stepper/Stepper";
 import RegPersData from "./RegPersData/RegPersData";
 import RegServiceData from "./RegServicesData/RegServiceData";
 import RegLocationData from "./RegLocationData/RegLocationData";
+import RegKnowledgeData from "./RegKnowledgeData/RegKnowledgeData";
 
 import { validateForm } from "../../../components/validateForm";
 
 import styles from "./RegistrationFlow.module.scss";
 
 const RegistrationFlow = ({ nextStep }) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(5);
   const [regFullData, setRegFullData] = useState({
     PersData: {
       name: "",
@@ -39,8 +40,8 @@ const RegistrationFlow = ({ nextStep }) => {
         {step === 1 && (
           <RegPersData
             PersData={regFullData.PersData}
-            setPersData={(data) => {
-              setRegFullData({ ...regFullData, PersData: data });
+            setPersData={(PersData) => {
+              setRegFullData({ ...regFullData, PersData });
             }}
             nextStep={GoToNextStep}
           />
@@ -49,8 +50,17 @@ const RegistrationFlow = ({ nextStep }) => {
         {step === 3 && (
           <RegLocationData
             LocationData={regFullData.LocationData}
-            setLocationData={(data) => {
-              setRegFullData({ ...regFullData, LocationData: data });
+            setLocationData={(LocationData) => {
+              setRegFullData({ ...regFullData, LocationData });
+            }}
+            nextStep={GoToNextStep}
+          />
+        )}
+        {step === 5 && (
+          <RegKnowledgeData
+            KnowledgeData={regFullData.KnowledgeData}
+            setKnowledgeData={(KnowledgeData) => {
+              setRegFullData({ ...regFullData, KnowledgeData });
             }}
             nextStep={GoToNextStep}
           />
