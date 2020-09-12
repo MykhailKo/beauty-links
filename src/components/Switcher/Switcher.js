@@ -6,6 +6,7 @@ const Switch = ({ state, switchState }) => {
   return (
     <div
       className={styles.switchBody}
+      onClick={() => switchState(!state)}
       style={
         state
           ? { backgroundColor: "var(--main-blue)" }
@@ -14,7 +15,6 @@ const Switch = ({ state, switchState }) => {
     >
       <div
         className={styles.switcher}
-        onClick={() => switchState(!state)}
         style={
           state
             ? { transform: "translateX(70%)" }
