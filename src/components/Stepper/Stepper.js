@@ -19,7 +19,11 @@ const Stepper = ({ step }) => {
             <div
               className={styles.stepCircle}
               style={
-                index + 1 < step
+                index + 1 === step
+                  ? {
+                      backgroundColor: "var(--main-blue)",
+                    }
+                  : index + 1 < step
                   ? {
                       backgroundColor: "var(--main-blue)",
                       backgroundImage: 'url("/assets/img/icons/check.png")',
