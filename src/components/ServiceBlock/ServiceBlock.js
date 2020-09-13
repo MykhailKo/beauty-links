@@ -53,6 +53,7 @@ const ServiceBlock = ({ service }) => {
                 type={"number"}
                 placeholder={"0"}
                 id={"servicePrice"}
+                value={servicePrice ? servicePrice : null}
                 min={0}
               />
               грн
