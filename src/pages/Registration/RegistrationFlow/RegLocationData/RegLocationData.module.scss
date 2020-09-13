@@ -1,8 +1,13 @@
 @import "../../../../assets/scss/widths";
+
 .LocationForm {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
+  @media (min-width: $break-md) {
+    width: 80%;
+  }
 }
 
 .WorkType {
