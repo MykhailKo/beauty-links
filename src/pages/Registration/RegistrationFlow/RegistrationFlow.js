@@ -11,6 +11,7 @@ import RegSchedule from "./RegSchedule/RegShecdule";
 import { validateForm } from "../../../components/validateForm";
 
 import styles from "./RegistrationFlow.module.scss";
+import Fatality from "../Fatality/Fatality";
 
 const RegistrationFlow = ({ nextStep }) => {
   const [step, setStep] = useState(4);
@@ -68,6 +69,15 @@ const RegistrationFlow = ({ nextStep }) => {
             KnowledgeData={regFullData.KnowledgeData}
             setKnowledgeData={(KnowledgeData) => {
               setRegFullData({ ...regFullData, KnowledgeData });
+            }}
+            nextStep={GoToNextStep}
+          />
+        )}
+        {step === 6 && (
+          <Fatality
+            avatar={regFullData.avatar}
+            setKnowledgeData={(avatar) => {
+              setRegFullData({ ...regFullData, avatar });
             }}
             nextStep={GoToNextStep}
           />
