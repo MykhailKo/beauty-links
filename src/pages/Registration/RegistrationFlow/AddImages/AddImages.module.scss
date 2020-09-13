@@ -1,0 +1,43 @@
+@import "../../../../assets/scss/widths";
+
+.AddImages {
+  margin-bottom: 1rem;
+}
+
+.dropArea {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem;
+  border: 1px dashed #4c4c4c;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @media (min-width: $break-md) {
+    padding: 2rem 4rem;
+  }
+  & span {
+    display: block;
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #4c4c4c;
+    &:nth-child(2) {
+      display: none;
+      @media (min-width: $break-md) {
+        font-weight: 100;
+
+        font-size: 5rem;
+        margin-left: 1rem;
+        display: block;
+      }
+    }
+  }
+}

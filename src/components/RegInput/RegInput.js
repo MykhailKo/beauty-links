@@ -14,6 +14,7 @@ const RegInput = ({
   error = null,
   value,
   onChange,
+  placeholder = "",
 }) => {
   const [visible, setVisible] = useState(false);
 
@@ -35,6 +36,7 @@ const RegInput = ({
         required={required}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
 
       {type === "password" && (
