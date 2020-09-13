@@ -20,7 +20,7 @@ const howYouKnowOptions = [{ text: "По рекомендации" }, { text: "�
 const RegPersData = ({ PersData, setPersData, nextStep }) => {
   return (
     <div>
-      <SecTitle text={"Укажите свои личные данные"} />
+      <SecTitle title={"Укажите свои личные данные"} />
       <SubTitle text={"Эти данные будут отображены в вашем профиле мастера."} />
       <form className={styles.persDataForm} id={"persForm"}>
         <RegInput
@@ -50,8 +50,8 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
           type={"tell"}
           name={"phoneNumber"}
           required={true}
-          pattern={"38-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"}
-          title={"Телефон в формате 38-ХХХ-ХХХ-ХХ-ХХ"}
+          pattern={"38[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}"}
+          title={"Телефон в формате 38XXXXXXXXXX"}
         />
         <div className={styles.radioBlock}>
           <label className={styles.radiosLabel}>Пол</label>

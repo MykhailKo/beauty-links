@@ -13,7 +13,7 @@ import styles from "./BaseReg.module.scss";
 const BaseReg = ({ nextStep }) => {
   return (
     <ShBox padding={"2em 0"}>
-      <SecTitle text={"Регистрация нового пользователя"} />
+      <SecTitle title={"Регистрация нового пользователя"} />
       <form className={styles.baseRegForm} id={"baseRegForm"}>
         <RegInput
           type={"email"}

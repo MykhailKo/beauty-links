@@ -12,7 +12,7 @@ import { validateForm } from "../../../components/validateForm";
 import styles from "./RegistrationFlow.module.scss";
 
 const RegistrationFlow = ({ nextStep }) => {
-  const [step, setStep] = useState(5);
+  const [step, setStep] = useState(2);
   const [regFullData, setRegFullData] = useState({
     PersData: {
       name: "",
