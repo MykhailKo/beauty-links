@@ -6,7 +6,7 @@ import RegPersData from "./RegPersData/RegPersData";
 import RegServiceData from "./RegServicesData/RegServiceData";
 import RegLocationData from "./RegLocationData/RegLocationData";
 import RegKnowledgeData from "./RegKnowledgeData/RegKnowledgeData";
-import RegSchedule from "./RegSchedule/RegShecdule";
+import RegSchedule from "./RegSchedule/RegShedule";
 
 import { validateForm } from "../../../components/validateForm";
 
