@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import ShBox from "../../../components/ShBox/ShBox";
-import RegTitle from "../RegTitle/RegTitle";
+import SecTitle from "../../../components/SecTitle/SecTitle";
 
 import styles from "./ChooseYourFighter.module.scss";
 import SideSelect from "../../../components/SideSelect/SideSelect";
@@ -11,7 +11,7 @@ const ChooseYourFighter = ({ nextStep, setProfileType }) => {
   const history = useHistory();
   return (
     <ShBox padding={"2em 0 4em 0"}>
-      <RegTitle text={"Почти готово!"} />
+      <SecTitle text={"Почти готово!"} />
       <div className={styles.SubTitle}>
         Не забудьте подтвердить свой e-mail.
       </div>
@@ -20,7 +20,7 @@ const ChooseYourFighter = ({ nextStep, setProfileType }) => {
           <SideSelect
             imagePath={"/assets/img/master.png"}
             buttonClick={() => {
-              setProfileType(1)
+              setProfileType(1);
               nextStep(3);
             }}
             buttonText={"Начать как мастер"}
@@ -29,7 +29,7 @@ const ChooseYourFighter = ({ nextStep, setProfileType }) => {
             imagePath={"/assets/img/client.png"}
             buttonClick={() => {
               alert("начинаем клиента");
-              setProfileType(2)
+              setProfileType(2);
               nextStep(3);
               history.push("/");
             }}
