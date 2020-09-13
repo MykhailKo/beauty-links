@@ -1,0 +1,95 @@
+@import "../../assets/scss/colors";
+
+.serviceBlock {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6em 0.8em;
+  border-radius: 0.3em;
+  box-shadow: 0 2px 8px #d2d2d2;
+  margin: 1em 0;
+  .serviceName {
+    display: flex;
+    font-size: 1em;
+    font-family: "Gilroy";
+    font-weight: 300;
+    color: $label-color;
+    .check {
+      display: flex;
+      width: 1em;
+      height: 1em;
+      background-image: url("/assets/img/icons/check2.png");
+      background-position: center;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      margin-right: 0.3em;
+    }
+  }
+  .serviceControls {
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    & button {
+      border: none;
+      outline: none;
+      width: 2em;
+      height: 2em;
+      background-position: center;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      margin-left: 0.5em;
+      cursor: pointer;
+    }
+    .addService {
+      background-image: url("/assets/img/icons/add.png");
+    }
+    .removeService {
+      background-image: url("/assets/img/icons/close.png");
+      background-size: 50%;
+    }
+    .editService {
+      background-image: url("/assets/img/icons/edit.png");
+      background-size: 50%;
+    }
+    .serviceData {
+      font-size: 0.777em;
+      color: $text-color;
+      font-family: "Gilroy";
+      font-weight: 400;
+      padding: 0 1.5em;
+    }
+  }
+  .serviceEditBlock {
+    width: inherit;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 2em 0;
+    .priceBlock {
+      display: flex;
+      align-items: center;
+      color: $text-color;
+      font-size: 1em;
+      font-family: "Gilroy";
+      font-weight: 300;
+      margin-bottom: 1.2em;
+      .priceTitle {
+        padding: 0.35em 1.5em;
+        border-right: 1px solid $label-color;
+      }
+      .priceInput {
+        margin-left: 1.5em;
+        padding: 0 1em 0.35em 0;
+        border-bottom: 1px solid $label-color;
+        & input {
+          border: none;
+          outline: none;
+          width: 3em;
+        }
+      }
+    }
+  }
+}

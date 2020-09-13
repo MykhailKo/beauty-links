@@ -15,7 +15,8 @@
       flex-flow: row;
       align-items: center;
       justify-content: space-between;
-      .carouselItem {
+      .carouselItem,
+      .carouselItemActive {
         list-style: none;
         display: flex;
         padding: 0.5em;
@@ -27,6 +28,10 @@
         border-radius: 0.3em;
         box-shadow: 0 2px 8px #d2d2d2;
         cursor: pointer;
+      }
+      .carouselItemActive {
+        background-color: $main;
+        color: $white;
       }
     }
   }
@@ -43,7 +48,7 @@
     background-repeat: no-repeat;
     border: none;
     outline: none;
-    background-color: $white;
+    background-color: transparent;
     box-shadow: 0 2px 8px #d2d2d2;
     cursor: pointer;
   }
