@@ -6,13 +6,14 @@ import RegPersData from "./RegPersData/RegPersData";
 import RegServiceData from "./RegServicesData/RegServiceData";
 import RegLocationData from "./RegLocationData/RegLocationData";
 import RegKnowledgeData from "./RegKnowledgeData/RegKnowledgeData";
+import RegSchedule from "./RegSchedule/RegShecdule";
 
 import { validateForm } from "../../../components/validateForm";
 
 import styles from "./RegistrationFlow.module.scss";
 
 const RegistrationFlow = ({ nextStep }) => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(4);
   const [regFullData, setRegFullData] = useState({
     PersData: {
       name: "",
@@ -61,6 +62,7 @@ const RegistrationFlow = ({ nextStep }) => {
             nextStep={GoToNextStep}
           />
         )}
+        {step === 4 && <RegSchedule nextStep={GoToNextStep} />}
         {step === 5 && (
           <RegKnowledgeData
             KnowledgeData={regFullData.KnowledgeData}

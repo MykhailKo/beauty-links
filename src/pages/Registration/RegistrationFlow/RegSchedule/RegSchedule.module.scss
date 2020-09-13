@@ -1,0 +1,57 @@
+@import "../../../../assets/scss/colors";
+
+.scheduleWrap {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  .scheduleTypes {
+    align-self: flex-start;
+    display: flex;
+    width: 30%;
+    padding: 2em 0;
+    justify-content: space-between;
+    font-size: 1.2em;
+    font-family: "Gilroy";
+    font-weight: 400;
+    color: $text-color;
+    cursor: pointer;
+    & li {
+      list-style: none;
+    }
+    .typeDisabled {
+      opacity: 0.5;
+    }
+  }
+  .scheduleDays {
+    align-self: flex-start;
+    width: 70%;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 2em;
+    .day {
+      list-style: none;
+      display: flex;
+      width: 100%;
+      align-self: center;
+      justify-content: space-between;
+      padding: 0.9em 0;
+      .dayTitle {
+        width: 20%;
+        font-size: 1em;
+        font-family: "Gilroy";
+        font-weight: 400;
+        color: $pale-text-color;
+      }
+      .dayTime {
+        display: flex;
+        justify-content: space-around;
+        .inputSep {
+          height: 100%;
+          margin: 0 1.5em;
+          border-left: 1px solid $label-color;
+        }
+      }
+    }
+  }
+}
