@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./ServiceCarousel.module.scss";
 
-const ServiceCarousel = ({ serviceCats }) => {
+const ServiceCarousel = ({ serviceCats, setCat, currentCat }) => {
   const em = 18;
 
   const setCarouselWidth = () => {
@@ -38,7 +38,16 @@ const ServiceCarousel = ({ serviceCats }) => {
         >
           {serviceCats.map((category, key) => {
             return (
-              <li className={styles.carouselItem} key={key} id={category.id}>
+              <li
+                className={
+                  category.id === currentCat
+                    ? styles.carouselItemActive
+                    : styles.carouselItem
+                }
+                key={key}
+                id={category.id}
+                onClick={() => setCat(category.id)}
+              >
                 {category.name}
               </li>
             );
