@@ -29,6 +29,11 @@ const RegistrationFlow = ({ nextStep }) => {
       SalonName: "",
       SalonAddress: "",
     },
+    KnowledgeData: {
+      skills: "",
+      experince: "",
+      hasMedical: "",
+    },
   });
   const GoToNextStep = () => {
     step < 6 ? setStep(step + 1) : nextStep(4);
