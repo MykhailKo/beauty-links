@@ -7,7 +7,6 @@ const Switch = ({ state, switchState }) => {
     <div
       className={styles.switchBody}
       onClick={() => {
-        console.log(state, !state);
         switchState(!state);
       }}
       style={

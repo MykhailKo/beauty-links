@@ -13,13 +13,13 @@ const RegSchedule = ({ nextStep }) => {
   const [scheduleType, setScheduleType] = useState(1);
 
   const days = [
-    { name: "Понедельник", state: useState(0) },
-    { name: "Вторник", state: useState(0) },
-    { name: "Среда", state: useState(0) },
-    { name: "Четверг", state: useState(0) },
-    { name: "Пятница", state: useState(0) },
-    { name: "Суббота", state: useState(0) },
-    { name: "Воскресенье", state: useState(0) },
+    { name: "Понедельник", state: useState(false) },
+    { name: "Вторник", state: useState(false) },
+    { name: "Среда", state: useState(false) },
+    { name: "Четверг", state: useState(false) },
+    { name: "Пятница", state: useState(false) },
+    { name: "Суббота", state: useState(false) },
+    { name: "Воскресенье", state: useState(false) },
   ];
 
   return (
@@ -54,7 +54,7 @@ const RegSchedule = ({ nextStep }) => {
                 <div className={styles.inputSep}></div>
                 <TimeInput label={"До"} id={`${key + 1}until`} />
               </div>
-              <Switcher />
+              <Switcher state={day.state[0]} switchState={day.state[1]} />
             </li>
           );
         })}
