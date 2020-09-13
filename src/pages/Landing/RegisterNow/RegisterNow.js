@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./RegisterNow.module.scss";
-import SecTitle from "../SecTitle/SecTitle";
+import SecTitle from "../../../components/SecTitle/SecTitle";
 import Button from "../../../components/Button/Button";
 const RegisterNow = () => {
   return (

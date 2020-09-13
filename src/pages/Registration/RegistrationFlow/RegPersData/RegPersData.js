@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import RegTitle from "../../RegTitle/RegTitle";
-import RegSubTitle from "../../RegSubTitle/RegSubTitle";
 import RegInput from "../../../../components/RegInput/RegInput";
 import RadioBtn from "../../../../components/RadioBtn/RadioBtn";
 import Select from "../../../../components/Select/Select";
 import Button from "../../../../components/Button/Button";
+import SecTitle from "../../../../components/SecTitle/SecTitle";
+import SubTitle from "../../../../components/SubTitle/SubTitle";
+import { validateForm } from "../../../../components/validateForm";
 
 import styles from "./RegPersData.module.scss";
-import { validateForm } from "../../../../components/validateForm";
 
 const calendarOptions = [
   { text: "Google Calendar" },
@@ -20,10 +20,8 @@ const howYouKnowOptions = [{ text: "По рекомендации" }, { text: "�
 const RegPersData = ({ PersData, setPersData, nextStep }) => {
   return (
     <div>
-      <RegTitle text={"Укажите свои личные данные"} />
-      <RegSubTitle
-        text={"Эти данные будут отображены в вашем профиле мастера."}
-      />
+      <SecTitle text={"Укажите свои личные данные"} />
+      <SubTitle text={"Эти данные будут отображены в вашем профиле мастера."} />
       <form className={styles.persDataForm} id={"persForm"}>
         <RegInput
           value={PersData.name}

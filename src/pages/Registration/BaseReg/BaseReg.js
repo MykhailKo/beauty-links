@@ -1,7 +1,7 @@
 import React from "react";
 
 import ShBox from "../../../components/ShBox/ShBox";
-import RegTitle from "../RegTitle/RegTitle";
+import SecTitle from "../../../components/SecTitle/SecTitle";
 import Button from "../../../components/Button/Button";
 import RegInput from "../../../components/RegInput/RegInput";
 import CheckBox from "../../../components/CheckBox/CheckBox";
@@ -13,7 +13,7 @@ import styles from "./BaseReg.module.scss";
 const BaseReg = ({ nextStep }) => {
   return (
     <ShBox padding={"2em 0"}>
-      <RegTitle text={"Регистрация нового пользователя"} />
+      <SecTitle text={"Регистрация нового пользователя"} />
       <form className={styles.baseRegForm} id={"baseRegForm"}>
         <RegInput
           type={"email"}

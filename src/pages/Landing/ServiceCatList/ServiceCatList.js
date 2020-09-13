@@ -1,7 +1,7 @@
 import React from "react";
 
 import ServiceCat from "../ServiceCat/ServiceCat";
-import SecTitle from "../SecTitle/SecTitle";
+import SecTitle from "../../../components/SecTitle/SecTitle";
 import Button from "../../../components/Button/Button";
 
 import styles from "./ServiceCatList.module.scss";

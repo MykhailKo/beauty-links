@@ -1,6 +1,6 @@
 import React from "react";
 
-import SecTitle from "../SecTitle/SecTitle";
+import SecTitle from "../../../components/SecTitle/SecTitle";
 import Button from "../../../components/Button/Button";
 import SearchBannerText from "../SearchBannerText/SearchBannerText";
 

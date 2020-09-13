@@ -2,8 +2,8 @@ import React from "react";
 
 import Switcher from "../../../../components/Switcher/Switcher";
 import RegInput from "../../../../components/RegInput/RegInput";
-import RegSubTitle from "../../RegSubTitle/RegSubTitle";
-import RegTitle from "../../RegTitle/RegTitle";
+import SecTitle from "../../../../components/SecTitle/SecTitle";
+import SubTitle from "../../../../components/SubTitle/SubTitle";
 import Button from "../../../../components/Button/Button";
 
 import styles from "./RegLocationData.module.scss";
@@ -11,8 +11,8 @@ import styles from "./RegLocationData.module.scss";
 const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
   return (
     <div>
-      <RegTitle text={"Ваше расположение для работы"} />
-      <RegSubTitle
+      <SecTitle text={"Ваше расположение для работы"} />
+      <SubTitle
         text={
           "Вы можете выбрать своё удобное место для работы. Предложение действительно для выездных либо услуг в салоне."
         }
