@@ -8,19 +8,89 @@ import Button from "../../../../components/Button/Button";
 
 import styles from "./RegSchedule.module.scss";
 
+const days = [
+  {
+    name: "Понедельник",
+    salonTime: { from: null, to: null },
+    depTime: { from: null, to: null },
+  },
+  {
+    name: "Вторник",
+    salonTime: { from: null, to: null },
+    depTime: { from: null, to: null },
+  },
+  {
+    name: "Среда",
+    salonTime: { from: null, to: null },
+    depTime: { from: null, to: null },
+  },
+  {
+    name: "Четверг",
+    salonTime: { from: null, to: null },
+    depTime: { from: null, to: null },
+  },
+  {
+    name: "Пятница",
+    salonTime: { from: null, to: null },
+    depTime: { from: null, to: null },
+  },
+  {
+    name: "Суббота",
+    salonTime: { from: null, to: null },
+    depTime: { from: null, to: null },
+  },
+  {
+    name: "Воскресенье",
+    salonTime: { from: null, to: null },
+    depTime: { from: null, to: null },
+  },
+];
+
 const RegSchedule = ({ nextStep }) => {
   // 1 - Салон, 2 - Выездные услуги
   const [scheduleType, setScheduleType] = useState(1);
 
-  const days = [
-    { name: "Понедельник", state: useState(false) },
-    { name: "Вторник", state: useState(false) },
-    { name: "Среда", state: useState(false) },
-    { name: "Четверг", state: useState(false) },
-    { name: "Пятница", state: useState(false) },
-    { name: "Суббота", state: useState(false) },
-    { name: "Воскресенье", state: useState(false) },
+  const daySates = [
+    {
+      salonState: useState(false),
+      depState: useState(false),
+    },
+    {
+      salonState: useState(false),
+      depState: useState(false),
+    },
+    {
+      salonState: useState(false),
+      depState: useState(false),
+    },
+    {
+      salonState: useState(false),
+      depState: useState(false),
+    },
+    {
+      salonState: useState(false),
+      depState: useState(false),
+    },
+    {
+      salonState: useState(false),
+      depState: useState(false),
+    },
+    {
+      salonState: useState(false),
+      depState: useState(false),
+    },
   ];
+
+  const setTime = (day, scheduleType, timeType, id) => {
+    let value = document.getElementById(id).value;
+    if (scheduleType === 1 && timeType === "from") day.salonTime.from = value;
+    else if (scheduleType === 1 && timeType === "to") day.salonTime.to = value;
+    else if (scheduleType === 2 && timeType === "from")
+      day.depTime.from = value;
+    else if (scheduleType === 2 && timeType === "to") day.depTime.to = value;
+    console.log(day.salonTime);
+    console.log(day.depTime);
+  };
 
   return (
     <div className={styles.scheduleWrap}>
@@ -33,32 +103,86 @@ const RegSchedule = ({ nextStep }) => {
       <div className={styles.scheduleTypes}>
         <li
           className={scheduleType !== 1 ? styles.typeDisabled : styles.type}
-          onClick={() => setScheduleType(1)}
+          onClick={() => {
+            setScheduleType(1);
+            document.getElementById("scheduleForm").reset();
+          }}
         >
           Салон
         </li>
         <li
           className={scheduleType !== 2 ? styles.typeDisabled : styles.type}
-          onClick={() => setScheduleType(2)}
+          onClick={() => {
+            setScheduleType(2);
+            document.getElementById("scheduleForm").reset();
+          }}
         >
           Выездные услуги
         </li>
       </div>
-      <ul className={styles.scheduleDays}>
+      <form className={styles.scheduleDays} id={"scheduleForm"}>
         {days.map((day, key) => {
           return (
-            <li className={styles.day} key={key}>
+            <li
+              className={styles.day}
+              key={key}
+              style={
+                (scheduleType === 1 && !daySates[key].salonState[0]) ||
+                (scheduleType === 2 && !daySates[key].depState[0])
+                  ? { opacity: "0.5" }
+                  : { opacity: "1" }
+              }
+            >
               <span className={styles.dayTitle}>{day.name}</span>
               <div className={styles.dayTime}>
-                <TimeInput label={"C"} id={`${key + 1}from`} />
+                <TimeInput
+                  label={"C"}
+                  id={`${key + 1}from`}
+                  value={
+                    scheduleType === 1 ? day.salonTime.from : day.depTime.from
+                  }
+                  onChange={() =>
+                    setTime(day, scheduleType, "from", `${key + 1}from`)
+                  }
+                  disabled={
+                    (scheduleType === 1 && !daySates[key].salonState[0]) ||
+                    (scheduleType === 2 && !daySates[key].depState[0])
+                      ? true
+                      : false
+                  }
+                />
                 <div className={styles.inputSep}></div>
-                <TimeInput label={"До"} id={`${key + 1}until`} />
+                <TimeInput
+                  label={"До"}
+                  id={`${key + 1}until`}
+                  value={scheduleType === 1 ? day.salonTime.to : day.depTime.to}
+                  onChange={() =>
+                    setTime(day, scheduleType, "to", `${key + 1}until`)
+                  }
+                  disabled={
+                    (scheduleType === 1 && !daySates[key].salonState[0]) ||
+                    (scheduleType === 2 && !daySates[key].depState[0])
+                      ? true
+                      : false
+                  }
+                />
               </div>
-              <Switcher state={day.state[0]} switchState={day.state[1]} />
+              <Switcher
+                state={
+                  scheduleType === 1
+                    ? daySates[key].salonState[0]
+                    : daySates[key].depState[0]
+                }
+                switchState={
+                  scheduleType === 1
+                    ? daySates[key].salonState[1]
+                    : daySates[key].depState[1]
+                }
+              />
             </li>
           );
         })}
-      </ul>
+      </form>
       <Button text={"Продолжить"} onClick={nextStep} />
     </div>
   );
