@@ -14,7 +14,7 @@ import styles from "./RegistrationFlow.module.scss";
 import Fatality from "../Fatality/Fatality";
 
 const RegistrationFlow = ({ nextStep }) => {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(6);
   const [regFullData, setRegFullData] = useState({
     PersData: {
       name: "",

@@ -2,6 +2,21 @@
 
 .AddImages {
   margin-bottom: 1rem;
+  .uploadedImages {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 0.5em 0;
+    .imgBlock {
+      width: 16em;
+      height: 11em;
+      margin: 0.4em;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 .dropArea {
