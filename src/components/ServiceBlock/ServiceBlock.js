@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 
 import styles from "./ServiceBlock.module.scss";
+import widths from "../../assets/scss/_widths.scss";
+
+import useWindowSize from "../../hooks/useWindowSize";
 
 const ServiceBlock = ({ service }) => {
   // 0 - not active, 1 - active, 2 - ready, 3 - edit
@@ -10,8 +13,19 @@ const ServiceBlock = ({ service }) => {
 
   const [servicePrice, setServicePrice] = useState(null);
 
+  const [width] = useWindowSize();
+
+  const mobileOffset = width < parseInt(widths.break_sm) && serviceState === 2;
+
   return (
-    <div className={styles.serviceBlock}>
+    <div
+      className={styles.serviceBlock}
+      style={
+        width < parseInt(widths.break_sm) && serviceState === 2
+          ? { marginBottom: "2.5em" }
+          : { marginBottom: "1em" }
+      }
+    >
       <div className={styles.serviceName}>
         {(serviceState === 2 || serviceState === 3) && (
           <span className={styles.check} />
@@ -29,7 +43,7 @@ const ServiceBlock = ({ service }) => {
             else if (serviceState === 2) {
               setServiceState(0);
               setServicePrice(null);
-            }
+            } else if (serviceState === 3) setServiceState(2);
           }}
         />
         {(serviceState === 2 || serviceState === 3) && (
@@ -54,6 +68,9 @@ const ServiceBlock = ({ service }) => {
                 placeholder={"0"}
                 id={"servicePrice"}
                 value={servicePrice ? servicePrice : null}
+                onChange={() =>
+                  setServicePrice(document.querySelector("#servicePrice").value)
+                }
                 min={0}
               />
               грн

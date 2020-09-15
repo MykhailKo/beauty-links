@@ -10,6 +10,10 @@
     overflow: hidden;
     padding: 1em 0.2em;
     transform: translateX(-3%);
+    @media (max-width: $break-md) {
+      width: 89%;
+      transform: translateX(-2%);
+    }
     .carouselTape {
       display: flex;
       flex-flow: row;
@@ -28,6 +32,9 @@
         border-radius: 0.3em;
         box-shadow: 0 2px 8px #d2d2d2;
         cursor: pointer;
+        @media (max-width: $break-md) {
+          padding: 0.7em 0.5em;
+        }
       }
       .carouselItemActive {
         background-color: $main;
@@ -48,8 +55,13 @@
     background-repeat: no-repeat;
     border: none;
     outline: none;
-    background-color: transparent;
+    background-color: $white;
     box-shadow: 0 2px 8px #d2d2d2;
     cursor: pointer;
+    @media (max-width: $break-md) {
+      width: 2.7em;
+      height: 2.7em;
+      top: 22%;
+    }
   }
 }

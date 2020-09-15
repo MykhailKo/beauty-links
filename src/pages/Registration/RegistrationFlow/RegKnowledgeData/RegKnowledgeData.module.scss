@@ -7,9 +7,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: $break_xs) {
+    width: 95%;
+    font-size: 1.2em;
+  }
   & > div {
     width: 100%;
     padding: 1em 0;
+    @media (max-width: $break_xs) {
+      padding: 0;
+    }
   }
 }
 

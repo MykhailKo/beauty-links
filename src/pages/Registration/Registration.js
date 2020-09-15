@@ -24,7 +24,6 @@ const Registration = () => {
         {regStep === 3 && profileType === 1 && (
           <RegistrationFlow nextStep={setRegStep} />
         )}
-        <RegistrationFlow nextStep={setRegStep} />
       </div>
     </main>
   );

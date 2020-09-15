@@ -11,7 +11,7 @@ const ChooseYourFighter = ({ nextStep, setProfileType }) => {
   const history = useHistory();
   return (
     <ShBox padding={"2em 0 4em 0"}>
-      <SecTitle text={"Почти готово!"} />
+      <SecTitle title={"Почти готово!"} />
       <div className={styles.SubTitle}>
         Не забудьте подтвердить свой e-mail.
       </div>

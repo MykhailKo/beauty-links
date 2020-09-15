@@ -1,16 +1,21 @@
 import React from "react";
 
+import useWindowSize from "../../hooks/useWindowSize";
+
 import styles from "./ServiceCarousel.module.scss";
+import widths from "../../assets/scss/_widths.scss";
 
 const ServiceCarousel = ({ serviceCats, setCat, currentCat }) => {
-  const em = 18;
+  const [width] = useWindowSize();
+
+  let em = 18;
+  if (width < parseInt(widths.break_md)) em = 14;
 
   const setCarouselWidth = () => {
     let width = 0;
     serviceCats.forEach((category) => {
       width += category.name.length * em * 0.65 + 2 * em;
     });
-    console.log(width);
     return `${width}px`;
   };
 
