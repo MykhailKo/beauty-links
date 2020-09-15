@@ -1,10 +1,10 @@
-import React,  from "react";
+import React from "react";
 
 import SubTitle from "../../../../components/SubTitle/SubTitle";
 
 import styles from "./AddImages.module.scss";
 
-let portfolioImages = [];
+// let portfolioImages = [];
 
 // const getImages = () => {
 //   portfolioImages = [];
