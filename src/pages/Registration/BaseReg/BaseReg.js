@@ -7,12 +7,16 @@ import RegInput from "../../../components/RegInput/RegInput";
 import CheckBox from "../../../components/CheckBox/CheckBox";
 
 import { validateForm, checkSimilar } from "../../../components/validateForm";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 import styles from "./BaseReg.module.scss";
+import widths from "../../../assets/scss/_widths.scss";
 
 const BaseReg = ({ nextStep }) => {
+  const [width] = useWindowSize();
+
   return (
-    <ShBox padding={"2em 0"}>
+    <ShBox padding={width < parseInt(widths.break_md) ? "0.5em 0" : "2em 0"}>
       <SecTitle title={"Регистрация нового пользователя"} />
       <form className={styles.baseRegForm} id={"baseRegForm"}>
         <RegInput

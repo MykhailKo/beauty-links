@@ -7,14 +7,16 @@ import RegServiceData from "./RegServicesData/RegServiceData";
 import RegLocationData from "./RegLocationData/RegLocationData";
 import RegKnowledgeData from "./RegKnowledgeData/RegKnowledgeData";
 import RegSchedule from "./RegSchedule/RegShedule";
-
-import { validateForm } from "../../../components/validateForm";
-
-import styles from "./RegistrationFlow.module.scss";
 import Fatality from "../Fatality/Fatality";
 
+import { validateForm } from "../../../components/validateForm";
+import useWindowSize from "../../../hooks/useWindowSize";
+
+import styles from "./RegistrationFlow.module.scss";
+import widths from "../../../assets/scss/_widths.scss";
+
 const RegistrationFlow = ({ nextStep }) => {
-  const [step, setStep] = useState(6);
+  const [step, setStep] = useState(1);
   const [regFullData, setRegFullData] = useState({
     PersData: {
       name: "",
@@ -40,8 +42,11 @@ const RegistrationFlow = ({ nextStep }) => {
   const GoToNextStep = () => {
     step < 6 ? setStep(step + 1) : nextStep(4);
   };
+
+  const [width] = useWindowSize();
+
   return (
-    <ShBox padding={"3em 3em"}>
+    <ShBox padding={width < parseInt(widths.break_md) ? "0.5em" : "3em 3em"}>
       <Stepper step={step} />
       <div className={styles.stepperContent}>
         {step === 1 && (

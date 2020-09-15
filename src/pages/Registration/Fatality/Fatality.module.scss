@@ -23,6 +23,9 @@
   background-repeat: no-repeat;
   cursor: pointer;
   user-select: none;
+  @media (max-width: $break_xs) {
+    margin-bottom: 2em;
+  }
   & div {
     font-family: "Gilroy";
     font-style: normal;
