@@ -54,7 +54,10 @@ const RegKnowledgeData = ({ KnowledgeData, setKnowledgeData, nextStep }) => {
         {/* тут нужен выбор даты */}
       </div>
 
-      <AddImages />
+      <AddImages
+        KnowledgeData={KnowledgeData}
+        setKnowledgeData={setKnowledgeData}
+      />
       <div className={styles.MedicalBlock}>
         <span>
           Есть ли у вас медицинское разрешение на предоставление услуг?

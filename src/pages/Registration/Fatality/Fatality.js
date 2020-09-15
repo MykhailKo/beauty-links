@@ -5,8 +5,6 @@ import SubTitle from "../../../components/SubTitle/SubTitle";
 
 import styles from "./Fatality.module.scss";
 
-let avatar;
-
 const getAvatar = () => {
   let file = document.getElementById("avatar").files[0];
   let reader = new FileReader();
