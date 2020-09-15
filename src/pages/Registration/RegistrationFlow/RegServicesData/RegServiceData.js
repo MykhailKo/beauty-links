@@ -28,9 +28,7 @@ const serviceCats = [
   { name: "Макияж", id: "makeup", services: [] },
 ];
 
-const RegServiceData = ({ nextStep }) => {
-  const [currentCat, setCat] = useState("cosm");
-
+const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
   return (
     <div className={styles.regServiceWrap}>
       <SecTitle title={"Давайте перенесём ваш бизнес в онлайн!"} />
@@ -41,8 +39,10 @@ const RegServiceData = ({ nextStep }) => {
       />
       <ServiceCarousel
         serviceCats={serviceCats}
-        setCat={setCat}
-        currentCat={currentCat}
+        setCat={(currentCat) => {
+          setServiceData({ ...ServiceData, currentCat });
+        }}
+        currentCat={ServiceData.currentCat}
       />
       <div className={styles.searchWrap}>
         <button></button>
@@ -50,7 +50,7 @@ const RegServiceData = ({ nextStep }) => {
       </div>
       <div className={styles.serviceListWrap}>
         {serviceCats
-          .filter((cat) => cat.id === currentCat)[0]
+          .filter((cat) => cat.id === ServiceData.currentCat)[0]
           .services.map((service, key) => {
             return <ServiceBlock service={service.name} key={key} />;
           })}

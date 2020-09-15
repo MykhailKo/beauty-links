@@ -16,7 +16,7 @@ import styles from "./RegistrationFlow.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
 
 const RegistrationFlow = ({ nextStep }) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [regFullData, setRegFullData] = useState({
     PersData: {
       name: "",
@@ -26,7 +26,9 @@ const RegistrationFlow = ({ nextStep }) => {
       preferredCalendar: "Google Calendar",
       howYouKnow: "По рекомендации",
     },
-    ServiceData: {},
+    ServiceData: {
+      currentCat: "cosm",
+    },
     LocationData: {
       exitService: false,
       workAtSalon: true,
@@ -59,7 +61,15 @@ const RegistrationFlow = ({ nextStep }) => {
             nextStep={GoToNextStep}
           />
         )}
-        {step === 2 && <RegServiceData nextStep={GoToNextStep} />}
+        {step === 2 && (
+          <RegServiceData
+            nextStep={GoToNextStep}
+            ServiceData={regFullData.ServiceData}
+            setServiceData={(ServiceData) => {
+              setRegFullData({ ...regFullData, ServiceData });
+            }}
+          />
+        )}
         {step === 3 && (
           <RegLocationData
             LocationData={regFullData.LocationData}
