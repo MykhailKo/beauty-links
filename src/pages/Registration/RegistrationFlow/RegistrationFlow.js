@@ -82,7 +82,7 @@ const RegistrationFlow = ({ nextStep }) => {
         {step === 6 && (
           <Fatality
             avatar={regFullData.avatar}
-            setKnowledgeData={(avatar) => {
+            setAvatar={(avatar) => {
               setRegFullData({ ...regFullData, avatar });
             }}
             nextStep={GoToNextStep}
