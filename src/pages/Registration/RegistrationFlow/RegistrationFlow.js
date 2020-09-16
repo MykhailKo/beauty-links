@@ -16,7 +16,7 @@ import styles from "./RegistrationFlow.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
 
 const RegistrationFlow = ({ nextStep }) => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(4);
   const [regFullData, setRegFullData] = useState({
     PersData: {
       name: "",
