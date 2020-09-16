@@ -41,7 +41,7 @@ const ServiceCarousel = ({ serviceCats, setCat, currentCat }) => {
           style={{ width: setCarouselWidth() }}
           id={"carouselTape"}
           onClick={(event) => {
-            if (event.target !== styles.carouselItem) {
+            if (event.target.className === styles.carouselItem) {
               setCat(event.target.getAttribute("id"));
               document.querySelector(
                 `.${styles.carouselItemActive}`

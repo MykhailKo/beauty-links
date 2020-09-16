@@ -142,9 +142,10 @@ const RegSchedule = ({ nextStep }) => {
                       ? daySates[key].salonState[0] && day.salonTime.from
                       : daySates[key].depState[0] && day.depTime.from
                   }
-                  onChange={(event) =>
-                    setTime(day, scheduleType, "from", event.target.value)
-                  }
+                  onChange={(event) => {
+                    event.target.setAttribute("value", event.target.value);
+                    setTime(day, scheduleType, "from", event.target.value);
+                  }}
                   disabled={
                     (scheduleType === 1 && !daySates[key].salonState[0]) ||
                     (scheduleType === 2 && !daySates[key].depState[0])
