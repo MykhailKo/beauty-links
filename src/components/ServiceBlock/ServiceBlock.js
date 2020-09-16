@@ -30,7 +30,7 @@ const ServiceBlock = ({ service }) => {
         {(serviceState === 2 || serviceState === 3) && (
           <span className={styles.check} />
         )}
-        {service}
+        {service.name}
       </div>
       <div className={styles.serviceControls}>
         <button
@@ -69,9 +69,7 @@ const ServiceBlock = ({ service }) => {
                 placeholder={"0"}
                 id={"servicePrice"}
                 value={servicePrice ? servicePrice : null}
-                onChange={() =>
-                  setServicePrice(document.querySelector("#servicePrice").value)
-                }
+                onChange={(event) => setServicePrice(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.keyCode === 189 || event.keyCode === 187)
                     event.preventDefault();
@@ -83,7 +81,6 @@ const ServiceBlock = ({ service }) => {
           <Button
             text={"Добавить услугу"}
             onClick={() => {
-              setServicePrice(document.querySelector("#servicePrice").value);
               setServiceState(2);
             }}
           />
