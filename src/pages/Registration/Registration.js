@@ -31,7 +31,7 @@ const Registration = () => {
       preferredCalendar: "Google Calendar",
       howYouKnow: "По рекомендации",
     },
-    ServiceData: {},
+    ServiceData: { currentCat: "cosm", services: [] },
     LocationData: {
       exitService: false,
       workAtSalon: true,
@@ -71,7 +71,11 @@ const Registration = () => {
             nextStep={setRegStep}
           />
         )}
-        {/* <RegistrationFlow nextStep={setRegStep} /> */}
+        <RegistrationFlow
+          regFullData={regFullData}
+          setRegFullData={setRegFullData}
+          nextStep={setRegStep}
+        />
       </div>
     </main>
   );
