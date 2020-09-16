@@ -65,13 +65,17 @@ const ServiceBlock = ({ service }) => {
             <span className={styles.priceInput}>
               <input
                 type={"number"}
+                min={0}
                 placeholder={"0"}
                 id={"servicePrice"}
                 value={servicePrice ? servicePrice : null}
                 onChange={() =>
                   setServicePrice(document.querySelector("#servicePrice").value)
                 }
-                min={0}
+                onKeyDown={(event) => {
+                  if (event.keyCode === 189 || event.keyCode === 187)
+                    event.preventDefault();
+                }}
               />
               грн
             </span>
