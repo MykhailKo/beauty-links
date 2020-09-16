@@ -11,10 +11,31 @@ import useWindowSize from "../../../hooks/useWindowSize";
 
 import styles from "./BaseReg.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
+import { useHttp } from "../../../hooks/useHttp";
 
-const BaseReg = ({ nextStep }) => {
+const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const [width] = useWindowSize();
+  const { loading, request } = useHttp();
 
+  const register = async (e) => {
+    try {
+      e.preventDefault();
+      checkSimilar("passwordConf", "password", "Пароли должны совпадать!");
+      if (validateForm("baseRegForm")) {
+        const response = await request(
+          `/api/v1.0/auth/userExists?email=${BaseData.email}`,
+          "GET",
+          null,
+          {}
+        );
+        if (response.status === 200) {
+          nextStep(2);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <ShBox padding={width < parseInt(widths.break_md) ? "0.5em 0" : "2em 0"}>
       <SecTitle title={"Регистрация нового пользователя"} />
@@ -24,6 +45,8 @@ const BaseReg = ({ nextStep }) => {
           label={"E-mail"}
           name={"email"}
           required={true}
+          value={BaseData.email}
+          onChange={(e) => setBaseData({ ...BaseData, email: e.target.value })}
         />
         <RegInput
           type={"password"}
@@ -32,6 +55,10 @@ const BaseReg = ({ nextStep }) => {
           required={true}
           minLength={8}
           maxlength={16}
+          value={BaseData.password}
+          onChange={(e) =>
+            setBaseData({ ...BaseData, password: e.target.value })
+          }
         />
         <RegInput
           type={"password"}
@@ -40,6 +67,10 @@ const BaseReg = ({ nextStep }) => {
           required={true}
           minLength={8}
           maxlength={16}
+          value={BaseData.password_confirmation}
+          onChange={(e) =>
+            setBaseData({ ...BaseData, password_confirmation: e.target.value })
+          }
         />
         <div className={styles.confPols}>
           <CheckBox id={"politics"} required={true} />
@@ -48,20 +79,7 @@ const BaseReg = ({ nextStep }) => {
             <a href="#">политики конфиденциальности</a>
           </span>
         </div>
-        <Button
-          text={"Регистрация"}
-          onClick={() => {
-            checkSimilar(
-              "passwordConf",
-              "password",
-              "Пароли должны совпадать!"
-            );
-            if (validateForm("baseRegForm")) {
-              nextStep(2);
-              // send data to server
-            }
-          }}
-        />
+        <Button text={"Регистрация"} onClick={register} disabled={loading} />
       </form>
       <div className={styles.loginMes}>
         Уже есть аккаунт? <a href="#">Войдите.</a>
