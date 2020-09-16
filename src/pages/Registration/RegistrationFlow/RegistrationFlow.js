@@ -15,34 +15,9 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import styles from "./RegistrationFlow.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
 
-const RegistrationFlow = ({ nextStep }) => {
+const RegistrationFlow = ({ regFullData, setRegFullData, nextStep }) => {
   const [step, setStep] = useState(2);
-  const [regFullData, setRegFullData] = useState({
-    PersData: {
-      name: "",
-      surname: "",
-      mobilePhone: "",
-      gender: "gender3",
-      preferredCalendar: "Google Calendar",
-      howYouKnow: "По рекомендации",
-    },
-    ServiceData: {
-      currentCat: "cosm",
-      services: [],
-    },
-    LocationData: {
-      exitService: false,
-      workAtSalon: true,
-      SalonName: "",
-      SalonAddress: "",
-    },
-    KnowledgeData: {
-      skills: "",
-      experince: "",
-      hasMedical: "",
-      images: [],
-    },
-  });
+
   const GoToNextStep = () => {
     step < 6 ? setStep(step + 1) : nextStep(4);
   };

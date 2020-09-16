@@ -1,4 +1,5 @@
 @import "../../assets/scss/widths";
+@import "../../assets/scss/colors";
 
 %Button {
   display: inline-block;
@@ -37,4 +38,10 @@
   &:hover {
     text-shadow: 0 0 10px var(--main-blue);
   }
+}
+
+.disabledButton {
+  @extend %Button;
+  background-color: $grey;
+  color: $white;
 }

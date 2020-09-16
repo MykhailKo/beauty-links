@@ -1,10 +1,21 @@
 import React from "react";
 import styles from "./btn.module.scss";
 
-const Button = ({ text, filled = true, onClick = () => true }) => {
+const Button = ({
+  text,
+  filled = true,
+  onClick = () => true,
+  disabled = false,
+}) => {
   return (
     <button
-      className={filled ? styles.filledButton : styles.plainButton}
+      className={
+        disabled
+          ? styles.disabledButton
+          : filled
+          ? styles.filledButton
+          : styles.plainButton
+      }
       onClick={onClick}
     >
       {text}
