@@ -81,15 +81,14 @@ const RegSchedule = ({ nextStep }) => {
     },
   ];
 
-  const setTime = (day, scheduleType, timeType, id) => {
-    let value = document.getElementById(id).value;
+  const setTime = (day, scheduleType, timeType, value) => {
     if (scheduleType === 1 && timeType === "from") day.salonTime.from = value;
     else if (scheduleType === 1 && timeType === "to") day.salonTime.to = value;
     else if (scheduleType === 2 && timeType === "from")
       day.depTime.from = value;
     else if (scheduleType === 2 && timeType === "to") day.depTime.to = value;
-    console.log(day.salonTime);
-    console.log(day.depTime);
+    // console.log(day.salonTime);
+    // console.log(day.depTime);
   };
 
   return (
@@ -139,10 +138,12 @@ const RegSchedule = ({ nextStep }) => {
                   label={"C"}
                   id={`${key + 1}from`}
                   value={
-                    scheduleType === 1 ? day.salonTime.from : day.depTime.from
+                    scheduleType === 1
+                      ? daySates[key].salonState[0] && day.salonTime.from
+                      : daySates[key].depState[0] && day.depTime.from
                   }
-                  onChange={() =>
-                    setTime(day, scheduleType, "from", `${key + 1}from`)
+                  onChange={(event) =>
+                    setTime(day, scheduleType, "from", event.target.value)
                   }
                   disabled={
                     (scheduleType === 1 && !daySates[key].salonState[0]) ||
@@ -155,10 +156,18 @@ const RegSchedule = ({ nextStep }) => {
                 <TimeInput
                   label={"До"}
                   id={`${key + 1}until`}
-                  value={scheduleType === 1 ? day.salonTime.to : day.depTime.to}
-                  onChange={() =>
-                    setTime(day, scheduleType, "to", `${key + 1}until`)
+                  value={
+                    scheduleType === 1
+                      ? daySates[key].salonState[0] && day.salonTime.to
+                      : daySates[key].depState[0] && day.depTime.to
                   }
+                  onChange={(event) => {
+                    if (event.target.value <= day.salonTime.from) {
+                      return (event.target.style.borderColor = "#cb2026");
+                    }
+                    event.target.style.borderColor = "#c4c4c4";
+                    setTime(day, scheduleType, "to", event.target.value);
+                  }}
                   disabled={
                     (scheduleType === 1 && !daySates[key].salonState[0]) ||
                     (scheduleType === 2 && !daySates[key].depState[0])
@@ -178,6 +187,15 @@ const RegSchedule = ({ nextStep }) => {
                     ? daySates[key].salonState[1]
                     : daySates[key].depState[1]
                 }
+                onClick={() => {
+                  if (scheduleType === 1) {
+                    day.salonTime.from = null;
+                    day.salonTime.to = null;
+                  } else if (scheduleType === 2) {
+                    day.depTime.from = null;
+                    day.depTime.to = null;
+                  }
+                }}
               />
             </li>
           );

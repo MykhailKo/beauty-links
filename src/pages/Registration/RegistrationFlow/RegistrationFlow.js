@@ -37,7 +37,15 @@ const RegistrationFlow = ({ regFullData, setRegFullData, nextStep }) => {
             nextStep={GoToNextStep}
           />
         )}
-        {step === 2 && <RegServiceData nextStep={GoToNextStep} />}
+        {step === 2 && (
+          <RegServiceData
+            nextStep={GoToNextStep}
+            ServiceData={regFullData.ServiceData}
+            setServiceData={(ServiceData) => {
+              setRegFullData({ ...regFullData, ServiceData });
+            }}
+          />
+        )}
         {step === 3 && (
           <RegLocationData
             LocationData={regFullData.LocationData}

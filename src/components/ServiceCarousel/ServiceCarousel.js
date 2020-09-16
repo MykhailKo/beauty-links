@@ -40,6 +40,15 @@ const ServiceCarousel = ({ serviceCats, setCat, currentCat }) => {
           className={styles.carouselTape}
           style={{ width: setCarouselWidth() }}
           id={"carouselTape"}
+          onClick={(event) => {
+            if (event.target !== styles.carouselItem) {
+              setCat(event.target.getAttribute("id"));
+              document.querySelector(
+                `.${styles.carouselItemActive}`
+              ).className = styles.carouselItem;
+              event.target.className = styles.carouselItemActive;
+            }
+          }}
         >
           {serviceCats.map((category, key) => {
             return (
@@ -51,7 +60,6 @@ const ServiceCarousel = ({ serviceCats, setCat, currentCat }) => {
                 }
                 key={key}
                 id={category.id}
-                onClick={() => setCat(category.id)}
               >
                 {category.name}
               </li>
@@ -61,7 +69,9 @@ const ServiceCarousel = ({ serviceCats, setCat, currentCat }) => {
       </div>
       <button
         className={styles.carouselBtn}
-        onClick={() => stepCarousel()}
+        onClick={() => {
+          stepCarousel();
+        }}
       ></button>
     </div>
   );
