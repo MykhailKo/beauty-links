@@ -17,6 +17,7 @@ const Button = ({
           : styles.plainButton
       }
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
     </button>

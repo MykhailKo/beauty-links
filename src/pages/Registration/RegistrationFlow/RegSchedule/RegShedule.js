@@ -8,7 +8,7 @@ import Button from "../../../../components/Button/Button";
 
 import styles from "./RegSchedule.module.scss";
 
-const RegScheduleDay = ({ day, setDay, scheduleType }) => {
+const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
   const setActive = (active) => {
     day[scheduleType].active = active;
     setDay(day);
@@ -39,8 +39,10 @@ const RegScheduleDay = ({ day, setDay, scheduleType }) => {
           onChange={(event) => {
             console.log(event.target.value);
             if (event.target.value <= day[scheduleType].from) {
-              return (event.target.style.borderColor = "#cb2026");
+              event.target.style.borderColor = "#cb2026";
+              return setDisableNext(true);
             }
+            setDisableNext(false);
             event.target.style.borderColor = "#c4c4c4";
             day[scheduleType].to = event.target.value;
             setDay(day);
@@ -112,6 +114,8 @@ const RegSchedule = ({ nextStep }) => {
     },
   });
 
+  const [disableNext, setDisableNext] = useState(false);
+
   const [update, setUpdate] = useState(0);
 
   return (
@@ -156,11 +160,12 @@ const RegSchedule = ({ nextStep }) => {
                 setUpdate(update + 1);
                 console.log(days);
               }}
+              setDisableNext={setDisableNext}
             />
           );
         })}
       </form>
-      <Button text={"Продолжить"} onClick={nextStep} />
+      <Button text={"Продолжить"} onClick={nextStep} disabled={disableNext} />
     </div>
   );
 };
