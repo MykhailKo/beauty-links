@@ -17,6 +17,9 @@
     font-weight: 400;
     color: $text-color;
     cursor: pointer;
+    @media (max-width: $break_lg) {
+      width: 60%;
+    }
     @media (max-width: $break_xs) {
       width: 70%;
       font-size: 1.4em;
@@ -36,8 +39,10 @@
     display: flex;
     flex-flow: column;
     margin-bottom: 2em;
-    @media (max-width: $break_xs) {
+    @media (max-width: $break_lg) {
       width: 94%;
+    }
+    @media (max-width: $break_xs) {
       margin: 0 auto 1em auto;
     }
     .day {
