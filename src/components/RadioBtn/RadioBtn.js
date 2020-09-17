@@ -6,9 +6,9 @@ const RadioBtn = ({ name, value, id, label, checkedId, setChecked }) => {
   return (
     <div className={styles.radioWrap}>
       <label
-        for={id}
+        htmlFor={id}
         className={styles.radioLabel}
-        onClick={() => setChecked(id)}
+        onClick={() => setChecked({ gender: value, id })}
       >
         <div
           className={styles.radioBtn}

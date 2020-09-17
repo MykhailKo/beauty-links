@@ -7,8 +7,9 @@ import SecTitle from "../../../components/SecTitle/SecTitle";
 import styles from "./ChooseYourFighter.module.scss";
 import SideSelect from "../../../components/SideSelect/SideSelect";
 
-const ChooseYourFighter = ({ nextStep, setProfileType }) => {
+const ChooseYourFighter = ({ setRole, nextStep }) => {
   const history = useHistory();
+
   return (
     <ShBox padding={"2em 0 4em 0"}>
       <SecTitle title={"Почти готово!"} />
@@ -20,7 +21,7 @@ const ChooseYourFighter = ({ nextStep, setProfileType }) => {
           <SideSelect
             imagePath={"/assets/img/master.png"}
             buttonClick={() => {
-              setProfileType(1);
+              setRole("master");
               nextStep(3);
             }}
             buttonText={"Начать как мастер"}
@@ -29,9 +30,8 @@ const ChooseYourFighter = ({ nextStep, setProfileType }) => {
             imagePath={"/assets/img/client.png"}
             buttonClick={() => {
               alert("начинаем клиента");
-              setProfileType(2);
+              setRole("customer");
               nextStep(3);
-              history.push("/");
             }}
             buttonText={"Начать как клиент"}
           />
