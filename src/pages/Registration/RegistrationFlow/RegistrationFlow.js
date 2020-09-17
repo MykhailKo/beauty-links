@@ -16,7 +16,7 @@ import styles from "./RegistrationFlow.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
 
 const RegistrationFlow = ({ regFullData, setRegFullData, nextStep }) => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(4);
 
   const GoToNextStep = () => {
     step < 6 ? setStep(step + 1) : nextStep(4);
@@ -55,7 +55,15 @@ const RegistrationFlow = ({ regFullData, setRegFullData, nextStep }) => {
             nextStep={GoToNextStep}
           />
         )}
-        {step === 4 && <RegSchedule nextStep={GoToNextStep} />}
+        {step === 4 && (
+          <RegSchedule
+            nextStep={GoToNextStep}
+            ScheduleData={regFullData.ScheduleData}
+            setScheduleData={(ScheduleData) => {
+              setRegFullData({ ...regFullData, ScheduleData });
+            }}
+          />
+        )}
         {step === 5 && (
           <RegKnowledgeData
             KnowledgeData={regFullData.KnowledgeData}
