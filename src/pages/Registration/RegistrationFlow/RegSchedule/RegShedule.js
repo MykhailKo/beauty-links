@@ -37,8 +37,8 @@ const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
           id={`${day.id}until`}
           value={day[scheduleType].to}
           onChange={(event) => {
-            console.log(event.target.value);
             if (event.target.value <= day[scheduleType].from) {
+              day[scheduleType].to = event.target.value;
               event.target.style.borderColor = "#cb2026";
               return setDisableNext(true);
             }
@@ -63,60 +63,13 @@ const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
   );
 };
 
-const RegSchedule = ({ nextStep }) => {
+const RegSchedule = ({ nextStep, ScheduleData, setScheduleData }) => {
   // 1 - Салон, 2 - Выездные услуги
   const [scheduleType, setScheduleType] = useState(1);
 
   const schedule = scheduleType === 1 ? "salonTime" : "depTime";
 
-  const [days, setDays] = useState({
-    mon: {
-      id: "mon",
-      name: "Понедельник",
-      salonTime: { from: null, to: null, active: false },
-      depTime: { from: null, to: null, active: false },
-    },
-    tue: {
-      id: "tue",
-      name: "Вторник",
-      salonTime: { from: null, to: null, active: false },
-      depTime: { from: null, to: null, active: false },
-    },
-    wed: {
-      id: "wed",
-      name: "Среда",
-      salonTime: { from: null, to: null, active: false },
-      depTime: { from: null, to: null, active: false },
-    },
-    thu: {
-      id: "thu",
-      name: "Четверг",
-      salonTime: { from: null, to: null, active: false },
-      depTime: { from: null, to: null, active: false },
-    },
-    fri: {
-      id: "fri",
-      name: "Пятница",
-      salonTime: { from: null, to: null, active: false },
-      depTime: { from: null, to: null, active: false },
-    },
-    sat: {
-      id: "sat",
-      name: "Суббота",
-      salonTime: { from: null, to: null, active: false },
-      depTime: { from: null, to: null, active: false },
-    },
-    sun: {
-      id: "sun",
-      name: "Воскресенье",
-      salonTime: { from: null, to: null, active: false },
-      depTime: { from: null, to: null, active: false },
-    },
-  });
-
   const [disableNext, setDisableNext] = useState(false);
-
-  const [update, setUpdate] = useState(0);
 
   return (
     <div className={styles.scheduleWrap}>
@@ -147,7 +100,7 @@ const RegSchedule = ({ nextStep }) => {
         </li>
       </div>
       <form className={styles.scheduleDays} id={"scheduleForm"}>
-        {Object.entries(days).map((day, key) => {
+        {Object.entries(ScheduleData).map((day, key) => {
           const dayKey = day[0];
           return (
             <RegScheduleDay
@@ -155,10 +108,8 @@ const RegSchedule = ({ nextStep }) => {
               day={day[1]}
               scheduleType={schedule}
               setDay={(day) => {
-                days[dayKey] = day;
-                setDays(days);
-                setUpdate(update + 1);
-                console.log(days);
+                ScheduleData[dayKey] = day;
+                setScheduleData(ScheduleData);
               }}
               setDisableNext={setDisableNext}
             />
