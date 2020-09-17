@@ -8,27 +8,28 @@ import ServiceBlock from "../../../../components/ServiceBlock/ServiceBlock";
 
 import styles from "./RegServiceData.module.scss";
 
-const serviceCats = [
-  {
-    name: "Косметология",
-    id: "cosm",
-    services: [
-      { name: "Маникюр обрезной", id: "cosm1", price: null },
-      { name: "Педикюр", id: "cosm2", price: null },
-      { name: "Коррекция бровей", id: "cosm3", price: null },
-      { name: "Покрытие гель-лаком", id: "cosm4", price: null },
-      { name: "Окрашивание волос", id: "cosm5", price: null },
-    ],
-  },
-  { name: "Маникюр/педикюр", id: "nails", services: [] },
-  { name: "Массаж и SPA", id: "spa", services: [] },
-  { name: "Уход за волосами", id: "hair", services: [] },
-  { name: "Стоматология", id: "stomat", services: [] },
-  { name: "Эпиляция", id: "epil", services: [] },
-  { name: "Макияж", id: "makeup", services: [] },
-];
-
 const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
+  const [currentCategory, setCurrentCategory] = useState("cosm");
+  const [serviceCats, setServiceCats] = useState([
+    {
+      name: "Косметология",
+      id: "cosm",
+      services: [
+        { name: "Маникюр обрезной", id: "cosm1", price: null },
+        { name: "Педикюр", id: "cosm2", price: null },
+        { name: "Коррекция бровей", id: "cosm3", price: null },
+        { name: "Покрытие гель-лаком", id: "cosm4", price: null },
+        { name: "Окрашивание волос", id: "cosm5", price: null },
+      ],
+    },
+    { name: "Маникюр/педикюр", id: "nails", services: [] },
+    { name: "Массаж и SPA", id: "spa", services: [] },
+    { name: "Уход за волосами", id: "hair", services: [] },
+    { name: "Стоматология", id: "stomat", services: [] },
+    { name: "Эпиляция", id: "epil", services: [] },
+    { name: "Макияж", id: "makeup", services: [] },
+  ]);
+
   return (
     <div className={styles.regServiceWrap}>
       <SecTitle title={"Давайте перенесём ваш бизнес в онлайн!"} />
@@ -39,10 +40,9 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
       />
       <ServiceCarousel
         serviceCats={serviceCats}
-        setCat={(currentCat) => {
-          setServiceData({ ...ServiceData, currentCat });
-        }}
-        currentCat={ServiceData.currentCat}
+        setServiceCats={setServiceCats}
+        currentCategory={currentCategory}
+        setCurrentCategory={setCurrentCategory}
       />
       <div className={styles.searchWrap}>
         <button></button>
@@ -50,8 +50,8 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
       </div>
       <div className={styles.serviceListWrap}>
         {serviceCats
-          .filter((cat) => cat.id === ServiceData.currentCat)[0]
-          .services.map((service, key) => {
+          .filter((cat) => cat.id === currentCategory)[0]
+          ?.services.map((service, key) => {
             return (
               <ServiceBlock
                 service={service}
