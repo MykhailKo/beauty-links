@@ -37,10 +37,11 @@ const RegScheduleDay = ({ day, setDay, scheduleType }) => {
           id={`${day.id}until`}
           value={day[scheduleType].to}
           onChange={(event) => {
-            // console.log(day[scheduleType].from);
-            // if (event.target.value <= day[scheduleType].from) {
-            //   return (event.target.style.borderColor = "#c4c4c4");
-            // }
+            console.log(event.target.value);
+            if (event.target.value <= day[scheduleType].from) {
+              return (event.target.style.borderColor = "#cb2026");
+            }
+            event.target.style.borderColor = "#c4c4c4";
             day[scheduleType].to = event.target.value;
             setDay(day);
           }}
@@ -153,6 +154,7 @@ const RegSchedule = ({ nextStep }) => {
                 days[dayKey] = day;
                 setDays(days);
                 setUpdate(update + 1);
+                console.log(days);
               }}
             />
           );
