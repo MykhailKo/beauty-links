@@ -33,7 +33,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000",
   "devDependencies": {},
   "engines": {
     "node": "12.x"

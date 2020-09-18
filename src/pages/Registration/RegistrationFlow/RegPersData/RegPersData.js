@@ -26,7 +26,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
   const registerCustomer = async () => {
     try {
       const response = await request(
-        "/api/v1.0/auth/user",
+        " http://c0818e13d0cc.ngrok.io/api/v1.0/auth/user",
         "POST",
         {
           email: PersData.email,
@@ -49,7 +49,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
   const registerMaster = async () => {
     try {
       const response = await request(
-        "/api/v1.0/auth/user",
+        " http://c0818e13d0cc.ngrok.io/api/v1.0/auth/user",
         "POST",
         {
           email: PersData.email,

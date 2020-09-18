@@ -24,7 +24,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
       if (validateForm("baseRegForm")) {
         clearError();
         const response = await request(
-          `/api/v1.0/auth/userExists?email=${BaseData.email}`,
+          ` http://c0818e13d0cc.ngrok.io/api/v1.0/auth/userExists?email=${BaseData.email}`,
           "GET",
           null,
           {}
