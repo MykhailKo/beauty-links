@@ -29,7 +29,6 @@ const ChooseYourFighter = ({ setRole, nextStep }) => {
           <SideSelect
             imagePath={"/assets/img/client.png"}
             buttonClick={() => {
-              alert("начинаем клиента");
               setRole("customer");
               nextStep(3);
             }}

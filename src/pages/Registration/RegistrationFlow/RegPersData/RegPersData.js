@@ -26,7 +26,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
   const registerCustomer = async () => {
     try {
       const response = await request(
-        " http://c0818e13d0cc.ngrok.io/api/v1.0/auth/user",
+        "https://a32e6d5d28e2.ngrok.io/api/v1.0/auth/user",
         "POST",
         {
           email: PersData.email,
@@ -44,12 +44,13 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       history.push("/");
     } catch (error) {
       console.log(error);
+      history.push("/");
     }
   };
   const registerMaster = async () => {
     try {
       const response = await request(
-        " http://c0818e13d0cc.ngrok.io/api/v1.0/auth/user",
+        "https://a32e6d5d28e2.ngrok.io/api/v1.0/auth/user",
         "POST",
         {
           email: PersData.email,
@@ -68,6 +69,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       nextStep();
     } catch (error) {
       console.log(error);
+      nextStep();
     }
   };
   return (

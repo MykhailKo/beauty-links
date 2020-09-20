@@ -20,8 +20,8 @@ const Registration = () => {
       user_role: "customer", //master/customer
       gender: "m",
       genderId: "gender2",
-      how_you_find: "goe",
-      phone: "9319332",
+      how_you_find: "",
+      phone: "",
       preferredCalendar: "Google Calendar",
     },
     ScheduleData: {
