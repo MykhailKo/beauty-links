@@ -8,8 +8,6 @@ import styles from "./ChooseYourFighter.module.scss";
 import SideSelect from "../../../components/SideSelect/SideSelect";
 
 const ChooseYourFighter = ({ setRole, nextStep }) => {
-  const history = useHistory();
-
   return (
     <ShBox padding={"2em 0 4em 0"}>
       <SecTitle title={"Почти готово!"} />

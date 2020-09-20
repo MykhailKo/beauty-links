@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHttp } from "../../../../hooks/useHttp";
 import { useHistory } from "react-router-dom";
 
@@ -11,6 +11,7 @@ import SubTitle from "../../../../components/SubTitle/SubTitle";
 import { validateForm } from "../../../../components/validateForm";
 
 import styles from "./RegPersData.module.scss";
+import authContext from "../../../../context/auth.context";
 
 const calendarOptions = [
   { text: "Google Calendar" },
@@ -20,13 +21,28 @@ const calendarOptions = [
 const howYouKnowOptions = [{ text: "По рекомендации" }, { text: "Из соцсети" }];
 
 const RegPersData = ({ PersData, setPersData, nextStep }) => {
+  const { login } = useContext(authContext);
   const { loading, request } = useHttp();
   const history = useHistory();
 
+  const get_token_and_stuff = async () => {
+    try {
+      const response = await request(
+        "/api/v1.0/auth/user/login",
+        "POST",
+        { email: PersData.email, password: PersData.password },
+        {}
+      );
+      console.log(response);
+      login({ ...response });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const registerCustomer = async () => {
     try {
       const response = await request(
-        "https://a32e6d5d28e2.ngrok.io/api/v1.0/auth/user",
+        "/api/v1.0/auth/user",
         "POST",
         {
           email: PersData.email,
@@ -41,16 +57,18 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
         {}
       );
       console.log(response);
+      await get_token_and_stuff();
       history.push("/");
     } catch (error) {
       console.log(error);
+      await get_token_and_stuff();
       history.push("/");
     }
   };
   const registerMaster = async () => {
     try {
       const response = await request(
-        "https://a32e6d5d28e2.ngrok.io/api/v1.0/auth/user",
+        "/api/v1.0/auth/user",
         "POST",
         {
           email: PersData.email,
@@ -66,12 +84,15 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
         {}
       );
       console.log(response);
+      await get_token_and_stuff();
       nextStep();
     } catch (error) {
       console.log(error);
+      await get_token_and_stuff();
       nextStep();
     }
   };
+
   return (
     <div>
       <SecTitle title={"Укажите свои личные данные"} />
@@ -109,41 +130,46 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
           pattern={"38[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}"}
           title={"Телефон в формате 38XXXXXXXXXX"}
         />
-        <div className={styles.radioBlock}>
-          <label className={styles.radiosLabel}>Пол</label>
-          <ul className={styles.radiosList}>
-            <RadioBtn
-              label={"Мужской"}
-              name={"gender"}
-              id={"gender1"}
-              value={"m"}
-              checkedId={PersData.genderId}
-              setChecked={(e) =>
-                setPersData({ ...PersData, gender: e.gender, genderId: e.id })
-              }
-            />
-            <RadioBtn
-              label={"Женский"}
-              name={"gender"}
-              id={"gender2"}
-              value={"f"}
-              checkedId={PersData.genderId}
-              setChecked={(e) =>
-                setPersData({ ...PersData, gender: e.gender, genderId: e.id })
-              }
-            />
-            <RadioBtn
-              label={"Не важно"}
-              name={"gender"}
-              id={"gender3"}
-              value={"m"}
-              checkedId={PersData.genderId}
-              setChecked={(e) =>
-                setPersData({ ...PersData, gender: e.gender, genderId: e.id })
-              }
-            />
-          </ul>
-        </div>
+        {PersData.user_role === "master" ? (
+          <div className={styles.radioBlock}>
+            <label className={styles.radiosLabel}>Пол</label>
+            <ul className={styles.radiosList}>
+              <RadioBtn
+                label={"Мужской"}
+                name={"gender"}
+                id={"gender1"}
+                value={"m"}
+                checkedId={PersData.genderId}
+                setChecked={(e) =>
+                  setPersData({ ...PersData, gender: e.gender, genderId: e.id })
+                }
+              />
+              <RadioBtn
+                label={"Женский"}
+                name={"gender"}
+                id={"gender2"}
+                value={"f"}
+                checkedId={PersData.genderId}
+                setChecked={(e) =>
+                  setPersData({ ...PersData, gender: e.gender, genderId: e.id })
+                }
+              />
+              <RadioBtn
+                label={"Не важно"}
+                name={"gender"}
+                id={"gender3"}
+                value={"m"}
+                checkedId={PersData.genderId}
+                setChecked={(e) =>
+                  setPersData({ ...PersData, gender: e.gender, genderId: e.id })
+                }
+              />
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+
         {PersData.user_role === "master" ? (
           <Select
             label={"Выберите тип календаря, который будет вам удобен"}
