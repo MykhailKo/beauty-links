@@ -54,8 +54,8 @@ const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
         state={day[scheduleType].active}
         switchState={setActive}
         onClick={() => {
-          day[scheduleType].from = null;
-          day[scheduleType].to = null;
+          day[scheduleType].from = "";
+          day[scheduleType].to = "";
           setDay(day);
         }}
       />
