@@ -11,12 +11,14 @@ export const useHttp = () => {
           headers["Content-Type"] = "application/json";
           headers["Accept"] = "application/json";
         }
-        const response = await fetch(url, {
+        const presentation_link = ""; //  replace this with ngrok when nessesary
+        const response = await fetch(presentation_link + url, {
           method,
           body: body ? JSON.stringify(body) : null,
           headers,
         });
         const data = await response.json();
+        console.log(data);
         if (!response.ok) {
           throw new Error(
             data.message ||
@@ -27,6 +29,7 @@ export const useHttp = () => {
         setLoading(false);
         return { ...data, status: response.status };
       } catch (e) {
+        console.log(e);
         setLoading(false);
         setError(e.message);
         throw e;

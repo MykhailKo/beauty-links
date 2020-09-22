@@ -20,7 +20,7 @@ const Registration = () => {
       user_role: "customer", //master/customer
       gender: "m",
       genderId: "gender2",
-      how_you_find: "",
+      how_you_find: "По рекомендации",
       phone: "",
       preferredCalendar: "Google Calendar",
     },
