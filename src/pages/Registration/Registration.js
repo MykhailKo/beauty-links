@@ -7,7 +7,7 @@ import RegistrationFlow from "./RegistrationFlow/RegistrationFlow";
 import styles from "./Registration.module.scss";
 
 const Registration = () => {
-  const [regStep, setRegStep] = useState(1);
+  const [regStep, setRegStep] = useState(3);
 
   const [regFullData, setRegFullData] = useState({
     BaseData: {

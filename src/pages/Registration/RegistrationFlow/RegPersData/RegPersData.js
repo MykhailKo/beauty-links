@@ -26,17 +26,47 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
   const history = useHistory();
 
   //Error
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [phoneError, setPhoneError] = useState("");
   useEffect(() => {
     if (
-      !/^\+?3?8?(0\d{9})$/.test(PersData.phone.split(" ").join(""))
-      // !/^\+?3?8?(0\d{9})$/.test(PersData.phone.split("-").join(""))
+      !(
+        /^\+?3?8?(0\d{9})$/.test(PersData.phone.split("-").join("")) ||
+        /^\+?3?8?(0\d{9})$/.test(PersData.phone.split(" ").join(""))
+      )
     ) {
-      console.log("incorrect");
+      setPhoneError("Неверный формат телефона");
     } else {
-      console.log("good");
+      setPhoneError("");
     }
   }, [PersData.phone]);
+
+  useEffect(() => {
+    if (PersData.first_name === "") {
+      setFirstNameError("Имя не может быть пустым");
+    } else {
+      setFirstNameError("");
+    }
+    if (PersData.last_name === "") {
+      setLastNameError("Фамилия не может быть пустой");
+    } else {
+      setLastNameError("");
+    }
+    if (
+      PersData.first_name === "" ||
+      PersData.last_name === "" ||
+      !(
+        /^\+?3?8?(0\d{9})$/.test(PersData.phone.split("-").join("")) ||
+        /^\+?3?8?(0\d{9})$/.test(PersData.phone.split(" ").join(""))
+      )
+    ) {
+      setButtonDisabled(true);
+    } else {
+      setButtonDisabled(false);
+    }
+  }, [PersData]);
   const get_token_and_stuff = async () => {
     try {
       const response = await request(
@@ -63,7 +93,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
           first_name: PersData.first_name,
           last_name: PersData.last_name,
           user_role: PersData.user_role,
-          phone: PersData.phone,
+          phone: PersData.phone.replace("-", "").replace(" ", ""),
           how_you_find: PersData.how_you_find,
         },
         {}
@@ -88,7 +118,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
           password_confirmation: PersData.password_confirmation,
           first_name: PersData.first_name,
           last_name: PersData.last_name,
-          phone: PersData.phone,
+          phone: PersData.phone.replace("-", "").replace(" ", ""),
           user_role: PersData.user_role,
           how_you_find: PersData.how_you_find,
           appointment_scheduling: "anything", //here should be some info maaaaaan
@@ -121,9 +151,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
           }
           label={"Имя"}
           name={"firstName"}
-          required={true}
-          minLength={1}
-          maxlength={30}
+          error={firstNameError}
         />
         <RegInput
           value={PersData.surname}
@@ -132,9 +160,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
           }
           label={"Фамилия"}
           name={"lastName"}
-          required={true}
-          minLength={1}
-          maxlength={30}
+          error={lastNameError}
         />
         <RegInput
           value={PersData.phone}
@@ -142,8 +168,7 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
           label={"Телефон"}
           type={"tell"}
           name={"phoneNumber"}
-          required={true}
-          pattern={"38[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}"}
+          error={phoneError}
           title={"Телефон в формате 38XXXXXXXXXX"}
         />
         {PersData.user_role === "master" ? (
@@ -211,7 +236,8 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
         <div className={styles.btnWrap}>
           <Button
             text={"Продолжить"}
-            disabled={loading}
+            disabled={buttonDisabled}
+            loading={loading}
             onClick={() => {
               if (validateForm("persForm")) {
                 PersData.user_role === "master"
