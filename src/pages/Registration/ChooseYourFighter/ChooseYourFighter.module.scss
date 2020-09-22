@@ -24,8 +24,8 @@
 .SelectorBlock {
   display: flex;
   flex-direction: column;
+  width: 100%;
   @media (min-width: $break-md) {
-    width: 100%;
     flex-direction: row;
     justify-content: space-between;
   }

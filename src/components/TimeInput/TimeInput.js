@@ -12,7 +12,7 @@ const TimeInput = ({
 }) => {
   return (
     <div className={styles.timeWrap}>
-      <label for={id} className={styles.timeLabel}>
+      <label htmlFor={id} className={styles.timeLabel}>
         {label}
       </label>
       <input
