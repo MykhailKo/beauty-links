@@ -25,6 +25,18 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
   const { loading, request } = useHttp();
   const history = useHistory();
 
+  //Error
+  const [phoneError, setPhoneError] = useState("");
+  useEffect(() => {
+    if (
+      !/^\+?3?8?(0\d{9})$/.test(PersData.phone.split(" ").join(""))
+      // !/^\+?3?8?(0\d{9})$/.test(PersData.phone.split("-").join(""))
+    ) {
+      console.log("incorrect");
+    } else {
+      console.log("good");
+    }
+  }, [PersData.phone]);
   const get_token_and_stuff = async () => {
     try {
       const response = await request(
@@ -96,7 +108,11 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
   return (
     <div>
       <SecTitle title={"Укажите свои личные данные"} />
-      <SubTitle text={"Эти данные будут отображены в вашем профиле мастера."} />
+      <SubTitle
+        text={`Эти данные будут отображены в вашем профиле ${
+          PersData.user_role === "master" ? "мастера" : "клиента"
+        }.`}
+      />
       <form className={styles.persDataForm} id={"persForm"}>
         <RegInput
           value={PersData.name}
