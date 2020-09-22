@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ShBox from "../../../components/ShBox/ShBox";
 import SecTitle from "../../../components/SecTitle/SecTitle";
@@ -16,6 +16,7 @@ import { useHttp } from "../../../hooks/useHttp";
 const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const [width] = useWindowSize();
   const { loading, request, error, clearError } = useHttp();
+  const [agreement, setAgreement] = useState(false);
 
   const register = async (e) => {
     try {
@@ -75,7 +76,12 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           }
         />
         <div className={styles.confPols}>
-          <CheckBox id={"politics"} required={true} />
+          <CheckBox
+            id={"politics"}
+            required={true}
+            checked={agreement}
+            setChecked={setAgreement}
+          />
           <span className={styles.confPolsDesc}>
             Подтверждаю, что ознакомился и принимаю условия{" "}
             <a href="#">политики конфиденциальности</a>
