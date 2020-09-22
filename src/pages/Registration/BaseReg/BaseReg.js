@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ShBox from "../../../components/ShBox/ShBox";
 import SecTitle from "../../../components/SecTitle/SecTitle";
@@ -6,7 +6,6 @@ import Button from "../../../components/Button/Button";
 import RegInput from "../../../components/RegInput/RegInput";
 import CheckBox from "../../../components/CheckBox/CheckBox";
 
-import { validateForm, checkSimilar } from "../../../components/validateForm";
 import useWindowSize from "../../../hooks/useWindowSize";
 
 import styles from "./BaseReg.module.scss";
@@ -17,22 +16,68 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const [width] = useWindowSize();
   const { loading, request, error, clearError } = useHttp();
   const [agreement, setAgreement] = useState(false);
+  const [agreementError, setAgreementError] = useState(false);
 
+  //Errors
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordsEqual, setPasswordsEqual] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  useEffect(() => {
+    if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(BaseData.email)) {
+      setEmail("Incorrect email");
+    } else {
+      setEmail("");
+    }
+  }, [BaseData.email]);
+  useEffect(() => {
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(BaseData.password)
+    ) {
+      setPassword(
+        "Minimum six characters, at least one uppercase letter, one lowercase letter and one number"
+      );
+    } else {
+      setPassword("");
+    }
+  }, [BaseData.password]);
+  useEffect(() => {
+    if (BaseData.password !== BaseData.password_confirmation) {
+      setPasswordsEqual("Пароли не совпадают");
+    } else {
+      setPasswordsEqual("");
+    }
+  }, [BaseData.password, BaseData.password_confirmation]);
+  useEffect(() => {
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(
+        BaseData.password
+      ) ||
+      BaseData.password !== BaseData.password_confirmation ||
+      !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(BaseData.email) ||
+      agreement !== true
+    ) {
+      setButtonDisabled(true);
+    } else {
+      setButtonDisabled(false);
+    }
+  }, [BaseData, agreement]);
   const register = async (e) => {
     try {
       e.preventDefault();
-      checkSimilar("passwordConf", "password", "Пароли должны совпадать!");
-      if (validateForm("baseRegForm")) {
-        clearError();
-        const response = await request(
-          `/api/v1.0/auth/userExists?email=${BaseData.email}`,
-          "GET",
-          null,
-          {}
-        );
-        if (response.status === 200) {
-          nextStep(2);
-        }
+      if (agreement === false) {
+        setAgreementError(true);
+        return;
+      }
+      clearError();
+      const response = await request(
+        `/api/v1.0/auth/userExists?email=${BaseData.email}`,
+        "GET",
+        null,
+        {}
+      );
+      if (response.status === 200) {
+        nextStep(2);
       }
     } catch (err) {
       console.log(err);
@@ -47,7 +92,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           label={"E-mail"}
           name={"email"}
           required={true}
-          error={error}
+          error={email || error}
           value={BaseData.email}
           onChange={(e) => setBaseData({ ...BaseData, email: e.target.value })}
         />
@@ -55,9 +100,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           type={"password"}
           label={"Пароль"}
           name={"password"}
-          required={true}
-          minLength={8}
-          maxlength={16}
+          error={password}
           value={BaseData.password}
           onChange={(e) =>
             setBaseData({ ...BaseData, password: e.target.value })
@@ -68,6 +111,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           label={"Подтвердите пароль"}
           name={"passwordConf"}
           required={true}
+          error={passwordsEqual}
           minLength={8}
           maxlength={16}
           value={BaseData.password_confirmation}
@@ -77,17 +121,27 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
         />
         <div className={styles.confPols}>
           <CheckBox
-            id={"politics"}
+            id="politics"
             required={true}
             checked={agreement}
-            setChecked={setAgreement}
+            setChecked={(e) => {
+              setAgreement(e);
+              e ? setAgreementError(false) : setAgreementError(true);
+            }}
+            error={agreementError}
           />
           <span className={styles.confPolsDesc}>
             Подтверждаю, что ознакомился и принимаю условия{" "}
             <a href="#">политики конфиденциальности</a>
           </span>
         </div>
-        <Button text={"Регистрация"} onClick={register} disabled={loading} />
+        <Button
+          type={"submit"}
+          text={"Регистрация"}
+          onClick={register}
+          disabled={buttonDisabled}
+          loading={loading}
+        />
       </form>
       <div className={styles.loginMes}>
         Уже есть аккаунт? <a href="#">Войдите.</a>

@@ -40,9 +40,14 @@
   }
 }
 
-.disabledButton {
+.loadingButton {
   @extend %Button;
   background-color: $grey;
   color: $white;
   cursor: progress;
+}
+.disabledButton {
+  @extend %Button;
+  background-color: $grey;
+  color: $white;
 }

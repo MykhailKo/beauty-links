@@ -2,12 +2,12 @@ import React from "react";
 
 import styles from "./CheckBox.module.scss";
 
-const CheckBox = ({ id, required = false, checked, setChecked }) => {
+const CheckBox = ({ id, required = false, checked, setChecked, error }) => {
   return (
     <div className={styles.checkBoxWrap}>
       <label
         htmlFor={id}
-        className={styles.checkBoxLabel}
+        className={error ? styles.checkBoxLabelRed : styles.checkBoxLabel}
         onClick={() => setChecked(!checked)}
         style={
           checked
