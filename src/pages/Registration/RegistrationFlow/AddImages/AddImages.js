@@ -44,7 +44,7 @@ const AddImages = ({ KnowledgeData, setKnowledgeData }) => {
   return (
     <div className={styles.AddImages}>
       <SubTitle text={"Загрузите до 10 изображений в своё портфолио"} />
-      <label className={styles.dropArea} for={"portfolioImg"}>
+      <label className={styles.dropArea} htmlFor={"portfolioImg"}>
         <span>Добавить фотографию</span>
         <span>+</span>
       </label>

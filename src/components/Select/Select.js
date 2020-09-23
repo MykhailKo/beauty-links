@@ -13,7 +13,7 @@ const Select = ({
 }) => {
   return (
     <div className={styles.selectWrap}>
-      <label for={id} className={styles.selectLabel}>
+      <label htmlFor={id} className={styles.selectLabel}>
         {label}
       </label>
 

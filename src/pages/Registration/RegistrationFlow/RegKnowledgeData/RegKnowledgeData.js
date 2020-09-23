@@ -70,7 +70,7 @@ const RegKnowledgeData = ({ KnowledgeData, setKnowledgeData, nextStep }) => {
           setChecked={(e) =>
             setKnowledgeData({
               ...KnowledgeData,
-              hasMedical: { id: e, value: true },
+              hasMedical: { id: e.id, value: true },
             })
           }
           label={"да"}
@@ -83,7 +83,7 @@ const RegKnowledgeData = ({ KnowledgeData, setKnowledgeData, nextStep }) => {
           setChecked={(e) =>
             setKnowledgeData({
               ...KnowledgeData,
-              hasMedical: { id: e, value: false },
+              hasMedical: { id: e.id, value: false },
             })
           }
           label={"нет"}
