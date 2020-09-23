@@ -68,7 +68,7 @@ const Registration = () => {
         depTime: { from: "", to: "", active: false },
       },
     },
-    ServiceData: { currentCat: 17, services: [{ id: 36, price: 100 }] },
+    ServiceData: { currentCat: 17, services: [] },
     LocationData: {
       exitService: false,
       workAtSalon: true,
