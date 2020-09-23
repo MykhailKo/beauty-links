@@ -73,7 +73,7 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
         }
       />
       {serviceCats.length === 0 ? (
-        <Preloader />
+        <Preloader height="30vh" />
       ) : (
         <>
           <ServiceCarousel
