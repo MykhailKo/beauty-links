@@ -9,7 +9,6 @@ import styles from "./Registration.module.scss";
 const Registration = () => {
   const [regStep, setRegStep] = useState(1);
 
-  const [profileType, setProfileType] = useState(); // 1 - master, 2 - client
   const [regFullData, setRegFullData] = useState({
     BaseData: {
       email: "",
@@ -18,18 +17,12 @@ const Registration = () => {
       first_name: "",
       last_name: "",
       appointment_scheduling: "",
-      user_role: "", //master/customer
+      user_role: "customer", //master/customer
       gender: "m",
-      how_you_find: "goe",
-      phone: "9319332",
-    },
-    PersData: {
-      name: "",
-      surname: "",
-      mobilePhone: "",
-      gender: "gender3",
+      genderId: "gender2",
+      how_you_find: "По рекомендации",
+      phone: "",
       preferredCalendar: "Google Calendar",
-      howYouKnow: "По рекомендации",
     },
     ScheduleData: {
       mon: {
@@ -75,7 +68,7 @@ const Registration = () => {
         depTime: { from: "", to: "", active: false },
       },
     },
-    ServiceData: { currentCat: "cosm", services: [] },
+    ServiceData: { currentCat: 17, services: [{ id: 36, price: 100 }] },
     LocationData: {
       exitService: false,
       workAtSalon: true,
@@ -104,11 +97,16 @@ const Registration = () => {
         )}
         {regStep === 2 && (
           <ChooseYourFighter
+            setRole={(role) => {
+              setRegFullData({
+                ...regFullData,
+                BaseData: { ...regFullData.BaseData, user_role: role },
+              });
+            }}
             nextStep={setRegStep}
-            setProfileType={setProfileType}
           />
         )}
-        {regStep === 3 && profileType === 1 && (
+        {regStep === 3 && (
           <RegistrationFlow
             regFullData={regFullData}
             setRegFullData={setRegFullData}

@@ -16,7 +16,7 @@ import styles from "./RegistrationFlow.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
 
 const RegistrationFlow = ({ regFullData, setRegFullData, nextStep }) => {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(2);
 
   const GoToNextStep = () => {
     step < 6 ? setStep(step + 1) : nextStep(4);
@@ -26,13 +26,15 @@ const RegistrationFlow = ({ regFullData, setRegFullData, nextStep }) => {
 
   return (
     <ShBox padding={width < parseInt(widths.break_md) ? "0.5em" : "3em 3em"}>
-      <Stepper step={step} />
+      {regFullData.BaseData.user_role === "master" ? (
+        <Stepper step={step} />
+      ) : null}
       <div className={styles.stepperContent}>
         {step === 1 && (
           <RegPersData
-            PersData={regFullData.PersData}
-            setPersData={(PersData) => {
-              setRegFullData({ ...regFullData, PersData });
+            PersData={regFullData.BaseData}
+            setPersData={(BaseData) => {
+              setRegFullData({ ...regFullData, BaseData });
             }}
             nextStep={GoToNextStep}
           />

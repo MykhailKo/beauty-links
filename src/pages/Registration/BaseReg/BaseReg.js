@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ShBox from "../../../components/ShBox/ShBox";
 import SecTitle from "../../../components/SecTitle/SecTitle";
@@ -15,13 +15,15 @@ import { useHttp } from "../../../hooks/useHttp";
 
 const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const [width] = useWindowSize();
-  const { loading, request } = useHttp();
+  const { loading, request, error, clearError } = useHttp();
+  const [agreement, setAgreement] = useState(false);
 
   const register = async (e) => {
     try {
       e.preventDefault();
       checkSimilar("passwordConf", "password", "Пароли должны совпадать!");
       if (validateForm("baseRegForm")) {
+        clearError();
         const response = await request(
           `/api/v1.0/auth/userExists?email=${BaseData.email}`,
           "GET",
@@ -45,6 +47,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           label={"E-mail"}
           name={"email"}
           required={true}
+          error={error}
           value={BaseData.email}
           onChange={(e) => setBaseData({ ...BaseData, email: e.target.value })}
         />
@@ -73,7 +76,12 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           }
         />
         <div className={styles.confPols}>
-          <CheckBox id={"politics"} required={true} />
+          <CheckBox
+            id={"politics"}
+            required={true}
+            checked={agreement}
+            setChecked={setAgreement}
+          />
           <span className={styles.confPolsDesc}>
             Подтверждаю, что ознакомился и принимаю условия{" "}
             <a href="#">политики конфиденциальности</a>

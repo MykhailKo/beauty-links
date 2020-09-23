@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./CheckBox.module.scss";
 
-const CheckBox = ({ id, required = false }) => {
-  const [checked, setChecked] = useState(false);
-
+const CheckBox = ({ id, required = false, checked, setChecked }) => {
   return (
     <div className={styles.checkBoxWrap}>
       <label

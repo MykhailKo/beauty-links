@@ -10,6 +10,7 @@ const ServiceCarousel = ({
   setServiceCats,
   currentCategory,
   setCurrentCategory,
+  clearSearch,
 }) => {
   const [width] = useWindowSize();
   const [carouselStyle, setCarouselStyle] = useState({});
@@ -45,7 +46,8 @@ const ServiceCarousel = ({
 
   const checkoutCategory = (event) => {
     if (event.target.className === styles.carouselItem) {
-      setCurrentCategory(event.target.getAttribute("id"));
+      clearSearch();
+      setCurrentCategory(parseInt(event.target.getAttribute("id")));
     }
   };
   return (

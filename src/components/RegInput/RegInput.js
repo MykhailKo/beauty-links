@@ -7,6 +7,7 @@ const RegInput = ({
   name,
   type = "text",
   required = false,
+  disabled= false,
   minLength = 0,
   maxlength = 200,
   pattern = ".*",
@@ -28,7 +29,7 @@ const RegInput = ({
         type={visible ? "text" : type}
         id={name}
         name={name}
-        className={styles.regInput}
+        className={disabled ? styles.regDisabled : styles.regInput}
         minLength={minLength}
         maxLength={maxlength}
         pattern={pattern}
@@ -37,6 +38,7 @@ const RegInput = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        disabled={disabled}
       />
 
       {type === "password" && (

@@ -11,16 +11,12 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: space-around;
-    @media (min-width: 768px) {
-      width: 850px;
+    justify-content: space-between;
+
+    @media (min-width: $break-sm) {
+      width: 100%;
     }
-    @media (min-width: 992px) {
-      width: 1070px;
-    }
-    @media (min-width: 1200px) {
-      width: 1300px;
-    }
+
     @media (max-width: $break-sm) {
       height: 3em;
     }

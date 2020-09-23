@@ -57,5 +57,10 @@
     @media (max-width: $break_lg) {
       width: 97%;
     }
+    p {
+      color: $text-color;
+      font-family: "Gilroy";
+      font-weight: 400;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Button from "../Button/Button";
 
@@ -7,11 +7,15 @@ import widths from "../../assets/scss/_widths.scss";
 
 import useWindowSize from "../../hooks/useWindowSize";
 
-const ServiceBlock = ({ service }) => {
+const ServiceBlock = ({ service, services, setService }) => {
+  const serviceData = services.filter((s) => s.id === service.id)[0];
   // 0 - not active, 1 - active, 2 - ready, 3 - edit
-  const [serviceState, setServiceState] = useState(0);
+  const [serviceState, setServiceState] = useState(serviceData ? 2 : 0);
+  console.log(serviceData, serviceState);
 
-  const [servicePrice, setServicePrice] = useState(null);
+  const [servicePrice, setServicePrice] = useState(
+    serviceData ? serviceData.price : null
+  );
 
   const [width] = useWindowSize();
 
@@ -25,6 +29,7 @@ const ServiceBlock = ({ service }) => {
           ? { marginBottom: "2.5em" }
           : { marginBottom: "1em" }
       }
+      id={service.id}
     >
       <div className={styles.serviceName}>
         {(serviceState === 2 || serviceState === 3) && (
@@ -43,6 +48,8 @@ const ServiceBlock = ({ service }) => {
             else if (serviceState === 2) {
               setServiceState(0);
               setServicePrice(null);
+              services = services.filter((s) => s.id !== service.id);
+              setService(services);
             } else if (serviceState === 3) setServiceState(2);
           }}
         />
@@ -82,6 +89,12 @@ const ServiceBlock = ({ service }) => {
             text={"Добавить услугу"}
             onClick={() => {
               setServiceState(2);
+              services.push({
+                id: service.id,
+                price: servicePrice,
+                duration: 60,
+              });
+              setService(services);
             }}
           />
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Button from "../../../../components/Button/Button";
 import SecTitle from "../../../../components/SecTitle/SecTitle";
@@ -6,29 +6,51 @@ import SubTitle from "../../../../components/SubTitle/SubTitle";
 import ServiceCarousel from "../../../../components/ServiceCarousel/ServiceCarousel";
 import ServiceBlock from "../../../../components/ServiceBlock/ServiceBlock";
 
+import { useHttp } from "../../../../hooks/useHttp";
+
 import styles from "./RegServiceData.module.scss";
 
+import services from "../../../../services";
+
 const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
-  const [currentCategory, setCurrentCategory] = useState("cosm");
-  const [serviceCats, setServiceCats] = useState([
-    {
-      name: "Косметология",
-      id: "cosm",
-      services: [
-        { name: "Маникюр обрезной", id: "cosm1", price: null },
-        { name: "Педикюр", id: "cosm2", price: null },
-        { name: "Коррекция бровей", id: "cosm3", price: null },
-        { name: "Покрытие гель-лаком", id: "cosm4", price: null },
-        { name: "Окрашивание волос", id: "cosm5", price: null },
-      ],
-    },
-    { name: "Маникюр/педикюр", id: "nails", services: [] },
-    { name: "Массаж и SPA", id: "spa", services: [] },
-    { name: "Уход за волосами", id: "hair", services: [] },
-    { name: "Стоматология", id: "stomat", services: [] },
-    { name: "Эпиляция", id: "epil", services: [] },
-    { name: "Макияж", id: "makeup", services: [] },
-  ]);
+  // const { loading, request } = useHttp();
+  // const services = async () => {
+  //   try {
+  //     const services = await request(
+  //       "/api/v1.0/services",
+  //       "GET",
+  //       {},
+  //       {}
+  //     )
+  //     console.log(services)
+  //     return services;
+  //   }catch(error){
+  //     console.log(error);
+  //   }
+  // }
+
+  const [currentCategory, setCurrentCategory] = useState(17);
+  const [serviceCats, setServiceCats] = useState(services);
+  const [searchString, setSearchString] = useState("");
+
+  const searchInputRef = useRef();
+
+  const searchServices = (schStr) => {
+    let searchResults = [];
+    serviceCats.forEach((cat) => {
+      searchResults = searchResults.concat(
+        cat.sub_services.filter((service) =>
+          service.name.toLowerCase().includes(schStr.toLowerCase())
+        )
+      );
+    });
+    return searchResults;
+  };
+
+  const matches =
+    searchString === ""
+      ? serviceCats.filter((cat) => cat.id === currentCategory)[0]?.sub_services
+      : searchServices(searchString);
 
   return (
     <div className={styles.regServiceWrap}>
@@ -43,15 +65,25 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
         setServiceCats={setServiceCats}
         currentCategory={currentCategory}
         setCurrentCategory={setCurrentCategory}
+        clearSearch={() => setSearchString("")}
       />
       <div className={styles.searchWrap}>
-        <button></button>
-        <input type={"text"} placeholder={"Искать услугу..."} />
+        <button
+          onClick={() => {
+            setSearchString(searchInputRef.current.value);
+          }}
+        ></button>
+        <input
+          type={"text"}
+          placeholder={"Искать услугу..."}
+          ref={searchInputRef}
+        />
       </div>
       <div className={styles.serviceListWrap}>
-        {serviceCats
-          .filter((cat) => cat.id === currentCategory)[0]
-          ?.services.map((service, key) => {
+        {matches.length === 0 ? (
+          <p>Сервисы по Вашему запросу не найдены.</p>
+        ) : (
+          matches.map((service, key) => {
             return (
               <ServiceBlock
                 service={service}
@@ -65,7 +97,8 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
                 }}
               />
             );
-          })}
+          })
+        )}
       </div>
       <Button text={"Продолжить"} onClick={nextStep} />
     </div>
