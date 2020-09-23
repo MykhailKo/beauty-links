@@ -49,7 +49,7 @@ const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
           onChange={(e) =>
             setLocationData({ ...LocationData, SalonAddress: e.target.value })
           }
-          label={"Найдите адрес вашего салона"}
+          label={"Укажите адрес вашего салона"}
           required={true}
         />
         <Button onClick={nextStep} text="Продолжить" />
