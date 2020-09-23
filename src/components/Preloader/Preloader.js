@@ -1,15 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import styles from './Preloader.module.scss';
+import styles from "./Preloader.module.scss";
 
-const Preloader = () => {
-  return(
-    <div className={'container'}>
-      <div className={styles.preloaderWrap}>
-        <div className={styles.preloader}></div>
-      </div>
+const Preloader = ({ height }) => {
+  return (
+    <div className={styles.preloaderWrap} style={{ height: height }}>
+      <div className={styles.preloader}></div>
     </div>
-  )
-}
+  );
+};
 
-export default Preloader
+export default Preloader;

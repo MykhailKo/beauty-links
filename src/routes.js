@@ -13,7 +13,7 @@ export default function getRoutes(isAuth) {
     <Route path="/register" key="/register" component={Registration} />,
   ];
   return (
-    <Suspense fallback={<Preloader />}>
+    <Suspense fallback={<Preloader height="80vh" />}>
       <Switch>
         <Route path="/" key="/" exact component={Landing} />
         {isAuth ? authRoutes : nonAuthRoutes}
