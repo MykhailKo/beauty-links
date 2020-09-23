@@ -113,11 +113,11 @@ const Registration = () => {
             nextStep={setRegStep}
           />
         )}
-        <RegistrationFlow
+        {/* <RegistrationFlow
           regFullData={regFullData}
           setRegFullData={setRegFullData}
           nextStep={setRegStep}
-        />
+        /> */}
       </div>
     </main>
   );

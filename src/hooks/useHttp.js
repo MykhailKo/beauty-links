@@ -18,7 +18,6 @@ export const useHttp = () => {
           headers,
         });
         const data = await response.json();
-        console.log(data);
         if (!response.ok) {
           throw new Error(
             data.message ||

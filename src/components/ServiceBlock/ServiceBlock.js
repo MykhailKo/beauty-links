@@ -8,10 +8,13 @@ import widths from "../../assets/scss/_widths.scss";
 import useWindowSize from "../../hooks/useWindowSize";
 
 const ServiceBlock = ({ service, services, setService }) => {
-  const serviceData = services.filter((s) => s.id === service.id)[0];
+  const [serviceData, setServiceData] = useState([]);
   // 0 - not active, 1 - active, 2 - ready, 3 - edit
-  const [serviceState, setServiceState] = useState(serviceData ? 2 : 0);
-  console.log(serviceData, serviceState);
+  const [serviceState, setServiceState] = useState(0);
+  useEffect(() => {
+    setServiceData(services.filter((s) => s.id === service.id)[0]);
+    setServiceState(serviceData ? 2 : 0);
+  }, [service.id, serviceData, services]);
 
   const [servicePrice, setServicePrice] = useState(
     serviceData ? serviceData.price : null
@@ -89,12 +92,16 @@ const ServiceBlock = ({ service, services, setService }) => {
             text={"Добавить услугу"}
             onClick={() => {
               setServiceState(2);
-              services.push({
+              const editableServices = services.filter((ser) => {
+                return ser.id !== service.id;
+              });
+              editableServices.push({
                 id: service.id,
                 price: servicePrice,
                 duration: 60,
               });
-              setService(services);
+
+              setService(editableServices);
             }}
           />
         </div>
