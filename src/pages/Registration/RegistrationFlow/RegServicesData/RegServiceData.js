@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 import Button from "../../../../components/Button/Button";
 import SecTitle from "../../../../components/SecTitle/SecTitle";
@@ -10,30 +10,38 @@ import { useHttp } from "../../../../hooks/useHttp";
 
 import styles from "./RegServiceData.module.scss";
 
-import services from "../../../../services";
+// import services from "../../../../services";
 
 const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
-  // const { loading, request } = useHttp();
-  // const services = async () => {
-  //   try {
-  //     const services = await request(
-  //       "/api/v1.0/services",
-  //       "GET",
-  //       {},
-  //       {}
-  //     )
-  //     console.log(services)
-  //     return services;
-  //   }catch(error){
-  //     console.log(error);
-  //   }
-  // }
-
+  const { loading, request } = useHttp();
+  const [serviceCats, setServiceCats] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(17);
-  const [serviceCats, setServiceCats] = useState(services);
   const [searchString, setSearchString] = useState("");
+  const [matches, setMatches] = useState([]);
+  const fetchServices = useCallback(async () => {
+    try {
+      console.log("sending request");
+      const services = await request("/api/v1.0/services", "GET", null, {});
+      console.log(services);
+      if (services.status === 200) {
+        delete services.status;
+        const result = Object.values(services);
+        setServiceCats(result);
 
-  const searchInputRef = useRef();
+        setMatches(
+          result.filter((cat) => cat.id === currentCategory)[0]?.sub_services
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [currentCategory, request]);
+
+  useEffect(() => {
+    if (serviceCats.length === 0) {
+      fetchServices();
+    }
+  }, [fetchServices, serviceCats.length]);
 
   const searchServices = (schStr) => {
     let searchResults = [];
@@ -47,11 +55,15 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
     return searchResults;
   };
 
-  const matches =
-    searchString === ""
+  const updateFiltration = (id) => {
+    const filteredOrNot = id
+      ? serviceCats.filter((cat) => cat.id === id)[0]?.sub_services
+      : searchString === ""
       ? serviceCats.filter((cat) => cat.id === currentCategory)[0]?.sub_services
       : searchServices(searchString);
-
+    setMatches(filteredOrNot);
+    console.log(matches);
+  };
   return (
     <div className={styles.regServiceWrap}>
       <SecTitle title={"Давайте перенесём ваш бизнес в онлайн!"} />
@@ -64,41 +76,44 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
         serviceCats={serviceCats}
         setServiceCats={setServiceCats}
         currentCategory={currentCategory}
-        setCurrentCategory={setCurrentCategory}
+        setCurrentCategory={(id) => {
+          setCurrentCategory(id);
+
+          updateFiltration(id);
+        }}
         clearSearch={() => setSearchString("")}
       />
       <div className={styles.searchWrap}>
         <button
           onClick={() => {
-            setSearchString(searchInputRef.current.value);
+            updateFiltration();
           }}
         ></button>
         <input
           type={"text"}
           placeholder={"Искать услугу..."}
-          ref={searchInputRef}
+          value={searchString}
+          onChange={(e) => setSearchString(e.target.value)}
         />
       </div>
       <div className={styles.serviceListWrap}>
-        {matches.length === 0 ? (
-          <p>Сервисы по Вашему запросу не найдены.</p>
-        ) : (
-          matches.map((service, key) => {
-            return (
-              <ServiceBlock
-                service={service}
-                services={ServiceData.services}
-                key={key}
-                setService={(services) => {
-                  setServiceData({
-                    ...ServiceData,
-                    services,
-                  });
-                }}
-              />
-            );
-          })
-        )}
+        {serviceCats.length === 0
+          ? "loading"
+          : matches.map((service, key) => {
+              return (
+                <ServiceBlock
+                  service={service}
+                  services={ServiceData.services}
+                  key={key}
+                  setService={(services) => {
+                    setServiceData({
+                      ...ServiceData,
+                      services,
+                    });
+                  }}
+                />
+              );
+            })}
       </div>
       <Button text={"Продолжить"} onClick={nextStep} />
     </div>

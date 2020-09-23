@@ -68,7 +68,7 @@ const Registration = () => {
         depTime: { from: "", to: "", active: false },
       },
     },
-    ServiceData: { currentCat: 17, services: [{ id: 36, price: 100 }] },
+    ServiceData: { currentCat: 17, services: [] },
     LocationData: {
       exitService: false,
       workAtSalon: true,
@@ -113,11 +113,11 @@ const Registration = () => {
             nextStep={setRegStep}
           />
         )}
-        <RegistrationFlow
+        {/* <RegistrationFlow
           regFullData={regFullData}
           setRegFullData={setRegFullData}
           nextStep={setRegStep}
-        />
+        /> */}
       </div>
     </main>
   );

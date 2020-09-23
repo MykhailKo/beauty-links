@@ -89,12 +89,16 @@ const ServiceBlock = ({ service, services, setService }) => {
             text={"Добавить услугу"}
             onClick={() => {
               setServiceState(2);
-              services.push({
+              const editableServices = services.filter((ser) => {
+                return ser.id !== service.id;
+              });
+              editableServices.push({
                 id: service.id,
                 price: servicePrice,
                 duration: 60,
               });
-              setService(services);
+
+              setService(editableServices);
             }}
           />
         </div>
