@@ -101,21 +101,25 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
             />
           </div>
           <div className={styles.serviceListWrap}>
-            {matches.map((service, key) => {
-              return (
-                <ServiceBlock
-                  service={service}
-                  services={ServiceData.services}
-                  key={key}
-                  setService={(services) => {
-                    setServiceData({
-                      ...ServiceData,
-                      services,
-                    });
-                  }}
-                />
-              );
-            })}
+            {matches.length === 0 ? (
+              <p>По в вашему запросы сервисов не найдено.</p>
+            ) : (
+              matches.map((service, key) => {
+                return (
+                  <ServiceBlock
+                    service={service}
+                    services={ServiceData.services}
+                    key={key}
+                    setService={(services) => {
+                      setServiceData({
+                        ...ServiceData,
+                        services,
+                      });
+                    }}
+                  />
+                );
+              })
+            )}
           </div>
         </>
       )}
