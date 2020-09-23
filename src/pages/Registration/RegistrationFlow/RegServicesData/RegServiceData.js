@@ -5,7 +5,7 @@ import SecTitle from "../../../../components/SecTitle/SecTitle";
 import SubTitle from "../../../../components/SubTitle/SubTitle";
 import ServiceCarousel from "../../../../components/ServiceCarousel/ServiceCarousel";
 import ServiceBlock from "../../../../components/ServiceBlock/ServiceBlock";
-
+import Preloader from "../../../../components/Preloader/Preloader";
 import { useHttp } from "../../../../hooks/useHttp";
 
 import styles from "./RegServiceData.module.scss";
@@ -72,34 +72,36 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
           "Для начала, добавьте свои основные услуги и цены. Не переживайте, вы сможете их изменить в любое время в своём личном кабинете."
         }
       />
-      <ServiceCarousel
-        serviceCats={serviceCats}
-        setServiceCats={setServiceCats}
-        currentCategory={currentCategory}
-        setCurrentCategory={(id) => {
-          setCurrentCategory(id);
+      {serviceCats.length === 0 ? (
+        <Preloader />
+      ) : (
+        <>
+          <ServiceCarousel
+            serviceCats={serviceCats}
+            setServiceCats={setServiceCats}
+            currentCategory={currentCategory}
+            setCurrentCategory={(id) => {
+              setCurrentCategory(id);
 
-          updateFiltration(id);
-        }}
-        clearSearch={() => setSearchString("")}
-      />
-      <div className={styles.searchWrap}>
-        <button
-          onClick={() => {
-            updateFiltration();
-          }}
-        ></button>
-        <input
-          type={"text"}
-          placeholder={"Искать услугу..."}
-          value={searchString}
-          onChange={(e) => setSearchString(e.target.value)}
-        />
-      </div>
-      <div className={styles.serviceListWrap}>
-        {serviceCats.length === 0
-          ? "loading"
-          : matches.map((service, key) => {
+              updateFiltration(id);
+            }}
+            clearSearch={() => setSearchString("")}
+          />
+          <div className={styles.searchWrap}>
+            <button
+              onClick={() => {
+                updateFiltration();
+              }}
+            ></button>
+            <input
+              type={"text"}
+              placeholder={"Искать услугу..."}
+              value={searchString}
+              onChange={(e) => setSearchString(e.target.value)}
+            />
+          </div>
+          <div className={styles.serviceListWrap}>
+            {matches.map((service, key) => {
               return (
                 <ServiceBlock
                   service={service}
@@ -114,8 +116,15 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
                 />
               );
             })}
-      </div>
-      <Button text={"Продолжить"} onClick={nextStep} />
+          </div>
+        </>
+      )}
+
+      <Button
+        text={"Продолжить"}
+        onClick={nextStep}
+        disabled={ServiceData.services.length === 0 || loading}
+      />
     </div>
   );
 };
