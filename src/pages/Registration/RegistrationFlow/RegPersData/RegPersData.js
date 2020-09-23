@@ -30,30 +30,33 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
   const [lastNameError, setLastNameError] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [phoneError, setPhoneError] = useState("");
-  useEffect(() => {
+  const validatePhone = (phone) => {
     if (
       !(
-        /^\+?3?8?(0\d{9})$/.test(PersData.phone.split("-").join("")) ||
-        /^\+?3?8?(0\d{9})$/.test(PersData.phone.split(" ").join(""))
+        /^\+?3?8?(0\d{9})$/.test(phone.split("-").join("")) ||
+        /^\+?3?8?(0\d{9})$/.test(phone.split(" ").join(""))
       )
     ) {
       setPhoneError("Неверный формат телефона");
     } else {
       setPhoneError("");
     }
-  }, [PersData.phone]);
-
-  useEffect(() => {
-    if (PersData.first_name === "") {
+  };
+  const validateFirstName = (name) => {
+    if (name === "") {
       setFirstNameError("Имя не может быть пустым");
     } else {
       setFirstNameError("");
     }
-    if (PersData.last_name === "") {
+  };
+  const validateLastName = (name) => {
+    if (name === "") {
       setLastNameError("Фамилия не может быть пустой");
     } else {
       setLastNameError("");
     }
+  };
+  useEffect(() => {
     if (
       PersData.first_name === "" ||
       PersData.last_name === "" ||
@@ -146,25 +149,30 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       <form className={styles.persDataForm} id={"persForm"}>
         <RegInput
           value={PersData.name}
-          onChange={(e) =>
-            setPersData({ ...PersData, first_name: e.target.value })
-          }
+          onChange={(e) => {
+            setPersData({ ...PersData, first_name: e.target.value });
+            validateFirstName(e.target.value);
+          }}
           label={"Имя"}
           name={"firstName"}
           error={firstNameError}
         />
         <RegInput
           value={PersData.surname}
-          onChange={(e) =>
-            setPersData({ ...PersData, last_name: e.target.value })
-          }
+          onChange={(e) => {
+            setPersData({ ...PersData, last_name: e.target.value });
+            validateLastName(e.target.value);
+          }}
           label={"Фамилия"}
           name={"lastName"}
           error={lastNameError}
         />
         <RegInput
           value={PersData.phone}
-          onChange={(e) => setPersData({ ...PersData, phone: e.target.value })}
+          onChange={(e) => {
+            validatePhone(e.target.value);
+            setPersData({ ...PersData, phone: e.target.value });
+          }}
           label={"Телефон"}
           type={"tell"}
           name={"phoneNumber"}
