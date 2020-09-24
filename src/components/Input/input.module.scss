@@ -1,11 +1,28 @@
-.Input {
+@import "../../assets/scss/colors";
+
+.inputWrap {
   width: 100%;
-  padding: 0.6em 1em;
-  border-radius: 0.5em;
-  background-color: var(--pale-main-blue);
-  color: var(--pale-text-color);
-  font-size: 1em;
-  font-family: "Gilroy";
-  border: none;
-  outline: none;
+  .Input {
+    width: 100%;
+    padding: 0.6em 1em;
+    border-radius: 0.5em;
+    background-color: $white;
+    color: $text-color;
+    font-size: 1em;
+    font-family: "Gilroy";
+    border: 1px solid $main;
+    outline: none;
+  }
+  .filledInput {
+    @extend .Input;
+    background-color: $pale-main-blue;
+    color: $pale-text-color;
+    border: none;
+  }
+  .inputError {
+    color: $red;
+    font-family: "Gilroy";
+    font-size: 0.666em;
+    font-weight: 500;
+  }
 }

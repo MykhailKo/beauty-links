@@ -1,0 +1,47 @@
+@import "../../assets/scss/colors";
+
+.popUpBlock {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: opacity 0.4s;
+  .popUpBg {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    opacity: 0.5;
+  }
+  .popUpWrap {
+    position: relative;
+    width: 49em;
+    background-color: $white;
+    border-radius: 0.6em;
+    .popUpContentWrap {
+      width: 100%;
+    }
+    .closePopUp {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      width: 1.2em;
+      height: 1.2em;
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      background-image: url("/assets/img/icons/close.png");
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+  }
+}

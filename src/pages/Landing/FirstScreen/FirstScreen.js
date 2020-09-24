@@ -16,8 +16,8 @@ const FirstScreen = () => {
           </h2>
         </div>
         <form className={styles.searchForm}>
-          <Input placeholder={"Введите адрес"} />
-          <Input placeholder={"Выберете услугу"} />
+          <Input placeholder={"Введите адрес"} filled={true} />
+          <Input placeholder={"Выберете услугу"} filled={true} />
           <Button text={"Поиск"} />
         </form>
         <div className={styles.imageBlock}>

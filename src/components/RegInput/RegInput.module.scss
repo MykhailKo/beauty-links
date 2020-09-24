@@ -1,3 +1,5 @@
+@import "../../assets/scss/colors";
+
 .inputWrap {
   position: relative;
   width: 100%;
@@ -5,19 +7,19 @@
   flex-flow: column;
   padding: 0.8em 0;
   .inputLabel {
-    color: var(--label-color);
+    color: $label-color;
     font-family: "Gilroy";
     font-weight: 400;
     font-size: 1em;
   }
   .regInput {
     width: 100%;
-    color: var(--text-color);
+    color: $text-color;
     font-family: "Gilroy";
     font-size: 1.333em;
     font-weight: 500;
     border: none;
-    border-bottom: 1px solid var(--pale-text-color);
+    border-bottom: 1px solid $pale-text-color;
     outline: none;
     padding: 0 0 0.15em 0;
     transition: 0.3s padding;
@@ -31,17 +33,17 @@
       font-size: 18px;
       line-height: 22px;
       // text-align: center;
-      color: #c4c4c4;
+      color: $label-color;
     }
   }
   .regDisabled {
     width: 100%;
-    color: var(--pale-text-color);
+    color: $pale-text-color;
     font-family: "Gilroy";
     font-size: 1.333em;
     font-weight: 500;
     border: none;
-    border-bottom: 1px solid var(--pale-text-color);
+    border-bottom: 1px solid $pale-text-color;
     outline: none;
     padding: 0 0 0.15em 0;
     transition: 0.3s padding;
@@ -55,7 +57,7 @@
       font-size: 18px;
       line-height: 22px;
       // text-align: center;
-      color: #c4c4c4;
+      color: $label-color;
     }
   }
   .inputError {

@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Select.module.scss";
 
 const Select = ({
+  theme = "reg",
   label,
   options,
   id,
@@ -13,14 +14,16 @@ const Select = ({
 }) => {
   return (
     <div className={styles.selectWrap}>
-      <label htmlFor={id} className={styles.selectLabel}>
-        {label}
-      </label>
+      {theme === "reg" && (
+        <label htmlFor={id} className={styles.selectLabel}>
+          {label}
+        </label>
+      )}
 
       <select
         id={id}
         name={id}
-        className={styles.select}
+        className={theme === "reg" ? styles.selectReg : styles.selectCommon}
         required={required}
         value={value}
         onChange={onChange}
