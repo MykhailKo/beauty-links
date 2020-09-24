@@ -23,24 +23,22 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const [password, setPassword] = useState("");
   const [passwordsEqual, setPasswordsEqual] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  useEffect(() => {
-    if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(BaseData.email)) {
+  const validateEmail = (email) => {
+    if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email)) {
       setEmail("Incorrect email");
     } else {
       setEmail("");
     }
-  }, [BaseData.email]);
-  useEffect(() => {
-    if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(BaseData.password)
-    ) {
+  };
+  const validatePassword = (password) => {
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(password)) {
       setPassword(
         "Minimum six characters, at least one uppercase letter, one lowercase letter and one number"
       );
     } else {
       setPassword("");
     }
-  }, [BaseData.password]);
+  };
   useEffect(() => {
     if (BaseData.password !== BaseData.password_confirmation) {
       setPasswordsEqual("Пароли не совпадают");
@@ -48,6 +46,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
       setPasswordsEqual("");
     }
   }, [BaseData.password, BaseData.password_confirmation]);
+
   useEffect(() => {
     if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(
@@ -62,6 +61,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
       setButtonDisabled(false);
     }
   }, [BaseData, agreement]);
+
   const register = async (e) => {
     try {
       e.preventDefault();
@@ -94,7 +94,10 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           required={true}
           error={email || error}
           value={BaseData.email}
-          onChange={(e) => setBaseData({ ...BaseData, email: e.target.value })}
+          onChange={(e) => {
+            validateEmail(e.target.value);
+            setBaseData({ ...BaseData, email: e.target.value });
+          }}
         />
         <RegInput
           type={"password"}
@@ -102,9 +105,10 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
           name={"password"}
           error={password}
           value={BaseData.password}
-          onChange={(e) =>
-            setBaseData({ ...BaseData, password: e.target.value })
-          }
+          onChange={(e) => {
+            validatePassword(e.target.value);
+            setBaseData({ ...BaseData, password: e.target.value });
+          }}
         />
         <RegInput
           type={"password"}
