@@ -1,0 +1,55 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.sideBarMenu {
+  position: relative;
+  width: 19.5em;
+  padding: 1em 0;
+  .profileControls {
+    width: 100%;
+    padding: 0.5em 0;
+    .control {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0.7em 2em;
+      margin: 1em 0;
+      background-color: $white;
+      font-size: 1em;
+      font-weight: 500;
+      color: $text-color;
+      cursor: pointer;
+      .controlIcon {
+        display: inline-flex;
+        width: 1.6em;
+        height: 1.6em;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-right: 1.2em;
+      }
+    }
+    .controlActive {
+      @extend .control;
+      background-color: $pale-pale-blue-color;
+    }
+  }
+  .masterMenuHeader {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 1em 5em 0 0;
+    font-family: "Gilroy";
+    .masterName {
+      font-size: 1.666em;
+      font-weight: 300;
+      color: $grey-most;
+    }
+    .reviewsCount {
+      font-size: 0.777em;
+      font-weight: 800;
+      padding-top: 0.5rem;
+    }
+  }
+}
