@@ -108,13 +108,10 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
                 return (
                   <ServiceBlock
                     service={service}
-                    services={ServiceData.services}
+                    services={ServiceData}
                     key={key}
                     setService={(services) => {
-                      setServiceData({
-                        ...ServiceData,
-                        services,
-                      });
+                      setServiceData([...services]);
                     }}
                   />
                 );
@@ -127,7 +124,7 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
       <Button
         text={"Продолжить"}
         onClick={nextStep}
-        disabled={ServiceData.services.length === 0 || loading}
+        disabled={ServiceData.length === 0 || loading}
       />
     </div>
   );
