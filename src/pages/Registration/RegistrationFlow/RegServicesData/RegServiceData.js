@@ -22,7 +22,6 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
     try {
       console.log("sending request");
       const services = await request("/api/v1.0/services", "GET", null, {});
-      console.log(services);
       if (services.status === 200) {
         delete services.status;
         const result = Object.values(services);
@@ -111,7 +110,7 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
                     services={ServiceData}
                     key={key}
                     setService={(services) => {
-                      setServiceData([...services]);
+                      setServiceData({ ...services });
                     }}
                   />
                 );
