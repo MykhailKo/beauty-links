@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 
 import Button from "../../../../components/Button/Button";
 import SecTitle from "../../../../components/SecTitle/SecTitle";
@@ -9,6 +9,7 @@ import Preloader from "../../../../components/Preloader/Preloader";
 import { useHttp } from "../../../../hooks/useHttp";
 
 import styles from "./RegServiceData.module.scss";
+import authContext from "../../../../context/auth.context";
 
 // import services from "../../../../services";
 
@@ -17,6 +18,7 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
   const [serviceCats, setServiceCats] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(17);
   const [searchString, setSearchString] = useState("");
+  const { token } = useContext(authContext);
   const [matches, setMatches] = useState([]);
   const fetchServices = useCallback(async () => {
     try {
@@ -36,6 +38,22 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
     }
   }, [currentCategory, request]);
 
+  const sendServices = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await request(
+        "/api/v1.0/master/subservices",
+        "POST",
+        ServiceData,
+        { Authorization: `Bearer ${token}` }
+      );
+      if (response.status === 200) {
+        nextStep();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     if (serviceCats.length === 0) {
       fetchServices();
@@ -122,7 +140,7 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
 
       <Button
         text={"Продолжить"}
-        onClick={nextStep}
+        onClick={sendServices}
         disabled={ServiceData.length === 0 || loading}
       />
     </div>

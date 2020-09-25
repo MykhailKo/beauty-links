@@ -246,12 +246,11 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
             text={"Продолжить"}
             disabled={buttonDisabled}
             loading={loading}
-            onClick={() => {
-              if (validateForm("persForm")) {
-                PersData.user_role === "master"
-                  ? registerMaster()
-                  : registerCustomer();
-              }
+            onClick={(e) => {
+              e.preventDefault();
+              PersData.user_role === "master"
+                ? registerMaster()
+                : registerCustomer();
             }}
           />
         </div>
