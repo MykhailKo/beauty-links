@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Switcher from "../../../../components/Switcher/Switcher";
 import RegInput from "../../../../components/RegInput/RegInput";
@@ -9,6 +9,22 @@ import Button from "../../../../components/Button/Button";
 import styles from "./RegLocationData.module.scss";
 
 const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
+  const [locationError, setLocationError] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const validateLocation = (value) => {
+    if (value === "") {
+      setLocationError("Необходимо указать адрес вашего места работы");
+    } else {
+      setLocationError("");
+    }
+  };
+  useEffect(() => {
+    if (LocationData.SalonAddress === "") {
+      setButtonDisabled(true);
+    } else {
+      setButtonDisabled(false);
+    }
+  }, [LocationData.SalonAddress]);
   return (
     <div>
       <SecTitle text={"Ваше расположение для работы"} />
@@ -46,13 +62,19 @@ const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
         />
         <RegInput
           value={LocationData.SalonAddress}
-          onChange={(e) =>
-            setLocationData({ ...LocationData, SalonAddress: e.target.value })
-          }
+          onChange={(e) => {
+            validateLocation(e.target.value);
+            setLocationData({ ...LocationData, SalonAddress: e.target.value });
+          }}
+          error={locationError}
           label={"Укажите адрес вашего салона"}
           required={true}
         />
-        <Button onClick={nextStep} text="Продолжить" />
+        <Button
+          onClick={nextStep}
+          text="Продолжить"
+          disabled={buttonDisabled}
+        />
       </form>
     </div>
   );
