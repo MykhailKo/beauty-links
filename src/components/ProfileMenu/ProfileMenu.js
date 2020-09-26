@@ -53,6 +53,7 @@ const ProfileMenu = ({
           <span className={styles.reviewsCount}>{reviews} отзывов</span>
         </div>
       )}
+      {type === "client" && <div className={styles.clientMenuHeader}></div>}
       <ul className={styles.profileControls}>
         {currentControls.map((control, key) => {
           return (

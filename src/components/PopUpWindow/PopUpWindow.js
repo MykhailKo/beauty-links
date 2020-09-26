@@ -4,18 +4,21 @@ import ShBox from "../../components/ShBox/ShBox";
 
 import styles from "./PopUpWindow.module.scss";
 
-const PopUpWindow = ({ opened, setOpened, children }) => {
+const PopUpWindow = ({ opened, setOpened, size = "m", children }) => {
   return (
     <div
       className={styles.popUpBlock}
       style={opened ? { opacity: 1, left: 0 } : { opacity: 0, left: "-100vw" }}
     >
       <div className={styles.popUpBg}></div>
-      <div className={styles.popUpWrap}>
+      <div
+        className={styles.popUpWrap}
+        style={size === "m" ? { width: "49em" } : { width: "58em" }}
+      >
         <ShBox padding={"1em"}>
           <button
             className={styles.closePopUp}
-            onClick={() => setOpened(!opened)}
+            onClick={() => setOpened(false)}
           ></button>
           <div className={styles.popUpContentWrap}>{children}</div>
         </ShBox>

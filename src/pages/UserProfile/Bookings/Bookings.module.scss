@@ -1,0 +1,93 @@
+@import "../../../assets/scss/colors";
+
+.bookingList {
+  text-align: center;
+}
+.bookingsTitle {
+  font-size: 1.333em;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  padding: 2em 0;
+}
+.policyLink {
+  display: flex;
+  font-size: 0.8em;
+  color: $blue;
+  font-weight: 800;
+  padding-top: 2em;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+p {
+  padding: 0.5em 2em;
+  font-size: 0.9em;
+}
+.smallItallic {
+  font-size: 0.7em;
+}
+h2 {
+  margin: 0.5em 0 !important;
+}
+
+.detailsTitle {
+  font-family: "Gilroy";
+  font-size: 1.2em;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+.bookingDetailsWrap {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  .detailsList {
+    width: 55%;
+    height: 15em;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    & > li {
+      color: $text-color;
+      font-family: "Gilroy";
+      font-weight: 400;
+      font-size: 1em;
+      display: flex;
+      .detailLabel {
+        color: $pale-text-color;
+        font-size: 0.9em;
+        width: 9em;
+        padding: 0;
+      }
+      & > span {
+        padding: 0 0.3em;
+      }
+      & > a {
+        color: $main;
+        margin-left: 0.5em;
+      }
+    }
+  }
+  .map {
+    width: 43%;
+    margin-left: 1%;
+  }
+  & > a {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+  }
+  & > button {
+    margin: 1.5em 1em 1em 0;
+    &:first-of-type {
+      background-color: $red !important;
+    }
+  }
+}

@@ -11,6 +11,8 @@
   justify-content: center;
   z-index: 20;
   transition: opacity 0.4s;
+  overflow-y: scroll;
+  overflow-x: hidden;
   .popUpBg {
     position: absolute;
     width: inherit;
@@ -22,9 +24,9 @@
   }
   .popUpWrap {
     position: relative;
-    width: 49em;
     background-color: $white;
     border-radius: 0.6em;
+    max-height: 98vh;
     .popUpContentWrap {
       width: 100%;
     }

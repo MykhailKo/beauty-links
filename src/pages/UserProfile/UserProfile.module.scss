@@ -1,2 +1,7 @@
 .UserProfile {
+  display: flex;
+  .profileContent {
+    padding: 1em 5em 5em 1em;
+    width: calc(100% - 16.9em);
+  }
 }
