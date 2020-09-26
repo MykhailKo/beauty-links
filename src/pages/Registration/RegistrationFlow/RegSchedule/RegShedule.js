@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import TimeInput from "../../../../components/TimeInput/TimeInput";
 import Switcher from "../../../../components/Switcher/Switcher";
 import SecTitle from "../../../../components/SecTitle/SecTitle";
 import SubTitle from "../../../../components/SubTitle/SubTitle";
 import Button from "../../../../components/Button/Button";
+import authContext from "../../../../context/auth.context";
+import { useHttp } from "../../../../hooks/useHttp";
 
 import styles from "./RegSchedule.module.scss";
 
@@ -65,10 +67,46 @@ const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
 };
 
 const RegSchedule = ({ nextStep, ScheduleData, setScheduleData }) => {
+  const { loading, request } = useHttp();
   const [scheduleType, setScheduleType] = useState("salon");
-
   const [disableNext, setDisableNext] = useState(false);
-
+  const { token } = useContext(authContext);
+  const prepareData = () => {
+    const readyData = JSON.parse(JSON.stringify(ScheduleData));
+    for (const key in readyData.salon) {
+      if (readyData.salon.hasOwnProperty(key)) {
+        delete readyData.salon[key].name;
+        delete readyData.salon[key].active;
+        if (!readyData.salon[key].available) {
+          delete readyData.salon[key];
+        }
+      }
+    }
+    for (const key in readyData.mobile) {
+      if (readyData.mobile.hasOwnProperty(key)) {
+        delete readyData.mobile[key].name;
+        delete readyData.mobile[key].active;
+        if (!readyData.mobile[key].available) {
+          delete readyData.mobile[key];
+        }
+      }
+    }
+    return readyData;
+  };
+  const updateSchedule = async () => {
+    try {
+      const readyData = prepareData();
+      const response = await request(
+        "/api/v1.0/profile/master/availability",
+        "PUT",
+        readyData,
+        { Authorization: `Bearer ${token}` }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className={styles.scheduleWrap}>
       <SecTitle title={"Ваши рабочие часы"} />
@@ -115,7 +153,12 @@ const RegSchedule = ({ nextStep, ScheduleData, setScheduleData }) => {
           );
         })}
       </form>
-      <Button text={"Продолжить"} onClick={nextStep} disabled={disableNext} />
+      <Button
+        text={"Продолжить"}
+        onClick={updateSchedule}
+        disabled={disableNext}
+        loading={loading}
+      />
     </div>
   );
 };

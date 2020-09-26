@@ -28,7 +28,6 @@ export const useHttp = () => {
         setLoading(false);
         return { ...data, status: response.status };
       } catch (e) {
-        console.log(e);
         setLoading(false);
         setError(e.message);
         throw e;
