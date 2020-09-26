@@ -37,19 +37,18 @@ const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
         <div className={styles.WorkType}>
           <div className={styles.title}>Выездные услуги</div>
           <Switcher
-            state={LocationData.exitService}
+            state={LocationData.mobile}
             switchState={(state) => {
-              console.log({ ...LocationData }, state);
-              setLocationData({ ...LocationData, exitService: state });
+              setLocationData({ ...LocationData, mobile: state });
             }}
           />
         </div>
         <div className={styles.WorkType}>
           <div className={styles.title}>Работа в салоне</div>
           <Switcher
-            state={LocationData.workAtSalon}
+            state={LocationData.salon}
             switchState={(state) =>
-              setLocationData({ ...LocationData, workAtSalon: state })
+              setLocationData({ ...LocationData, salon: state })
             }
           />
         </div>

@@ -7,7 +7,7 @@ import RegistrationFlow from "./RegistrationFlow/RegistrationFlow";
 import styles from "./Registration.module.scss";
 
 const Registration = () => {
-  const [regStep, setRegStep] = useState(1);
+  const [regStep, setRegStep] = useState(3);
 
   const [regFullData, setRegFullData] = useState({
     BaseData: {
@@ -25,53 +25,29 @@ const Registration = () => {
       preferredCalendar: "Google Calendar",
     },
     ScheduleData: {
-      mon: {
-        id: "mon",
-        name: "Понедельник",
-        salonTime: { from: "", to: "", active: false },
-        depTime: { from: "", to: "", active: false },
+      mobile: {
+        monday: { name: "Понедельник" },
+        tuesday: { name: "Вторник" },
+        wednesday: { name: "Среда" },
+        thursday: { name: "Четверг" },
+        friday: { name: "Пятница" },
+        saturday: { name: "Суббота" },
+        sunday: { name: "Воскресенье" },
       },
-      tue: {
-        id: "tue",
-        name: "Вторник",
-        salonTime: { from: "", to: "", active: false },
-        depTime: { from: "", to: "", active: false },
-      },
-      wed: {
-        id: "wed",
-        name: "Среда",
-        salonTime: { from: "", to: "", active: false },
-        depTime: { from: "", to: "", active: false },
-      },
-      thu: {
-        id: "thu",
-        name: "Четверг",
-        salonTime: { from: "", to: "", active: false },
-        depTime: { from: "", to: "", active: false },
-      },
-      fri: {
-        id: "fri",
-        name: "Пятница",
-        salonTime: { from: "", to: "", active: false },
-        depTime: { from: "", to: "", active: false },
-      },
-      sat: {
-        id: "sat",
-        name: "Суббота",
-        salonTime: { from: "", to: "", active: false },
-        depTime: { from: "", to: "", active: false },
-      },
-      sun: {
-        id: "sun",
-        name: "Воскресенье",
-        salonTime: { from: "", to: "", active: false },
-        depTime: { from: "", to: "", active: false },
+      salon: {
+        monday: { name: "Понедельник" },
+        tuesday: { name: "Вторник" },
+        wednesday: { name: "Среда" },
+        thursday: { name: "Четверг" },
+        friday: { name: "Пятница" },
+        saturday: { name: "Суббота" },
+        sunday: { name: "Воскресенье" },
       },
     },
     ServiceData: {},
     LocationData: {
-      exitService: false,
-      workAtSalon: true,
+      mobile: false,
+      salon: true,
       SalonName: "",
       SalonAddress: "",
     },

@@ -10,53 +10,54 @@ import styles from "./RegSchedule.module.scss";
 
 const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
   const setActive = (active) => {
-    day[scheduleType].active = active;
+    day.active = active;
+    day.available = {};
     setDay(day);
   };
 
   return (
     <li
       className={styles.day}
-      style={!day[scheduleType].active ? { opacity: "0.5" } : { opacity: "1" }}
+      style={!day.active ? { opacity: "0.5" } : { opacity: "1" }}
     >
       <span className={styles.dayTitle}>{day.name}</span>
       <div className={styles.dayTime}>
         <TimeInput
           label={"C"}
-          id={`${day.id}from`}
-          value={day[scheduleType].from}
+          id={`${day.id}_from`}
+          value={day?.available?.from || ""}
           onChange={(event) => {
-            day[scheduleType].from = event.target.value;
-            setDay(day);
+            const dayUpdate = { ...day };
+            dayUpdate.available.from = event.target.value;
+            setDay(dayUpdate);
           }}
-          disabled={!day[scheduleType].active ? true : false}
+          disabled={!day.active ? true : false}
         />
         <div className={styles.inputSep}></div>
         <TimeInput
           label={"До"}
-          id={`${day.id}until`}
-          value={day[scheduleType].to}
+          id={`${day.id}_until`}
+          value={day?.available?.to || ""}
           onChange={(event) => {
-            if (event.target.value <= day[scheduleType].from) {
-              day[scheduleType].to = event.target.value;
+            if (event.target.value <= day?.available?.from) {
+              day.available.to = event.target.value;
               event.target.style.borderColor = "#cb2026";
               return setDisableNext(true);
             }
             setDisableNext(false);
             event.target.style.borderColor = "#c4c4c4";
-            day[scheduleType].to = event.target.value;
+            day.available.to = event.target.value;
             setDay(day);
           }}
-          disabled={!day[scheduleType].active ? true : false}
+          disabled={!day.active ? true : false}
         />
       </div>
       <Switcher
-        state={day[scheduleType].active}
+        state={day.active}
         switchState={setActive}
         onClick={() => {
-          day[scheduleType].from = "";
-          day[scheduleType].to = "";
-          setDay(day);
+          const emptyDay = { name: day.name };
+          setDay(emptyDay);
         }}
       />
     </li>
@@ -64,10 +65,7 @@ const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
 };
 
 const RegSchedule = ({ nextStep, ScheduleData, setScheduleData }) => {
-  // 1 - Салон, 2 - Выездные услуги
-  const [scheduleType, setScheduleType] = useState(1);
-
-  const schedule = scheduleType === 1 ? "salonTime" : "depTime";
+  const [scheduleType, setScheduleType] = useState("salon");
 
   const [disableNext, setDisableNext] = useState(false);
 
@@ -81,34 +79,35 @@ const RegSchedule = ({ nextStep, ScheduleData, setScheduleData }) => {
       />
       <div className={styles.scheduleTypes}>
         <li
-          className={scheduleType !== 1 ? styles.typeDisabled : styles.type}
+          className={
+            scheduleType !== "salon" ? styles.typeDisabled : styles.type
+          }
           onClick={() => {
-            setScheduleType(1);
-            document.getElementById("scheduleForm").reset();
+            setScheduleType("salon");
           }}
         >
           Салон
         </li>
         <li
-          className={scheduleType !== 2 ? styles.typeDisabled : styles.type}
+          className={
+            scheduleType !== "mobile" ? styles.typeDisabled : styles.type
+          }
           onClick={() => {
-            setScheduleType(2);
-            document.getElementById("scheduleForm").reset();
+            setScheduleType("mobile");
           }}
         >
           Выездные услуги
         </li>
       </div>
       <form className={styles.scheduleDays} id={"scheduleForm"}>
-        {Object.entries(ScheduleData).map((day, key) => {
-          const dayKey = day[0];
+        {Object.entries(ScheduleData[scheduleType]).map((dayArray, key) => {
           return (
             <RegScheduleDay
               key={key}
-              day={day[1]}
-              scheduleType={schedule}
+              day={dayArray[1]}
+              scheduleType={scheduleType}
               setDay={(day) => {
-                ScheduleData[dayKey] = day;
+                ScheduleData[scheduleType][dayArray[0]] = day;
                 setScheduleData(ScheduleData);
               }}
               setDisableNext={setDisableNext}
