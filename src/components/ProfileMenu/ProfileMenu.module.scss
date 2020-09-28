@@ -18,6 +18,8 @@
       font-size: 1em;
       font-weight: 500;
       color: $text-color;
+      text-decoration: none;
+      border: none;
       cursor: pointer;
       .controlIcon {
         display: inline-flex;
@@ -27,6 +29,9 @@
         background-position: center;
         background-repeat: no-repeat;
         margin-right: 1.2em;
+      }
+      a:active {
+        outline: none;
       }
     }
     .controlActive {
