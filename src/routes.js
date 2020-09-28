@@ -9,6 +9,7 @@ const Bookings = lazy(() => import("./pages/UserProfile/Bookings/Bookings"));
 const Achievements = lazy(() =>
   import("./pages/UserProfile/Achievements/Achievements")
 );
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function getRoutes(isAuth) {
   const authRoutes = [];
@@ -23,7 +24,6 @@ export default function getRoutes(isAuth) {
           <Route path={`${url}/bookings`} component={Bookings} />
           <Route path={`${url}/settings`} component={"Settings"} />
           <Route path={`${url}/favourites`} component={"Favourite"} />
-          <Redirect to={`${url}/achievements`} />
         </UserProfile>
       )}
     />,
@@ -34,7 +34,9 @@ export default function getRoutes(isAuth) {
         <Route path="/" key="/" exact component={Landing} />
 
         {isAuth ? authRoutes : nonAuthRoutes}
-        <Redirect to="/" />
+        <Route path="/404" key="/404" component={NotFound} />
+
+        <Redirect to="/404" />
       </Switch>
     </Suspense>
   );
