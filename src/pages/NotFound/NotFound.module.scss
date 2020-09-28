@@ -1,9 +1,16 @@
 @import "../../assets/scss/fonts";
+@import "../../assets/scss/widths";
 .container {
   display: flex;
   flex-direction: column;
+  flex: 1;
   align-items: center;
   margin-bottom: 1.5rem;
+  & img {
+    @media (max-width: $break-md) {
+      width: 80%;
+    }
+  }
 }
 
 .errorCode {
