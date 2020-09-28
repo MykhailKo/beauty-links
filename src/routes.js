@@ -4,7 +4,7 @@ import Preloader from "./components/Preloader/Preloader";
 
 const Landing = lazy(() => import("./pages/Landing/Landing"));
 const Registration = lazy(() => import("./pages/Registration/Registration"));
-const UserProfile = lazy(() => import("./pages/UserProfile/ClientProfile"));
+const UserProfile = lazy(() => import("./pages/UserProfile/UserProfile"));
 const Bookings = lazy(() => import("./pages/UserProfile/Bookings/Bookings"));
 const Achievements = lazy(() =>
   import("./pages/UserProfile/Achievements/Achievements")

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import useWindowSize from "../../hooks/useWindowSize";
 import Stars from "../Stars/Stars";
 
 import styles from "./ProfileMenu.module.scss";
+import widths from "../../assets/scss/_widths.scss";
 
 const clientControls = [
   {
@@ -58,20 +60,48 @@ const ProfileMenu = ({
 }) => {
   const currentControls = type === "client" ? clientControls : masterControls;
 
+  const [currentControl, setControl] = useState(currentControls[0].name);
+
+  const [mobileMenuOpened, setMobileMenuOpened] = useState(false);
+
+  const [width] = useWindowSize();
+
   return (
     <nav className={styles.sideBarMenu}>
-      {type === "master" && (
+      {type === "master" && width > parseInt(widths.break_lm) && (
         <div className={styles.masterMenuHeader}>
           <span className={styles.masterName}>{masterName}</span>
           <Stars rate={rate} />
           <span className={styles.reviewsCount}>{reviews} отзывов</span>
         </div>
       )}
-      {type === "client" && <div className={styles.clientMenuHeader}></div>}
-      <ul className={styles.profileControls}>
+      {type === "client" && width > parseInt(widths.break_lm) && (
+        <div className={styles.clientMenuHeader}></div>
+      )}
+      {width < parseInt(widths.break_lm) && (
+        <div
+          className={styles.mobileMenuHeader}
+          onClick={() => setMobileMenuOpened(!mobileMenuOpened)}
+        >
+          <div>{currentControl}</div>
+          <span
+            className={mobileMenuOpened ? styles.rotateArrow : styles.arrow}
+          >
+            &#9660;
+          </span>
+        </div>
+      )}
+      <ul
+        className={styles.profileControls}
+        style={
+          width < parseInt(widths.break_lm) && mobileMenuOpened
+            ? { height: `${2.7 * currentControls.length}em` }
+            : { height: "0" }
+        }
+      >
         {currentControls.map((control, key) => {
           return (
-            <li key={key}>
+            <li key={key} onClick={() => setControl(control.name)}>
               <NavLink
                 to={control.link}
                 activeClassName={styles.controlActive}

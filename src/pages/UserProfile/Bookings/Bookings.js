@@ -133,7 +133,7 @@ const Bookings = () => {
             <ul className={styles.detailsList}>
               <li>
                 <span className={styles.detailLabel}>Услуга:</span>
-                {bookingDetails.name}
+                {bookingDetails.service}
               </li>
               <li>
                 <span className={styles.detailLabel}>Когда:</span>

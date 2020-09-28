@@ -5,7 +5,7 @@ import Bookings from "./Bookings/Bookings";
 
 import styles from "./UserProfile.module.scss";
 
-const ClientProfile = (props) => {
+const UserProfile = (props) => {
   return (
     <div className={styles.UserProfile}>
       <ProfileMenu type={"client"} />
@@ -14,4 +14,4 @@ const ClientProfile = (props) => {
   );
 };
 
-export default ClientProfile;
+export default UserProfile;
