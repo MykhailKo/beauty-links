@@ -1,7 +1,16 @@
+@import "../../assets/scss/widths";
+
 .UserProfile {
   display: flex;
+  @media (max-width: $break_lm) {
+    flex-flow: column;
+  }
   .profileContent {
     padding: 1em 5em 5em 1em;
     width: calc(100% - 16.9em);
+    @media (max-width: $break_lm) {
+      width: 100%;
+      padding: 1em;
+    }
   }
 }
