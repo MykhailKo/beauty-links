@@ -1,7 +1,7 @@
 import React from "react";
 
 import ProfileMenu from "../../components/ProfileMenu/ProfileMenu";
-import Achivments from "./Achivements/Achivements";
+import Achievements from "./Achievements/Achievements";
 import Bookings from "./Bookings/Bookings";
 
 import styles from "./UserProfile.module.scss";
@@ -11,7 +11,7 @@ const ClientProfile = () => {
     <div className={styles.UserProfile}>
       <ProfileMenu type={"client"} />
       <section className={styles.profileContent}>
-        {/* <Achivments /> */}
+        <Achievements />
         <Bookings />
       </section>
     </div>
