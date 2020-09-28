@@ -15,7 +15,7 @@ const PopUpWindow = ({ opened, setOpened, size = "m", children }) => {
         className={styles.popUpWrap}
         style={size === "m" ? { width: "49em" } : { width: "58em" }}
       >
-        <ShBox padding={"1em"}>
+        <ShBox padding={"1em 1em 0 1em"}>
           <button
             className={styles.closePopUp}
             onClick={() => setOpened(false)}
