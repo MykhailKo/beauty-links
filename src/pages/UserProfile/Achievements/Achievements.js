@@ -2,9 +2,9 @@ import React from "react";
 
 import ProfileTitle from "../../../components/ProfileTitle/ProfileTitle";
 
-import styles from "./Achivements.module.scss";
+import styles from "./Achievements.module.scss";
 
-const Achivements = () => {
+const Achievements = () => {
   return (
     <div>
       <ProfileTitle title={"Мои достижения"} />
@@ -12,4 +12,4 @@ const Achivements = () => {
   );
 };
 
-export default Achivements;
+export default Achievements;

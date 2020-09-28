@@ -47,6 +47,8 @@
         padding: 0.7em 1em;
         font-size: 0.888em;
       }
+      text-decoration: none;
+      border: none;
       cursor: pointer;
       .controlIcon {
         display: inline-flex;
@@ -56,6 +58,9 @@
         background-position: center;
         background-repeat: no-repeat;
         margin-right: 1.2em;
+      }
+      a:active {
+        outline: none;
       }
     }
     .controlActive {

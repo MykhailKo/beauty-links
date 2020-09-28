@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import useWindowSize from "../../hooks/useWindowSize";
 import Stars from "../Stars/Stars";
@@ -11,12 +11,28 @@ const clientControls = [
   {
     name: "Мои достижения",
     icon: "/assets/img/icons/achivments.png",
-    link: "",
+    link: "/user/achievements/",
   },
-  { name: "Бронирования", icon: "/assets/img/icons/bookings.png", link: "" },
-  { name: "Настройки", icon: "/assets/img/icons/settings.png", link: "" },
-  { name: "Избранные мастера", icon: "/assets/img/icons/favs.png", link: "" },
-  { name: "Выйти из аккаунта", icon: "/assets/img/icons/logout.png", link: "" },
+  {
+    name: "Бронирования",
+    icon: "/assets/img/icons/bookings.png",
+    link: "/user/bookings/",
+  },
+  {
+    name: "Настройки",
+    icon: "/assets/img/icons/settings.png",
+    link: "/user/settings/",
+  },
+  {
+    name: "Избранные мастера",
+    icon: "/assets/img/icons/favs.png",
+    link: "/user/favourites/",
+  },
+  {
+    name: "Выйти из аккаунта",
+    icon: "/assets/img/icons/logout.png",
+    link: "user/logout/",
+  },
 ];
 
 const masterControls = [
@@ -85,20 +101,18 @@ const ProfileMenu = ({
       >
         {currentControls.map((control, key) => {
           return (
-            <li
-              key={key}
-              className={
-                control.name === currentControl
-                  ? styles.controlActive
-                  : styles.control
-              }
-              onClick={() => setControl(control.name)}
-            >
-              <span
-                className={styles.controlIcon}
-                style={{ backgroundImage: `url(${control.icon})` }}
-              ></span>
-              {control.name}
+            <li key={key} onClick={() => setControl(control.name)}>
+              <NavLink
+                to={control.link}
+                activeClassName={styles.controlActive}
+                className={styles.control}
+              >
+                <span
+                  className={styles.controlIcon}
+                  style={{ backgroundImage: `url(${control.icon})` }}
+                ></span>
+                {control.name}
+              </NavLink>
             </li>
           );
         })}
