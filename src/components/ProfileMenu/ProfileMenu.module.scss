@@ -20,6 +20,10 @@
     width: 90%;
     margin: 0.5em auto 0 auto;
   }
+  @media (max-width: $break_sm) {
+    font-size: 1.4em;
+    padding: 0;
+  }
   .profileControls {
     width: 100%;
     padding: 0.5em 0;

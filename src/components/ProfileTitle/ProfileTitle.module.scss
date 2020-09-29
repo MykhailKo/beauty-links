@@ -10,6 +10,9 @@
   font-family: "Gilroy";
   border-bottom: 1px solid $main;
   padding: 0.5em;
+  @media (max-width: $break_sm) {
+    margin-top: 0;
+  }
   .title {
     font-size: 1.77em;
     font-weight: 600;

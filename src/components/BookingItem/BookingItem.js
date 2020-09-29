@@ -1,10 +1,14 @@
 import React from "react";
 
+import useWindowSize, { useWidth } from "../../hooks/useWindowSize";
 import TimeDisplay from "../TimeDisplay/TimeDisplay";
 
 import styles from "./BookingItem.module.scss";
+import widths from "../../assets/scss/_widths.scss";
 
 const BookingItem = ({ bookingData, openDetails }) => {
+  const [width] = useWindowSize();
+
   return (
     <li className={styles.BookingItem}>
       <div className={styles.masterData}>
@@ -28,7 +32,9 @@ const BookingItem = ({ bookingData, openDetails }) => {
       </div>
       <div className={styles.bookingNumber}>№{bookingData.number}</div>
       <ul className={styles.bookingControls}>
-        <li onClick={() => openDetails(bookingData)}>Подрoбнее</li>
+        <li onClick={() => openDetails(bookingData)}>
+          {width < parseInt(widths.break_sm) ? <span></span> : "Подрoбнее"}
+        </li>
         <li>Перенести</li>
         <li>Отменить</li>
       </ul>
