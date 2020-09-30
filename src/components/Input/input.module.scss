@@ -1,6 +1,7 @@
 @import "../../assets/scss/colors";
 
 .inputWrap {
+  position: relative;
   width: 100%;
   .Input {
     width: 100%;
@@ -27,8 +28,8 @@
   }
   .seePassword {
     position: absolute;
-    right: 0;
-    top: 40%;
+    right: 0.5em;
+    top: 25%;
     width: 1.3em;
     height: 1.3em;
     background-position: center;
