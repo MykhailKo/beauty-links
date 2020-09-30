@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ProfileTitle from "../../../components/ProfileTitle/ProfileTitle";
 import Button from "../../../components/Button/Button";
 import Select from "../../../components/Select/Select";
 import Input from "../../../components/Input/Input";
+import { useHttp } from "../../../hooks/useHttp";
+import authContext from "../../../context/auth.context";
+
 import styles from "./Settings.module.scss";
 
 const Settings = () => {
@@ -11,10 +14,67 @@ const Settings = () => {
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [liqpayAccount, setLiqpayAccount] = useState("");
-  const submitNewStatus = () => {};
-  const submitNewPassword = () => {};
-  const submitNewEmail = () => {};
-  const submitNewLiqPayAccount = () => {};
+  const { request, loading, error } = useHttp();
+  const { token } = useContext(authContext);
+  //errors
+  //validation
+  //requests
+  const submitNewStatus = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await request(
+        "/",
+        "PUT",
+        {},
+        { Authorization: `Bearer ${token}` }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const submitNewPassword = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await request(
+        "/",
+        "PUT",
+        {},
+        { Authorization: `Bearer ${token}` }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const submitNewEmail = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await request(
+        "/",
+        "PUT",
+        {},
+        { Authorization: `Bearer ${token}` }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const submitNewLiqPayAccount = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await request(
+        "/",
+        "PUT",
+        {},
+        { Authorization: `Bearer ${token}` }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -49,9 +109,9 @@ const Settings = () => {
         <form className={styles.passwordChangeForm}>
           <Input
             name={"old-password"}
-            error={false}
             value={oldPAssword}
             onChange={(e) => setOldPAssword(e.target.value)}
+            error={"неверный пароль"}
             type="password"
             placeholder="Введите старый пароль"
           />
@@ -72,7 +132,7 @@ const Settings = () => {
             onChange={(e) => setNewPasswordConfirm(e.target.value)}
             placeholder="Повторите новый пароль"
           />
-          <Button text={"Обновить пароль"} />
+          <Button text={"Обновить пароль"} onClick={submitNewPassword} />
         </form>
       </div>
       <div className={styles.SettingBlock}>
@@ -93,7 +153,7 @@ const Settings = () => {
             onChange={(e) => setNewEmail(e.target.value)}
             placeholder="Введите новый e-mail"
           />
-          <Button text="Обновить e-mail" />
+          <Button text="Обновить e-mail" onClick={submitNewEmail} />
         </form>
       </div>
       <div className={styles.SettingBlock}>
@@ -115,7 +175,7 @@ const Settings = () => {
           <div>
             <a href={"#"}>Привязать другую карту</a>
           </div>
-          {/* <Button text={"Привязать аккаунт"} /> */}
+          <Button text={"Привязать аккаунт"} onClick={submitNewLiqPayAccount} />
         </form>
       </div>
     </div>
