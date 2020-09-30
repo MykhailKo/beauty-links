@@ -12,6 +12,7 @@ const Achievements = lazy(() =>
 const FaveMasters = lazy(() =>
   import("./pages/UserProfile/FaveMasters/FaveMasters")
 );
+const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function getRoutes(isAuth) {
@@ -25,7 +26,7 @@ export default function getRoutes(isAuth) {
         <UserProfile>
           <Route path={`${url}/achievements`} component={Achievements} />
           <Route path={`${url}/bookings`} component={Bookings} />
-          <Route path={`${url}/settings`} component={"Settings"} />
+          <Route path={`${url}/settings`} component={Settings} />
           <Route path={`${url}/favourites`} component={FaveMasters} />
         </UserProfile>
       )}
