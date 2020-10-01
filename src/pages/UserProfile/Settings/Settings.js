@@ -9,7 +9,8 @@ import authContext from "../../../context/auth.context";
 import styles from "./Settings.module.scss";
 
 const Settings = () => {
-  const [oldPAssword, setOldPAssword] = useState("");
+  const [oldPassword, setoldPassword] = useState("");
+
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -109,8 +110,8 @@ const Settings = () => {
         <form className={styles.passwordChangeForm}>
           <Input
             name={"old-password"}
-            value={oldPAssword}
-            onChange={(e) => setOldPAssword(e.target.value)}
+            value={oldPassword}
+            onChange={(e) => setoldPassword(e.target.value)}
             error={"неверный пароль"}
             type="password"
             placeholder="Введите старый пароль"

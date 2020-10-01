@@ -24,10 +24,11 @@ export default function getRoutes(isAuth) {
       key="/user"
       render={({ match: { url } }) => (
         <UserProfile>
-          <Route path={`${url}/achievements`} component={Achievements} />
-          <Route path={`${url}/bookings`} component={Bookings} />
-          <Route path={`${url}/settings`} component={Settings} />
-          <Route path={`${url}/favourites`} component={FaveMasters} />
+          <Route path={`${url}/achievements`} component={Achievements} exact />
+          <Route path={`${url}/bookings`} component={Bookings} exact />
+          <Route path={`${url}/settings`} component={Settings} exact />
+          <Route path={`${url}/favourites`} component={FaveMasters} exact />
+          <Redirect to={`${url}/achievements`} />
         </UserProfile>
       )}
     />,
