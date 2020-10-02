@@ -25,7 +25,7 @@ class App extends React.Component {
       master_info: {}, //only for master
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.checkLocalStorage = this.checkLocalStorage.bind(this);
@@ -105,6 +105,7 @@ class App extends React.Component {
     this.props.history.push("/");
   }
   render() {
+    console.log(this.state.isAuthenticated);
     return (
       <AuthContext.Provider
         value={{
@@ -113,12 +114,13 @@ class App extends React.Component {
           full_name: this.state.full_name,
           isAuthenticated: this.state.isAuthenticated,
           master_info: this.state.master_info,
+          email: this.state.email,
           login: this.login,
           logout: this.logout,
         }}
       >
         <Header />
-        {getRoutes(false)}
+        {getRoutes(this.state.isAuthenticated)}
         <Footer />
       </AuthContext.Provider>
     );

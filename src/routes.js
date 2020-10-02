@@ -16,22 +16,29 @@ const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function getRoutes(isAuth) {
-  const authRoutes = [];
-  const nonAuthRoutes = [
-    <Route path="/register" key="/register" component={Registration} />,
+  const authRoutes = [
     <Route
       path="/user"
       key="/user"
       render={({ match: { url } }) => (
         <UserProfile>
-          <Route path={`${url}/achievements`} component={Achievements} exact />
-          <Route path={`${url}/bookings`} component={Bookings} exact />
-          <Route path={`${url}/settings`} component={Settings} exact />
-          <Route path={`${url}/favourites`} component={FaveMasters} exact />
-          <Redirect to={`${url}/achievements`} />
+          <Switch>
+            <Route
+              path={`${url}/achievements`}
+              component={Achievements}
+              exact
+            />
+            <Route path={`${url}/bookings`} component={Bookings} exact />
+            <Route path={`${url}/settings`} component={Settings} exact />
+            <Route path={`${url}/favourites`} component={FaveMasters} exact />
+            <Redirect to={`${url}/achievements`} />
+          </Switch>
         </UserProfile>
       )}
     />,
+  ];
+  const nonAuthRoutes = [
+    <Route path="/register" key="/register" component={Registration} />,
   ];
   return (
     <Suspense fallback={<Preloader height="80vh" />}>

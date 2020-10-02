@@ -16,7 +16,7 @@ const Settings = () => {
   const [newEmail, setNewEmail] = useState("");
   const [liqpayAccount, setLiqpayAccount] = useState("");
   const { request, loading, error } = useHttp();
-  const { token } = useContext(authContext);
+  const { token, email } = useContext(authContext);
   //errors
   //validation
   //requests
@@ -144,7 +144,7 @@ const Settings = () => {
             error={false}
             value={""}
             onChange={""}
-            placeholder="asd@gmail.com"
+            placeholder={email}
             disabled={true}
           />
           <Input
