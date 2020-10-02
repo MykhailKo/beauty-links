@@ -16,7 +16,7 @@ const HowItWorks = () => {
       <SecTitle title="Как это работает?" />
       <div className={styles.Steps}>
         {steps.map((step, index) => {
-          return <Step text={step} number={index + 1} />;
+          return <Step text={step} number={index + 1} key={index} />;
         })}
       </div>
       <Button text={"Начать"} />

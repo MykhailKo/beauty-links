@@ -1,7 +1,6 @@
 import React from "react";
 
 import ProfileMenu from "../../components/ProfileMenu/ProfileMenu";
-import Bookings from "./Bookings/Bookings";
 
 import styles from "./UserProfile.module.scss";
 

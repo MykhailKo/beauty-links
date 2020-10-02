@@ -84,8 +84,9 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       console.log(error);
     }
   };
-  const registerCustomer = async () => {
+  const registerCustomer = async (e) => {
     try {
+      e.preventDefault();
       const response = await request(
         "/api/v1.0/auth/user",
         "POST",
@@ -110,8 +111,9 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       history.push("/");
     }
   };
-  const registerMaster = async () => {
+  const registerMaster = async (e) => {
     try {
+      e.preventDefault();
       const response = await request(
         "/api/v1.0/auth/user",
         "POST",
@@ -246,11 +248,11 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
             text={"Продолжить"}
             disabled={buttonDisabled}
             loading={loading}
-            onClick={() => {
+            onClick={(e) => {
               if (validateForm("persForm")) {
                 PersData.user_role === "master"
-                  ? registerMaster()
-                  : registerCustomer();
+                  ? registerMaster(e)
+                  : registerCustomer(e);
               }
             }}
           />
