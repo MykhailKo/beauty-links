@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import getRoutes from "./routes";
 import AuthContext from "./context/auth.context";
+import MasterPage from "./pages/MasterPage/MasterPage";
 
 class App extends React.Component {
   state = {};
@@ -120,7 +121,8 @@ class App extends React.Component {
         }}
       >
         <Header />
-        {getRoutes(this.state.isAuthenticated)}
+        {/* {getRoutes(this.state.isAuthenticated)} */}
+        <MasterPage />
         <Footer />
       </AuthContext.Provider>
     );

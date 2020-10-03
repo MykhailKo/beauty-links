@@ -1,0 +1,84 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.masterInfoWrap {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 4;
+  grid-gap: 2em 1em;
+  padding-top: 3em;
+  font-family: "Gilroy";
+  .masterDescription {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    grid-area: 1/1/3/2;
+    .avatar {
+      width: 10em;
+      height: 10em;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    & > a {
+      color: $main;
+      text-decoration: none;
+    }
+    & > a,
+    & > span {
+      font-size: 0.9em;
+    }
+    .name {
+      font-size: 1.3em;
+      font-weight: 400;
+    }
+    .masterActions {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      padding: 1.5em 3em;
+      justify-content: space-around;
+      & > li {
+        list-style: none;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        cursor: pointer;
+        & > span {
+          font-size: 0.9em;
+          padding-top: 0.2em;
+        }
+        .actionIcon {
+          width: 2em;
+          height: 2em;
+          background-size: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    .masterBio {
+      padding-top: 1em;
+      width: 100%;
+    }
+    .titleSec {
+      max-height: 2em;
+    }
+  }
+  .locationContacts {
+    grid-area: 1/2/2/3;
+  }
+  .masterSchedule {
+    grid-area: 2/2/3/3;
+  }
+  .titleSec {
+    grid-area: 3/1/4/3;
+  }
+  .masterBookings {
+    grid-area: 4/1/5/2;
+  }
+  .masterCerts {
+    grid-area: 4/2/5/3;
+  }
+}

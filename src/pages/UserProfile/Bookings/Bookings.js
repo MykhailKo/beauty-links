@@ -169,7 +169,7 @@ const Bookings = () => {
             <iframe
               className={styles.map}
               id={"gmap_canvas"}
-              src={`https://maps.google.com/maps?q=${bookingDetails.location}&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed`}
+              src={`https://maps.google.com/maps?q=${bookingDetails.location}&output=embed`}
               frameborder={"0"}
               scrolling={"no"}
               marginheight={"0"}

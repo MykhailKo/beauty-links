@@ -1,0 +1,76 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/widths";
+
+.contactsWrap {
+  width: 100%;
+  font-family: "Gilroy";
+  .map {
+    width: 100%;
+    height: 13em;
+  }
+  .address {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+    font-size: 1em;
+    padding-left: 1em;
+    color: $pale-text-color;
+    & > span {
+      display: flex;
+      width: 1.1em;
+      height: 1.1em;
+      background-image: url("/assets/img/icons/map-marker.png");
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      margin-right: 0.5em;
+    }
+  }
+  .phoneBlock {
+    padding-left: 1em;
+    margin-top: 1em;
+    .showPhone {
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      color: $main;
+      text-decoration: underline;
+      cursor: pointer;
+      & > span {
+        display: flex;
+        width: 1.1em;
+        height: 1.1em;
+        background-image: url("/assets/img/icons/phone.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin-right: 0.5em;
+      }
+    }
+    & > a {
+      display: flex;
+      margin-top: 0.5em;
+      color: $main;
+      text-decoration: none;
+    }
+  }
+  .socNet {
+    display: flex;
+    align-items: center;
+    color: $label-color;
+    margin-top: 0.8em;
+    padding-left: 1em;
+    & > ul {
+      display: flex;
+      & > a > li {
+        list-style: none;
+        width: 1.6em;
+        height: 1.6em;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
