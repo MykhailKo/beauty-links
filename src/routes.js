@@ -13,6 +13,7 @@ const FaveMasters = lazy(() =>
   import("./pages/UserProfile/FaveMasters/FaveMasters")
 );
 const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
+const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function getRoutes(isAuth) {
@@ -39,12 +40,18 @@ export default function getRoutes(isAuth) {
   ];
   const nonAuthRoutes = [
     <Route path="/register" key="/register" component={Registration} />,
+    // temporary route master page
+    <Route
+      path="/master-page"
+      key="/master-page"
+      exact
+      component={MasterPage}
+    />,
   ];
   return (
     <Suspense fallback={<Preloader height="80vh" />}>
       <Switch>
         <Route path="/" key="/" exact component={Landing} />
-
         {isAuth ? authRoutes : nonAuthRoutes}
         <Route path="/404" key="/404" component={NotFound} />
 
