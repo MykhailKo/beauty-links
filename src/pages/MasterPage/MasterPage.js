@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router";
 
 import Button from "../../components/Button/Button";
 import TimeDisplay from "../../components/TimeDisplay/TimeDisplay";
@@ -14,6 +15,7 @@ import styles from "./MasterPage.module.scss";
 import MasterSchedule from "./MasterSchedule/MasterSchedule";
 
 const MasterPage = () => {
+  const { masterid } = useParams();
   // const {request, loading} = useHttp();
   // const getMaster = async (id) => {
   //   try {
