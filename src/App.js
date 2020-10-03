@@ -41,7 +41,7 @@ class App extends React.Component {
       const isExpired = today > tokenExpirationDate;
       if (isExpired) {
         await this.logout();
-        this.props.history.push("/login");
+        // this.props.history.push("/login");
       } else {
         this.login({
           token,
@@ -54,7 +54,7 @@ class App extends React.Component {
         });
       }
     } else {
-      this.props.history.push("/login");
+      // this.props.history.push("/login");
       await this.logout();
     }
   }
@@ -102,7 +102,7 @@ class App extends React.Component {
     localStorage.removeItem("email");
     localStorage.removeItem("user_id");
     localStorage.removeItem("master_info");
-    this.props.history.push("/");
+    // this.props.history.push("/");
   }
   render() {
     console.log(this.state.isAuthenticated);
