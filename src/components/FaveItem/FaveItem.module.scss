@@ -126,22 +126,10 @@
       width: 100%;
       padding: 1em 0;
       & > li {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        padding: 0.7em 0;
         @media (max-width: $break_sm) {
           justify-content: space-between;
         }
-        .serviceName {
-          width: 37%;
-        }
-        .serviceDuration {
-          color: $label-color;
-          width: 8%;
-        }
-        .servicePrice {
-          width: 12%;
+        & > span:nth-of-type(3) {
           @media (max-width: $break_sm) {
             width: 16%;
           }

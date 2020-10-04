@@ -25,7 +25,6 @@ const MasterSchedule = ({ schedule }) => {
         <ul className={styles.schedule}>
           {Object.entries(schedule).map((day, key) => {
             if (day[1].length !== 0) {
-              console.log(day[1]);
               return (
                 <li>
                   <span className={styles.dayName}>{days[day[0]]}</span>

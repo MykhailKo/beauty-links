@@ -47,6 +47,25 @@ export default function getRoutes(isAuth) {
       exact
       component={MasterPage}
     />,
+    <Route
+      path="/user"
+      key="/user"
+      render={({ match: { url } }) => (
+        <UserProfile>
+          <Switch>
+            <Route
+              path={`${url}/achievements`}
+              component={Achievements}
+              exact
+            />
+            <Route path={`${url}/bookings`} component={Bookings} exact />
+            <Route path={`${url}/settings`} component={Settings} exact />
+            <Route path={`${url}/favourites`} component={FaveMasters} exact />
+            <Redirect to={`${url}/achievements`} />
+          </Switch>
+        </UserProfile>
+      )}
+    />,
   ];
   return (
     <Suspense fallback={<Preloader height="80vh" />}>

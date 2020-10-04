@@ -2,6 +2,7 @@ import React from "react";
 
 import Button from "../Button/Button";
 import Stars from "../Stars/Stars";
+import MasterServiceItem from "../../components/MasterServiceItem/MasterServiceItem";
 
 import styles from "./FaveItem.module.scss";
 
@@ -33,16 +34,7 @@ const FaveItem = ({ masterData }) => {
         </div>
         <ul className={styles.masterServices}>
           {masterData.servives.map((service, key) => {
-            return (
-              <li key={key}>
-                <span className={styles.serviceName}>{service.name}</span>
-                <span className={styles.serviceDuration}>
-                  {service.duration} ч
-                </span>
-                <span className={styles.servicePrice}>{service.price} грн</span>
-                <Button text={"Забронировать"} onClick={() => {}} />
-              </li>
-            );
+            return <MasterServiceItem service={service} key={key} />;
           })}
         </ul>
         <a href="" className={styles.masterLink}>

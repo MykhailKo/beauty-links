@@ -1,0 +1,17 @@
+.masterCertsWrap {
+  width: 100%;
+  .title {
+    display: flex;
+    align-items: center;
+    & > span {
+      display: flex;
+      width: 1em;
+      height: 1.5em;
+      background-image: url("/assets/img/icons/cert.png");
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-right: 0.5em;
+    }
+  }
+}
