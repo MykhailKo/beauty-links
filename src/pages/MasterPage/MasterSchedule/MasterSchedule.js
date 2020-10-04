@@ -27,7 +27,7 @@ const MasterSchedule = ({ schedule }) => {
             if (day[1].length !== 0) {
               console.log(day[1]);
               return (
-                <li>
+                <li key={key}>
                   <span className={styles.dayName}>{days[day[0]]}</span>
                   <div className={styles.times}>
                     <TimeDisplay time={day[1].available.from} />

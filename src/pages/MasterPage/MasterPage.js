@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useParams } from "react-router";
+import { useHttp } from "../../hooks/useHttp";
 
 import Button from "../../components/Button/Button";
 import TimeDisplay from "../../components/TimeDisplay/TimeDisplay";
@@ -7,30 +8,36 @@ import Stars from "../../components/Stars/Stars";
 import ShBox from "../../components/ShBox/ShBox";
 import SecTitle from "../../components//SecTitle/SecTitle";
 import MasterContacts from "./MasterContacts/MasterContacts";
-import masterSchedule from "./MasterSchedule/MasterSchedule";
-
-import useHttp from "../../hooks/useHttp";
+import MasterSchedule from "./MasterSchedule/MasterSchedule";
 
 import styles from "./MasterPage.module.scss";
-import MasterSchedule from "./MasterSchedule/MasterSchedule";
+import { useEffect } from "react";
+import Preloader from "../../components/Preloader/Preloader";
 
 const MasterPage = () => {
   const { masterid } = useParams();
-  // const {request, loading} = useHttp();
-  // const getMaster = async (id) => {
-  //   try {
-  //   const response = await request(
-  //     `/api/v1.0/master${id}/info`,
-  //     "GET",
-  //     null,
-  //     {}
-  //   )
-  //   if(response.status === 200) return response;
-  //   } catch(error) {
-  //     console.log(error);
-  //   }
-  // }
+  const { request, loading } = useHttp();
+  const [masterData, setMasterData] = useState(null);
 
+  const getMaster = useCallback(
+    async (id) => {
+      try {
+        const response = await request(
+          `/api/v1.0/master/${id}/info`,
+          "GET",
+          null,
+          {}
+        );
+        if (response.status === 200) setMasterData({ ...response });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [request]
+  );
+  useEffect(() => {
+    getMaster(masterid);
+  }, [getMaster, masterid]);
   const master = {
     full_name: "Алина Т.",
     call_out_charge: 0,
@@ -107,69 +114,75 @@ const MasterPage = () => {
 
   return (
     <div className={"container"}>
-      <div className={styles.masterInfoWrap}>
-        <section className={styles.masterDescription}>
-          <div
-            className={styles.avatar}
-            style={{ backgroundImage: `url(${master.avatar})` }}
-          ></div>
-          <Stars rate={master.master_rating} />
-          <span className={styles.reviewsCount}>
-            {master.master_reviews_count} отзывов
-          </span>
-          <a href>(Показать все)</a>
-          <h2 className={styles.name}>{master.full_name}</h2>
-          <ul className={styles.masterActions}>
-            <li onClick={() => true}>
-              <div
-                className={styles.actionIcon}
-                style={{ backgroundImage: `url(/assets/img/icons/favs.png)` }}
-              ></div>
-              <span>В избранное</span>
-            </li>
-            <li>
-              <div
-                className={styles.actionIcon}
-                style={{
-                  backgroundImage: `url(/assets/img/icons/reviews.png)`,
-                }}
-              ></div>
-              <span>Отзывы</span>
-            </li>
-            <li>
-              <div
-                className={styles.actionIcon}
-                style={{
-                  backgroundImage: `url(/assets/img/icons/complaints.png)`,
-                }}
-              ></div>
-              <span>Жалобы</span>
-            </li>
-            <li onClick={() => true}>
-              <div
-                className={styles.actionIcon}
-                style={{ backgroundImage: `url(/assets/img/icons/share.png)` }}
-              ></div>
-              <span>Поделиться</span>
-            </li>
-          </ul>
-          <div className={styles.masterBio}>{master.bio}</div>
-        </section>
-        <section className={styles.locationContacts}>
-          <MasterContacts
-            address={master.geoposition.salon}
-            phone={master.phone}
-          />
-        </section>
-        <section className={styles.masterSchedule}>
-          <MasterSchedule schedule={master.schedules.salon[652]} />
-        </section>
-        <section className={styles.titleSec}>
-          <SecTitle align="left" title={"Забронируйте визит "} />
-        </section>
-        <section className={styles.masterBookings}></section>
-        <section className={styles.masterCerts}></section>
-      </div>
+      {loading || masterData === null ? (
+        <Preloader />
+      ) : (
+        <div className={styles.masterInfoWrap}>
+          <section className={styles.masterDescription}>
+            <div
+              className={styles.avatar}
+              style={{ backgroundImage: `url(${masterData.avatar})` }}
+            ></div>
+            <Stars rate={masterData.master_rating} />
+            <span className={styles.reviewsCount}>
+              {masterData.master_reviews_count} отзывов
+            </span>
+            <a href={"#"}>(Показать все)</a>
+            <h2 className={styles.name}>{masterData.full_name}</h2>
+            <ul className={styles.masterActions}>
+              <li onClick={() => true}>
+                <div
+                  className={styles.actionIcon}
+                  style={{ backgroundImage: `url(/assets/img/icons/favs.png)` }}
+                ></div>
+                <span>В избранное</span>
+              </li>
+              <li>
+                <div
+                  className={styles.actionIcon}
+                  style={{
+                    backgroundImage: `url(/assets/img/icons/reviews.png)`,
+                  }}
+                ></div>
+                <span>Отзывы</span>
+              </li>
+              <li>
+                <div
+                  className={styles.actionIcon}
+                  style={{
+                    backgroundImage: `url(/assets/img/icons/complaints.png)`,
+                  }}
+                ></div>
+                <span>Жалобы</span>
+              </li>
+              <li onClick={() => true}>
+                <div
+                  className={styles.actionIcon}
+                  style={{
+                    backgroundImage: `url(/assets/img/icons/share.png)`,
+                  }}
+                ></div>
+                <span>Поделиться</span>
+              </li>
+            </ul>
+            <div className={styles.masterBio}>{masterData.bio}</div>
+          </section>
+          <section className={styles.locationContacts}>
+            <MasterContacts
+              address={masterData.geoposition.salon}
+              phone={masterData.phone}
+            />
+          </section>
+          <section className={styles.masterSchedule}>
+            <MasterSchedule schedule={masterData.schedules.salon[652]} />
+          </section>
+          <section className={styles.titleSec}>
+            <SecTitle align="left" title={"Забронируйте визит "} />
+          </section>
+          <section className={styles.masterBookings}></section>
+          <section className={styles.masterCerts}></section>
+        </div>
+      )}
     </div>
   );
 };
