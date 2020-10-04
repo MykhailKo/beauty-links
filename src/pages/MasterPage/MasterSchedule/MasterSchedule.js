@@ -26,7 +26,7 @@ const MasterSchedule = ({ schedule }) => {
           {Object.entries(schedule).map((day, key) => {
             if (day[1].length !== 0) {
               return (
-                <li>
+                <li key={key}>
                   <span className={styles.dayName}>{days[day[0]]}</span>
                   <div className={styles.times}>
                     <TimeDisplay time={day[1].available.from} />

@@ -37,13 +37,19 @@ export default function getRoutes(isAuth) {
         </UserProfile>
       )}
     />,
+    <Route
+      path="/master/:masterid"
+      key="/master/:masterid"
+      exact
+      component={MasterPage}
+    />,
   ];
   const nonAuthRoutes = [
     <Route path="/register" key="/register" component={Registration} />,
     // temporary route master page
     <Route
-      path="/master-page"
-      key="/master-page"
+      path="/master/:masterid"
+      key="/master/:masterid"
       exact
       component={MasterPage}
     />,
