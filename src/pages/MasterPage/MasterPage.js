@@ -3,9 +3,7 @@ import { useParams } from "react-router";
 import { useHttp } from "../../hooks/useHttp";
 
 import Button from "../../components/Button/Button";
-import TimeDisplay from "../../components/TimeDisplay/TimeDisplay";
 import Stars from "../../components/Stars/Stars";
-import ShBox from "../../components/ShBox/ShBox";
 import SecTitle from "../../components//SecTitle/SecTitle";
 import MasterContacts from "./MasterContacts/MasterContacts";
 import MasterSchedule from "./MasterSchedule/MasterSchedule";
@@ -14,6 +12,7 @@ import MasterServices from "./MasterServices/MasterServices";
 import MasterCerts from "./MasterCerts/MasterCerts";
 import PagesControl from "../../components/PagesControl/PagesControl";
 import ReviewItem from "../../components/ReviewItem/ReviewItem";
+import SimilarMasterItem from "../../components/SimilarMasterItem/SimilarMasterItem";
 
 import styles from "./MasterPage.module.scss";
 import { useEffect } from "react";
@@ -21,6 +20,7 @@ import { useEffect } from "react";
 const MasterPage = () => {
   const { masterid } = useParams();
   const { request, loading } = useHttp();
+  const [reviewsPage, setReviewsPage] = useState(1);
   const [masterData, setMasterData] = useState(null);
 
   const getMaster = useCallback(
@@ -42,80 +42,80 @@ const MasterPage = () => {
   useEffect(() => {
     getMaster(masterid);
   }, [getMaster, masterid]);
-  const master = {
-    full_name: "Алина Т.",
-    call_out_charge: 0,
-    avatar: "/assets/img/anna-brown.png",
-    work_images: [
-      "/assets/img/port1.png",
-      "/assets/img/port2.png",
-      "/assets/img/port3.png",
-      "/assets/img/port4.png",
-      "/assets/img/port5.png",
-      "/assets/img/port6.png",
-    ],
-    certificate_images: [],
-    master_reviews_count: 5,
-    master_rating: 3.8,
-    bio:
-      "Работаю массажистом с 2010 года. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    phone: "0935111841",
-    qualifications: ["Массаж"],
-    experience: 141,
-    work_location_types: {
-      salon: true,
-      mobile: false,
-    },
-    schedules: {
-      salon: {
-        652: {
-          friday: {
-            available: {
-              to: "20:00",
-              from: "08:00",
-            },
-          },
-          monday: {
-            available: {
-              to: "20:00",
-              from: "08:00",
-            },
-          },
-          sunday: [],
-          tuesday: {
-            available: {
-              to: "20:00",
-              from: "08:00",
-            },
-          },
-          saturday: {
-            available: {
-              to: "17:00",
-              from: "09:00",
-            },
-          },
-          thursday: {
-            available: {
-              to: "20:00",
-              from: "08:00",
-            },
-          },
-          wednesday: {
-            available: {
-              to: "20:00",
-              from: "08:00",
-            },
-          },
-        },
-      },
-    },
-    geoposition: {
-      salon: {
-        lon: 36.25125,
-        lat: 49.97904,
-      },
-    },
-  };
+  // const masterData = {
+  //   full_name: "Алина Т.",
+  //   call_out_charge: 0,
+  //   avatar: "/assets/img/anna-brown.png",
+  //   work_images: [
+  //     "/assets/img/port1.png",
+  //     "/assets/img/port2.png",
+  //     "/assets/img/port3.png",
+  //     "/assets/img/port4.png",
+  //     "/assets/img/port5.png",
+  //     "/assets/img/port6.png",
+  //   ],
+  //   certificate_images: [],
+  //   master_reviews_count: 5,
+  //   master_rating: 3.8,
+  //   bio:
+  //     "Работаю массажистом с 2010 года. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //   phone: "0935111841",
+  //   qualifications: ["Массаж"],
+  //   experience: 141,
+  //   work_location_types: {
+  //     salon: true,
+  //     mobile: false,
+  //   },
+  //   schedules: {
+  //     salon: {
+  //       652: {
+  //         friday: {
+  //           available: {
+  //             to: "20:00",
+  //             from: "08:00",
+  //           },
+  //         },
+  //         monday: {
+  //           available: {
+  //             to: "20:00",
+  //             from: "08:00",
+  //           },
+  //         },
+  //         sunday: [],
+  //         tuesday: {
+  //           available: {
+  //             to: "20:00",
+  //             from: "08:00",
+  //           },
+  //         },
+  //         saturday: {
+  //           available: {
+  //             to: "17:00",
+  //             from: "09:00",
+  //           },
+  //         },
+  //         thursday: {
+  //           available: {
+  //             to: "20:00",
+  //             from: "08:00",
+  //           },
+  //         },
+  //         wednesday: {
+  //           available: {
+  //             to: "20:00",
+  //             from: "08:00",
+  //           },
+  //         },
+  //       },
+  //     },
+  //   },
+  //   geoposition: {
+  //     salon: {
+  //       lon: 36.25125,
+  //       lat: 49.97904,
+  //     },
+  //   },
+  // };
 
   const services = [
     { id: 17, name: "Маникюр", duration: 1, price: 100 },
@@ -168,7 +168,23 @@ const MasterPage = () => {
     },
   ];
 
-  const [reviewsPage, setReviewsPage] = useState(1);
+  const similarMasters = [
+    {
+      name: "Мария Салоедова",
+      location: "Харьков, ул. Пушкинская 2",
+      img: "/assets/img/sim-master1.png",
+    },
+    {
+      name: "Анжела Сухова",
+      location: "Харьков, пр-кт Алёшина 12б",
+      img: "/assets/img/sim-master2.png",
+    },
+    {
+      name: "Евгения Многошерстова",
+      location: "Харьков, пр-кт Науки, 42, офис 13",
+      img: "/assets/img/sim-master3.png",
+    },
+  ];
 
   return (
     <div>
@@ -245,18 +261,18 @@ const MasterPage = () => {
                 <MasterServices services={services} />
               </section>
               <section className={styles.masterCerts}>
-                <MasterCerts certs={master.certificate_images} />
+                <MasterCerts certs={masterData.certificate_images} />
               </section>
             </div>
             <SecTitle align={"left"} title={"Портфолио мастера"} />
             <ul className={styles.portfolioGallery}>
-              {master.work_images.map((img, key) => {
+              {masterData.work_images.map((img, key) => {
                 return <li style={{ backgroundImage: `url(${img})` }}></li>;
               })}
             </ul>
             <SecTitle
               align={"left"}
-              title={`Отзывы (${master.master_reviews_count})`}
+              title={`Отзывы (${masterData.master_reviews_count})`}
             />
             <section className={styles.masterReviews}>
               <ul className={styles.reviewsList}>
@@ -278,7 +294,11 @@ const MasterPage = () => {
           </div>
           <section className={styles.simillarMasters}>
             <SecTitle align={"left"} title={"Похожие мастера"} />
-            <ul></ul>
+            <ul>
+              {similarMasters.map((master, key) => {
+                return <SimilarMasterItem master={master} key={key} />;
+              })}
+            </ul>
           </section>
         </div>
       )}
