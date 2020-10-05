@@ -15,7 +15,7 @@ const MasterCerts = ({ certs = [] }) => {
           {certs.map((cert, key) => {
             return (
               <li key={key}>
-                <img src={cert} alt={`certificate ${key}`}></img>
+                <img src={cert} alt={`certificate ${key + 1}`}></img>
               </li>
             );
           })}
