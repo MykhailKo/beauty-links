@@ -117,7 +117,7 @@ const MasterPage = () => {
   //   },
   // };
 
-  const services = [
+  const subServices = [
     { id: 17, name: "Маникюр", duration: 1, price: 100 },
     { id: 18, name: "Педикюр", duration: 1, price: 100 },
     { id: 19, name: "SPA Маникюр и Педикюр", duration: 2, price: 200 },
@@ -260,7 +260,7 @@ const MasterPage = () => {
                 <SecTitle align="left" title={"Забронируйте визит "} />
               </section>
               <section className={styles.masterBookings}>
-                <MasterServices services={services} />
+                <MasterServices masterId={masterid} />
               </section>
               <section className={styles.masterCerts}>
                 <MasterCerts certs={masterData.certificate_images} />
