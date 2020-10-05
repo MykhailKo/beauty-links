@@ -116,7 +116,7 @@ const Settings = () => {
             type="password"
             placeholder="Введите старый пароль"
           />
-          <div></div>
+          <div className={styles.invisible}></div>
           <Input
             name={"old-password"}
             type="password"
