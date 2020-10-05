@@ -87,6 +87,12 @@
     display: grid;
     grid-area: 4/2/5/3;
     align-self: stretch;
+    & li {
+      list-style-type: none;
+      & img {
+        width: 100%;
+      }
+    }
   }
 }
 .portfolioGallery {

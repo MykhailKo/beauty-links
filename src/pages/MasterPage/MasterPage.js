@@ -117,13 +117,13 @@ const MasterPage = () => {
   //   },
   // };
 
-  const subServices = [
-    { id: 17, name: "Маникюр", duration: 1, price: 100 },
-    { id: 18, name: "Педикюр", duration: 1, price: 100 },
-    { id: 19, name: "SPA Маникюр и Педикюр", duration: 2, price: 200 },
-    { id: 20, name: "Наращивание Ногтей", duration: 1, price: 250 },
-    { id: 21, name: "Дизайн Ногтей", duration: 1, price: 200 },
-  ];
+  // const subServices = [
+  //   { id: 17, name: "Маникюр", duration: 1, price: 100 },
+  //   { id: 18, name: "Педикюр", duration: 1, price: 100 },
+  //   { id: 19, name: "SPA Маникюр и Педикюр", duration: 2, price: 200 },
+  //   { id: 20, name: "Наращивание Ногтей", duration: 1, price: 250 },
+  //   { id: 21, name: "Дизайн Ногтей", duration: 1, price: 200 },
+  // ];
 
   const reviews = [
     {
