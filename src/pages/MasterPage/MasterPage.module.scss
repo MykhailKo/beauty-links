@@ -1,6 +1,9 @@
 @import "../../assets/scss/colors";
 @import "../../assets/scss/widths";
 
+.MasterPage {
+  flex: 1;
+}
 .masterInfoWrap {
   width: 100%;
   display: grid;
@@ -84,6 +87,12 @@
     display: grid;
     grid-area: 4/2/5/3;
     align-self: stretch;
+    & li {
+      list-style-type: none;
+      & img {
+        width: 100%;
+      }
+    }
   }
 }
 .portfolioGallery {

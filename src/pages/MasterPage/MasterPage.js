@@ -117,13 +117,13 @@ const MasterPage = () => {
     },
   };
 
-  const services = [
-    { id: 17, name: "Маникюр", duration: 1, price: 100 },
-    { id: 18, name: "Педикюр", duration: 1, price: 100 },
-    { id: 19, name: "SPA Маникюр и Педикюр", duration: 2, price: 200 },
-    { id: 20, name: "Наращивание Ногтей", duration: 1, price: 250 },
-    { id: 21, name: "Дизайн Ногтей", duration: 1, price: 200 },
-  ];
+  // const subServices = [
+  //   { id: 17, name: "Маникюр", duration: 1, price: 100 },
+  //   { id: 18, name: "Педикюр", duration: 1, price: 100 },
+  //   { id: 19, name: "SPA Маникюр и Педикюр", duration: 2, price: 200 },
+  //   { id: 20, name: "Наращивание Ногтей", duration: 1, price: 250 },
+  //   { id: 21, name: "Дизайн Ногтей", duration: 1, price: 200 },
+  // ];
 
   const reviews = [
     {
@@ -187,9 +187,9 @@ const MasterPage = () => {
   ];
 
   return (
-    <div>
+    <div className={styles.MasterPage}>
       {loading || masterData === null ? (
-        <Preloader />
+        <Preloader height={"100%"} />
       ) : (
         <div>
           <div className={"container"}>
@@ -247,18 +247,24 @@ const MasterPage = () => {
               </section>
               <section className={styles.locationContacts}>
                 <MasterContacts
-                  address={masterData.geoposition.salon}
+                  address={masterData?.geoposition?.salon || ""}
                   phone={masterData.phone}
                 />
               </section>
               <section className={styles.masterSchedule}>
-                <MasterSchedule schedule={masterData.schedules.salon[652]} />
+                <MasterSchedule
+                  schedule={
+                    masterData?.schedules?.salon
+                      ? Object.values(masterData.schedules.salon)[0]
+                      : []
+                  }
+                />
               </section>
               <section className={styles.titleSec}>
                 <SecTitle align="left" title={"Забронируйте визит "} />
               </section>
               <section className={styles.masterBookings}>
-                <MasterServices services={services} />
+                <MasterServices masterId={masterid} />
               </section>
               <section className={styles.masterCerts}>
                 <MasterCerts certs={masterData.certificate_images} />
@@ -267,7 +273,9 @@ const MasterPage = () => {
             <SecTitle align={"left"} title={"Портфолио мастера"} />
             <ul className={styles.portfolioGallery}>
               {masterData.work_images.map((img, key) => {
-                return <li style={{ backgroundImage: `url(${img})` }}></li>;
+                return (
+                  <li style={{ backgroundImage: `url(${img})` }} key={key}></li>
+                );
               })}
             </ul>
             <SecTitle

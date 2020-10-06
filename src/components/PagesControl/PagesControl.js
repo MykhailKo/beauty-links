@@ -12,11 +12,12 @@ const PagesControl = ({ page, setPage, maxPage }) => {
         Предыдущая страница
       </button>
       <ul className={styles.pagesNumbers}>
-        {Array.from(Array(maxPage).keys()).map((num) => {
+        {Array.from(Array(maxPage).keys()).map((num, index) => {
           return (
             <li
               onClick={() => setPage(num + 1)}
               className={num + 1 === page ? styles.activePage : ""}
+              key={index}
             >
               {num + 1}
             </li>

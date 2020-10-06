@@ -14,7 +14,9 @@ const MasterCerts = ({ certs = [] }) => {
         <ul className={styles.certsList}>
           {certs.map((cert, key) => {
             return (
-              <li style={{ backgroundImage: `url(${cert})` }} key={key}></li>
+              <li key={key}>
+                <img src={cert} alt={`certificate ${key + 1}`}></img>
+              </li>
             );
           })}
         </ul>

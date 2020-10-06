@@ -89,7 +89,7 @@ const Settings = () => {
         <div className={styles.select}>
           <Select
             label={"Статус"}
-            options={[{ text: "Активный" }]}
+            options={[{ text: "Активный" }, { text: "Неактивный" }]}
             id={"select"}
             theme={""}
           />
@@ -112,11 +112,11 @@ const Settings = () => {
             name={"old-password"}
             value={oldPassword}
             onChange={(e) => setoldPassword(e.target.value)}
-            error={"неверный пароль"}
+            error={""}
             type="password"
             placeholder="Введите старый пароль"
           />
-          <div></div>
+          <div className={styles.invisible}></div>
           <Input
             name={"old-password"}
             type="password"
@@ -143,7 +143,6 @@ const Settings = () => {
             name={"old-email"}
             error={false}
             value={""}
-            onChange={""}
             placeholder={email}
             disabled={true}
           />
