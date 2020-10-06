@@ -4,11 +4,21 @@ import ShBox from "../../components/ShBox/ShBox";
 
 import styles from "./PopUpWindow.module.scss";
 
-const PopUpWindow = ({ opened, setOpened, size = "m", children }) => {
+const PopUpWindow = ({
+  opened,
+  setOpened,
+  size = "m",
+  zIndex = 20,
+  children,
+}) => {
   return (
     <div
       className={styles.popUpBlock}
-      style={opened ? { opacity: 1, left: 0 } : { opacity: 0, left: "-100vw" }}
+      style={
+        opened
+          ? { opacity: 1, left: 0, zIndex: zIndex }
+          : { opacity: 0, left: "-100vw", zIndex: zIndex }
+      }
     >
       <div className={styles.popUpBg}></div>
       <div

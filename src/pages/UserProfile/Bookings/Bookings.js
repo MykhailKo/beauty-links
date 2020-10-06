@@ -58,7 +58,12 @@ const Bookings = () => {
       <a className={styles.policyLink} onClick={() => setPolicyOpened(true)}>
         Условия отмены/переноса бронирования
       </a>
-      <PopUpWindow size={"l"} opened={policyOpened} setOpened={setPolicyOpened}>
+      <PopUpWindow
+        size={"l"}
+        opened={policyOpened}
+        setOpened={setPolicyOpened}
+        zIndex={22}
+      >
         <SecTitle title={"Отмена бронирования:"} />
         <p>
           1) Если вы совершили бронирование услуги{" "}
