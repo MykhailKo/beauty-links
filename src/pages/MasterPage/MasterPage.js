@@ -247,13 +247,17 @@ const MasterPage = () => {
               </section>
               <section className={styles.locationContacts}>
                 <MasterContacts
-                  address={masterData.geoposition.salon}
+                  address={masterData?.geoposition?.salon || ""}
                   phone={masterData.phone}
                 />
               </section>
               <section className={styles.masterSchedule}>
                 <MasterSchedule
-                  schedule={Object.values(masterData.schedules.salon)[0]}
+                  schedule={
+                    masterData?.schedules?.salon
+                      ? Object.values(masterData.schedules.salon)[0]
+                      : []
+                  }
                 />
               </section>
               <section className={styles.titleSec}>
