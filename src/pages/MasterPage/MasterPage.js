@@ -21,101 +21,101 @@ const MasterPage = () => {
   const { masterid } = useParams();
   const { request, loading } = useHttp();
   const [reviewsPage, setReviewsPage] = useState(1);
-  const [masterData, setMasterData] = useState(null);
+  // const [masterData, setMasterData] = useState(null);
 
-  const getMaster = useCallback(
-    async (id) => {
-      try {
-        const response = await request(
-          `/api/v1.0/master/${id}/info`,
-          "GET",
-          null,
-          {}
-        );
-        if (response.status === 200) setMasterData({ ...response });
-      } catch (error) {
-        console.log(error);
-      }
+  // const getMaster = useCallback(
+  //   async (id) => {
+  //     try {
+  //       const response = await request(
+  //         `/api/v1.0/master/${id}/info`,
+  //         "GET",
+  //         null,
+  //         {}
+  //       );
+  //       if (response.status === 200) setMasterData({ ...response });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   },
+  //   [request]
+  // );
+  // useEffect(() => {
+  //   getMaster(masterid);
+  // }, [getMaster, masterid]);
+  const masterData = {
+    full_name: "Алина Т.",
+    call_out_charge: 0,
+    avatar: "/assets/img/anna-brown.png",
+    work_images: [
+      "/assets/img/port1.png",
+      "/assets/img/port2.png",
+      "/assets/img/port3.png",
+      "/assets/img/port4.png",
+      "/assets/img/port5.png",
+      "/assets/img/port6.png",
+    ],
+    certificate_images: [],
+    master_reviews_count: 5,
+    master_rating: 3.8,
+    bio:
+      "Работаю массажистом с 2010 года. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    phone: "0935111841",
+    qualifications: ["Массаж"],
+    experience: 141,
+    work_location_types: {
+      salon: true,
+      mobile: false,
     },
-    [request]
-  );
-  useEffect(() => {
-    getMaster(masterid);
-  }, [getMaster, masterid]);
-  // const masterData = {
-  //   full_name: "Алина Т.",
-  //   call_out_charge: 0,
-  //   avatar: "/assets/img/anna-brown.png",
-  //   work_images: [
-  //     "/assets/img/port1.png",
-  //     "/assets/img/port2.png",
-  //     "/assets/img/port3.png",
-  //     "/assets/img/port4.png",
-  //     "/assets/img/port5.png",
-  //     "/assets/img/port6.png",
-  //   ],
-  //   certificate_images: [],
-  //   master_reviews_count: 5,
-  //   master_rating: 3.8,
-  //   bio:
-  //     "Работаю массажистом с 2010 года. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  //   phone: "0935111841",
-  //   qualifications: ["Массаж"],
-  //   experience: 141,
-  //   work_location_types: {
-  //     salon: true,
-  //     mobile: false,
-  //   },
-  //   schedules: {
-  //     salon: {
-  //       652: {
-  //         friday: {
-  //           available: {
-  //             to: "20:00",
-  //             from: "08:00",
-  //           },
-  //         },
-  //         monday: {
-  //           available: {
-  //             to: "20:00",
-  //             from: "08:00",
-  //           },
-  //         },
-  //         sunday: [],
-  //         tuesday: {
-  //           available: {
-  //             to: "20:00",
-  //             from: "08:00",
-  //           },
-  //         },
-  //         saturday: {
-  //           available: {
-  //             to: "17:00",
-  //             from: "09:00",
-  //           },
-  //         },
-  //         thursday: {
-  //           available: {
-  //             to: "20:00",
-  //             from: "08:00",
-  //           },
-  //         },
-  //         wednesday: {
-  //           available: {
-  //             to: "20:00",
-  //             from: "08:00",
-  //           },
-  //         },
-  //       },
-  //     },
-  //   },
-  //   geoposition: {
-  //     salon: {
-  //       lon: 36.25125,
-  //       lat: 49.97904,
-  //     },
-  //   },
-  // };
+    schedules: {
+      salon: {
+        652: {
+          friday: {
+            available: {
+              to: "20:00",
+              from: "08:00",
+            },
+          },
+          monday: {
+            available: {
+              to: "20:00",
+              from: "08:00",
+            },
+          },
+          sunday: [],
+          tuesday: {
+            available: {
+              to: "20:00",
+              from: "08:00",
+            },
+          },
+          saturday: {
+            available: {
+              to: "17:00",
+              from: "09:00",
+            },
+          },
+          thursday: {
+            available: {
+              to: "20:00",
+              from: "08:00",
+            },
+          },
+          wednesday: {
+            available: {
+              to: "20:00",
+              from: "08:00",
+            },
+          },
+        },
+      },
+    },
+    geoposition: {
+      salon: {
+        lon: 36.25125,
+        lat: 49.97904,
+      },
+    },
+  };
 
   const services = [
     { id: 17, name: "Маникюр", duration: 1, price: 100 },
@@ -182,7 +182,7 @@ const MasterPage = () => {
     {
       name: "Евгения Многошерстова",
       location: "Харьков, пр-кт Науки, 42, офис 13",
-      img: "/assets/img/sim-master3.png",
+      img: "/assets/img/sim-master1.png",
     },
   ];
 
