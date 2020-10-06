@@ -18,6 +18,7 @@ const MasterContacts = ({
   return (
     <div className={styles.contactsWrap}>
       <iframe
+        title={"map"}
         className={styles.map}
         id={"gmap_canvas"}
         src={`https://maps.google.com/maps?q=${address.lat},${address.lon}&output=embed`}
