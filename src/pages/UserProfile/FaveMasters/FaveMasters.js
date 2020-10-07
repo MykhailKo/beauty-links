@@ -14,9 +14,9 @@ const faveMasters = [
     rate: 4,
     salonAddress: "Украина, г. Харьков, ул. Сумская 35а",
     servives: [
-      { id: 17, name: "Маникюр", duration: 1, price: 100 },
-      { id: 18, name: "Педикюр", duration: 1, price: 100 },
-      { id: 19, name: "SPA Маникюр и Педикюр", duration: 2, price: 200 },
+      { id: 17, name: "Маникюр", duration: 15, price: 100 },
+      { id: 18, name: "Педикюр", duration: 10, price: 100 },
+      { id: 19, name: "SPA Маникюр и Педикюр", duration: 20, price: 200 },
     ],
   },
   {
@@ -26,9 +26,9 @@ const faveMasters = [
     rate: 4,
     salonAddress: "Украина, г. Харьков, ул. Сумская 35а",
     servives: [
-      { id: 17, name: "Маникюр", duration: 1, price: 100 },
-      { id: 18, name: "Педикюр", duration: 1, price: 100 },
-      { id: 19, name: "SPA Маникюр и Педикюр", duration: 2, price: 200 },
+      { id: 17, name: "Маникюр", duration: 60, price: 100 },
+      { id: 18, name: "Педикюр", duration: 60, price: 100 },
+      { id: 19, name: "SPA Маникюр и Педикюр", duration: 120, price: 200 },
     ],
   },
 ];
