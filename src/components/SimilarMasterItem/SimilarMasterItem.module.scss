@@ -1,9 +1,14 @@
 @import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
 .similarMasterWrap {
   position: relative;
   width: 20em;
   height: 13em;
   margin-bottom: 1em;
+  @media (max-width: $break_md) {
+    width: 100%;
+  }
   cursor: pointer;
   .shadedBg {
     position: absolute;

@@ -29,7 +29,7 @@ const MasterServices = ({ masterId }) => {
     fetchServices();
   }, [fetchServices]);
   return (
-    <ShBox borderRadius={"0"} padding={"1.5em"}>
+    <ShBox borderRadius={"0"} padding={"1em"}>
       {loading ? (
         <Preloader />
       ) : (

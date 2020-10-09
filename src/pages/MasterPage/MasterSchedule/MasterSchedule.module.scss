@@ -6,6 +6,12 @@
   .title {
     display: flex;
     align-items: center;
+    @media (max-width: $break_md) {
+      flex-flow: row-reverse;
+      justify-content: flex-end;
+      font-size: 1.3em;
+      font-weight: 700;
+    }
     & > span {
       display: flex;
       width: 1.1em;
@@ -15,11 +21,17 @@
       background-position: center;
       background-repeat: no-repeat;
       margin-right: 0.5em;
+      @media (max-width: $break_md) {
+        margin-left: 0.5em;
+      }
     }
   }
   & > ul {
     margin-top: 0.5em;
     padding-left: 1.6em;
+    @media (max-width: $break_md) {
+      padding: 0;
+    }
     & > li {
       list-style: none;
       display: flex;
@@ -27,6 +39,9 @@
       align-items: center;
       color: $pale-text-color !important;
       padding: 0.5em 0;
+      @media (max-width: $break_md) {
+        font-size: 1.2em;
+      }
       .times {
         width: 9em;
         display: flex;

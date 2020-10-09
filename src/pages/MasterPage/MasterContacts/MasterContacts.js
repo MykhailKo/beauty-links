@@ -57,7 +57,7 @@ const MasterContacts = ({
         {numberShown && <a href={`tel:${phone}`}>(+38){phone}</a>}
       </div>
       <div className={styles.socNet}>
-        Присоединяйтесь в соцсетях:
+        <span>Присоединяйтесь в соцсетях:</span>
         <ul>
           <a href={socnet.pint}>
             <li

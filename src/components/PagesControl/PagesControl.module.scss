@@ -15,11 +15,17 @@
     font-size: 0.85em;
     color: $label-color;
     cursor: pointer;
+    @media (max-width: $break_md) {
+      display: none;
+    }
   }
   .pagesNumbers {
     display: flex;
     justify-content: center;
     margin: 0 2em;
+    @media (max-width: $break_md) {
+      font-size: 1.4em;
+    }
     & > li {
       width: 1.6em;
       height: 1.6em;

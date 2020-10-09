@@ -1,4 +1,5 @@
 @import "../../../assets/scss/colors";
+@import "../../../assets/scss/widths";
 
 .masterServicesWrap {
   width: 100%;
@@ -6,6 +7,11 @@
   .title {
     font-size: 1.1em;
     color: $pale-text-color;
+    @media (max-width: $break_md) {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: $text-color;
+    }
   }
   .masterServices {
     margin-top: 1em;

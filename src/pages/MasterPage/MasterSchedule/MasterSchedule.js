@@ -17,7 +17,7 @@ const MasterSchedule = ({ schedule }) => {
   };
 
   return (
-    <ShBox padding={"1em 1.5em"} borderRadius={"0"}>
+    <ShBox padding={"1em"} borderRadius={"0"}>
       <div className={styles.scheduleWrap}>
         <div className={styles.title}>
           <span></span>Время работы
