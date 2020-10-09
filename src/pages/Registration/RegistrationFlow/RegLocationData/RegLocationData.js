@@ -7,10 +7,41 @@ import SubTitle from "../../../../components/SubTitle/SubTitle";
 import Button from "../../../../components/Button/Button";
 
 import styles from "./RegLocationData.module.scss";
+import { useHttp } from "../../../../hooks/useHttp";
 
 const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
   const [locationError, setLocationError] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const { request, loading } = useHttp();
+
+  const getLatLong = async (address) => {
+    try {
+      const formattedAdress = address.split(" ").join("%20");
+      const response = await request(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${formattedAdress}&key=${process.env.REACT_APP_API_GMAPS}`
+      );
+      console.log(response);
+      if (response?.results?.length === 0) {
+        throw new Error(
+          "Не найдено такого адреса. Убедитесь что вы правильно его ввели."
+        );
+      } else {
+        const { lat, lng } = response.results[0].geometry.location;
+        return { lat, lng };
+      }
+    } catch (error) {
+      console.log(error);
+      setLocationError(error.message);
+    }
+  };
+  const sumbit = async (e) => {
+    try {
+      e.preventDefault();
+      const latLng = await getLatLong(LocationData.SalonAddress);
+      if (latLng) {
+      }
+    } catch (error) {}
+  };
   const validateLocation = (value) => {
     if (value === "") {
       setLocationError("Необходимо указать адрес вашего места работы");
@@ -69,11 +100,7 @@ const RegLocationData = ({ LocationData, setLocationData, nextStep }) => {
           label={"Укажите адрес вашего салона"}
           required={true}
         />
-        <Button
-          onClick={nextStep}
-          text="Продолжить"
-          disabled={buttonDisabled}
-        />
+        <Button onClick={sumbit} text="Продолжить" disabled={buttonDisabled} />
       </form>
     </div>
   );
