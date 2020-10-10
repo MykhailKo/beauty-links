@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./input.module.scss";
 
 const Input = ({
@@ -14,11 +14,13 @@ const Input = ({
   placeholder = "",
   filled = false,
 }) => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <div className={styles.inputWrap}>
       <input
         placeholder={placeholder}
-        type={type}
+        type={visible ? "text" : type}
         id={name}
         name={name}
         minLength={minLength}
@@ -29,6 +31,17 @@ const Input = ({
         disabled={disabled}
         className={filled ? styles.filledInput : styles.Input}
       />
+      {type === "password" && (
+        <div
+          className={styles.seePassword}
+          onClick={() => setVisible(!visible)}
+          style={
+            !visible
+              ? { backgroundImage: `url('/assets/img/icons/unvis.png')` }
+              : { backgroundImage: `url('/assets/img/icons/vis.png')` }
+          }
+        ></div>
+      )}
       {error && <span className={styles.inputError}>{error}</span>}
     </div>
   );

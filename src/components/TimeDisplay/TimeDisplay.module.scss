@@ -1,0 +1,11 @@
+.hours {
+  position: relative;
+  display: flex;
+  font-size: 1em;
+  font-family: "Gilroy";
+  font-weight: inherit;
+  .minutes {
+    display: flex;
+    font-size: 0.6em;
+  }
+}

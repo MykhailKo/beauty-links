@@ -3,7 +3,7 @@
 .popUpBlock {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   top: 0;
   left: 0;
   display: flex;
@@ -11,10 +11,12 @@
   justify-content: center;
   z-index: 20;
   transition: opacity 0.4s;
+  overflow-y: scroll;
+  overflow-x: hidden;
   .popUpBg {
     position: absolute;
     width: inherit;
-    height: inherit;
+    height: 100%;
     top: 0;
     left: 0;
     background-color: $white;
@@ -22,9 +24,9 @@
   }
   .popUpWrap {
     position: relative;
-    width: 49em;
     background-color: $white;
     border-radius: 0.6em;
+    max-height: 98vh;
     .popUpContentWrap {
       width: 100%;
     }

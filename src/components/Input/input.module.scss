@@ -1,6 +1,7 @@
 @import "../../assets/scss/colors";
 
 .inputWrap {
+  position: relative;
   width: 100%;
   .Input {
     width: 100%;
@@ -24,5 +25,19 @@
     font-family: "Gilroy";
     font-size: 0.666em;
     font-weight: 500;
+    position: absolute;
+    left: 5px;
+    bottom: -1.4rem;
+  }
+  .seePassword {
+    position: absolute;
+    right: 0.5em;
+    top: 25%;
+    width: 1.3em;
+    height: 1.3em;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
   }
 }

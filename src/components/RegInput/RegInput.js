@@ -7,10 +7,9 @@ const RegInput = ({
   name,
   type = "text",
   required = false,
-  disabled= false,
+  disabled = false,
   minLength = 0,
   maxlength = 200,
-  pattern = ".*",
   title = "",
   error = null,
   value,
@@ -32,7 +31,6 @@ const RegInput = ({
         className={disabled ? styles.regDisabled : styles.regInput}
         minLength={minLength}
         maxLength={maxlength}
-        pattern={pattern}
         title={title}
         required={required}
         value={value}

@@ -82,8 +82,9 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       console.log(error);
     }
   };
-  const registerCustomer = async () => {
+  const registerCustomer = async (e) => {
     try {
+      e.preventDefault();
       const response = await request(
         "/api/v1.0/auth/user",
         "POST",
@@ -108,8 +109,9 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       history.push("/");
     }
   };
-  const registerMaster = async () => {
+  const registerMaster = async (e) => {
     try {
+      e.preventDefault();
       const response = await request(
         "/api/v1.0/auth/user",
         "POST",
