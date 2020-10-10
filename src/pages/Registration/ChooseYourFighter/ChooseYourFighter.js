@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 
 import ShBox from "../../../components/ShBox/ShBox";
 import SecTitle from "../../../components/SecTitle/SecTitle";

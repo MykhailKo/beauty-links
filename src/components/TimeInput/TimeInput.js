@@ -18,8 +18,6 @@ const TimeInput = ({
       <input
         value={value}
         type={"time"}
-        min={"09:00"}
-        max={"21:00"}
         id={id}
         name={id}
         className={styles.timeInput}

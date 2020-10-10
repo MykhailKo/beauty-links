@@ -9,7 +9,6 @@ import RegKnowledgeData from "./RegKnowledgeData/RegKnowledgeData";
 import RegSchedule from "./RegSchedule/RegShedule";
 import Fatality from "../Fatality/Fatality";
 
-// import { validateForm } from "../../../components/validateForm";
 import useWindowSize from "../../../hooks/useWindowSize";
 
 import styles from "./RegistrationFlow.module.scss";

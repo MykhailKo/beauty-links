@@ -25,7 +25,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const validateEmail = (email) => {
     if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email)) {
-      setEmail("Incorrect email");
+      setEmail("Неверный формат почтового адреса");
     } else {
       setEmail("");
     }
@@ -33,7 +33,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const validatePassword = (password) => {
     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(password)) {
       setPassword(
-        "Minimum six characters, at least one uppercase letter, one lowercase letter and one number"
+        "Минимум 6 символов: обязательны числа, буквы верхнего и нижнего регистра"
       );
     } else {
       setPassword("");

@@ -24,6 +24,5 @@ yarn-error.log*
 
 .idea/
 
-
 # environment
 .env
