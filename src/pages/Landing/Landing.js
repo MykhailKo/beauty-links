@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import FirstScreen from "./FirstScreen/FirstScreen";
 import InfoChecks from "./InfoChecks/InfoChecks";

@@ -38,7 +38,7 @@ const Fatality = ({ avatar, setAvatar, nextStep }) => {
       if (avatar) {
         await sendAvatar();
       }
-      // history.push("/user");
+      history.push("/user");
     } catch (error) {
       console.log(error);
       alert();

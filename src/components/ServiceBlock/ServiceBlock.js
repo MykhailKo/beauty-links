@@ -22,7 +22,7 @@ const ServiceBlock = ({ service, services, setService }) => {
 
   const [width] = useWindowSize();
 
-  const mobileOffset = width < parseInt(widths.break_sm) && serviceState === 2;
+  // const mobileOffset = width < parseInt(widths.break_sm) && serviceState === 2;
 
   return (
     <div

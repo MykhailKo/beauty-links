@@ -8,7 +8,6 @@ import Select from "../../../../components/Select/Select";
 import Button from "../../../../components/Button/Button";
 import SecTitle from "../../../../components/SecTitle/SecTitle";
 import SubTitle from "../../../../components/SubTitle/SubTitle";
-import { validateForm } from "../../../../components/validateForm";
 
 import styles from "./RegPersData.module.scss";
 import authContext from "../../../../context/auth.context";
