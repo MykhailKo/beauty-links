@@ -78,7 +78,6 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
         { email: PersData.email, password: PersData.password },
         {}
       );
-      console.log(response);
       login({ ...response });
     } catch (error) {
       console.log(error);

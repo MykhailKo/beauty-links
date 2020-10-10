@@ -22,7 +22,6 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
   const [matches, setMatches] = useState([]);
   const fetchServices = useCallback(async () => {
     try {
-      console.log("sending request");
       const services = await request("/api/v1.0/services", "GET", null, {});
       if (services.status === 200) {
         delete services.status;
@@ -141,7 +140,7 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
       <Button
         text={"Продолжить"}
         onClick={sendServices}
-        disabled={ServiceData.length === 0 || loading}
+        disabled={Object.values(ServiceData).length === 0 || loading}
       />
     </div>
   );

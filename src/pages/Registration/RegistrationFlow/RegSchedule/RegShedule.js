@@ -77,34 +77,38 @@ const RegSchedule = ({ nextStep, ScheduleData, setScheduleData }) => {
       if (readyData.salon.hasOwnProperty(key)) {
         delete readyData.salon[key].name;
         delete readyData.salon[key].active;
-        if (!readyData.salon[key].available) {
-          delete readyData.salon[key];
-        }
       }
     }
     for (const key in readyData.mobile) {
       if (readyData.mobile.hasOwnProperty(key)) {
         delete readyData.mobile[key].name;
         delete readyData.mobile[key].active;
-        if (!readyData.mobile[key].available) {
-          delete readyData.mobile[key];
-        }
       }
     }
-    return readyData;
+    const result = { 1: { 13: readyData.salon }, 2: { 13: readyData.mobile } };
+    if (Object.values(result[2]).length === 0) {
+      delete result[2];
+    }
+    if (Object.values(result[1]).length === 0) {
+      delete result[1];
+    }
+    return result;
   };
   const updateSchedule = async () => {
     try {
       const readyData = prepareData();
       const response = await request(
-        "/api/v1.0/profile/master/availability",
-        "PUT",
+        "/api/v1.0/master/availability",
+        "POST",
         readyData,
         { Authorization: `Bearer ${token}` }
       );
-      console.log(response);
+      if (response.status === 200) {
+        nextStep();
+      }
     } catch (error) {
       console.log(error);
+      alert("Что-то пошло не так, повторите запрос или попробуйте позже.");
     }
   };
   return (

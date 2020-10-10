@@ -7,7 +7,7 @@ import RegistrationFlow from "./RegistrationFlow/RegistrationFlow";
 import styles from "./Registration.module.scss";
 
 const Registration = () => {
-  const [regStep, setRegStep] = useState(3);
+  const [regStep, setRegStep] = useState(1);
 
   const [regFullData, setRegFullData] = useState({
     BaseData: {
@@ -52,9 +52,10 @@ const Registration = () => {
       SalonAddress: "",
     },
     KnowledgeData: {
-      skills: "",
-      experince: "",
-      hasMedical: "",
+      qualifications: [],
+      insurance: true,
+      medical_disclaimer_form: { id: "medical-no", value: false },
+      start_working_date: "",
       images: [],
     },
   });

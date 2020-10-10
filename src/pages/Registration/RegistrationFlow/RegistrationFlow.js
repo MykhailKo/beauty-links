@@ -15,7 +15,7 @@ import styles from "./RegistrationFlow.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
 
 const RegistrationFlow = ({ regFullData, setRegFullData, nextStep }) => {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
 
   const GoToNextStep = () => {
     step < 6 ? setStep(step + 1) : nextStep(4);
