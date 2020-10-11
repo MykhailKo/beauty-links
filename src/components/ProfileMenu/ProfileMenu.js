@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 
 import useWindowSize from "../../hooks/useWindowSize";
 import Stars from "../Stars/Stars";
 
 import styles from "./ProfileMenu.module.scss";
 import widths from "../../assets/scss/_widths.scss";
+import authContext from "../../context/auth.context";
 
 const clientControls = [
   {
@@ -49,7 +50,11 @@ const masterControls = [
   { name: "Мой профиль", icon: "/assets/img/icons/profile.png", link: "" },
   { name: "Настройки", icon: "/assets/img/icons/settings.png", link: "" },
   { name: "Пригласить людей", icon: "/assets/img/icons/invite.png", link: "" },
-  { name: "Выйти из аккаунта", icon: "/assets/img/icons/logout.png", link: "" },
+  {
+    name: "Выйти из аккаунта",
+    icon: "/assets/img/icons/logout.png",
+    link: "user/logout/",
+  },
 ];
 
 const ProfileMenu = ({
@@ -66,6 +71,8 @@ const ProfileMenu = ({
 
   const [width] = useWindowSize();
 
+  const { logout } = useContext(authContext);
+  const history = useHistory();
   return (
     <nav className={styles.sideBarMenu}>
       {type === "master" && width > parseInt(widths.break_lm) && (

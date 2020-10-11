@@ -4,6 +4,7 @@ import Preloader from "./components/Preloader/Preloader";
 
 const Landing = lazy(() => import("./pages/Landing/Landing"));
 const Registration = lazy(() => import("./pages/Registration/Registration"));
+const Login = lazy(() => import("./pages/Login/Login"));
 const UserProfile = lazy(() => import("./pages/UserProfile/UserProfile"));
 const Bookings = lazy(() => import("./pages/UserProfile/Bookings/Bookings"));
 const Achievements = lazy(() =>
@@ -13,35 +14,54 @@ const FaveMasters = lazy(() =>
   import("./pages/UserProfile/FaveMasters/FaveMasters")
 );
 const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
-const MasterBasics = lazy(() =>
-  import("./pages/UserProfile/MasterBasics/MasterBasics")
-);
 const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
-export default function getRoutes(isAuth) {
+export default function getRoutes(isAuth, roles) {
   const authRoutes = [
     <Route
       path="/user"
       key="/user"
-      render={({ match: { url } }) => (
-        <UserProfile>
-          <Switch>
-            <Route
-              path={`${url}/achievements`}
-              component={Achievements}
-              exact
-            />
-            <Route path={`${url}/bookings`} component={Bookings} exact />
-            <Route path={`${url}/settings`} component={Settings} exact />
-            <Route path={`${url}/favourites`} component={FaveMasters} exact />
-            <Redirect to={`${url}/achievements`} />
-          </Switch>
-          {/* <Switch>
-            <Route path={`${url}/basics`} component={MasterBasics} exact />
-          </Switch> */}
-        </UserProfile>
-      )}
+      render={({ match: { url } }) => {
+        return (
+          <UserProfile type={roles.includes("master") ? "master" : "client"}>
+            {/* это роуты мастера */}
+            {roles.includes("master") ? (
+              <Switch>
+                <Route
+                  path={`${url}/achievements`}
+                  component={Achievements}
+                  exact
+                />
+                <Route path={`${url}/bookings`} component={Bookings} exact />
+                <Route path={`${url}/settings`} component={Settings} exact />
+                <Route
+                  path={`${url}/favourites`}
+                  component={FaveMasters}
+                  exact
+                />
+                <Redirect to={`${url}/achievements`} />
+              </Switch>
+            ) : (
+              <Switch>
+                <Route
+                  path={`${url}/achievements`}
+                  component={Achievements}
+                  exact
+                />
+                <Route path={`${url}/bookings`} component={Bookings} exact />
+                <Route path={`${url}/settings`} component={Settings} exact />
+                <Route
+                  path={`${url}/favourites`}
+                  component={FaveMasters}
+                  exact
+                />
+                <Redirect to={`${url}/achievements`} />
+              </Switch>
+            )}
+          </UserProfile>
+        );
+      }}
     />,
     <Route
       path="/master/:masterid"
@@ -52,32 +72,57 @@ export default function getRoutes(isAuth) {
   ];
   const nonAuthRoutes = [
     <Route path="/register" key="/register" component={Registration} />,
-    // temporary route master page
-    <Route
-      path="/master/:masterid"
-      key="/master/:masterid"
-      exact
-      component={MasterPage}
-    />,
-    <Route
-      path="/user"
-      key="/user"
-      render={({ match: { url } }) => (
-        <UserProfile>
-          <Switch>
-            <Route
-              path={`${url}/achievements`}
-              component={Achievements}
-              exact
-            />
-            <Route path={`${url}/bookings`} component={Bookings} exact />
-            <Route path={`${url}/settings`} component={Settings} exact />
-            <Route path={`${url}/favourites`} component={FaveMasters} exact />
-            <Redirect to={`${url}/achievements`} />
-          </Switch>
-        </UserProfile>
-      )}
-    />,
+    <Route path="/login" key="/login" component={Login} />,
+    // <Route
+    //   path="/user"
+    //   key="/user"
+    //   render={({ match: { url } }) => {
+    //     return (
+    //       <UserProfile type={roles.includes("master") ? "master" : "client"}>
+    //         {/* это роуты мастера */}
+    //         {roles.includes("master") ? (
+    //           <Switch>
+    //             <Route
+    //               path={`${url}/achievements`}
+    //               component={Achievements}
+    //               exact
+    //             />
+    //             <Route path={`${url}/bookings`} component={Bookings} exact />
+    //             <Route path={`${url}/settings`} component={Settings} exact />
+    //             <Route
+    //               path={`${url}/favourites`}
+    //               component={FaveMasters}
+    //               exact
+    //             />
+    //             <Redirect to={`${url}/achievements`} />
+    //           </Switch>
+    //         ) : (
+    //           <Switch>
+    //             <Route
+    //               path={`${url}/achievements`}
+    //               component={Achievements}
+    //               exact
+    //             />
+    //             <Route path={`${url}/bookings`} component={Bookings} exact />
+    //             <Route path={`${url}/settings`} component={Settings} exact />
+    //             <Route
+    //               path={`${url}/favourites`}
+    //               component={FaveMasters}
+    //               exact
+    //             />
+    //             <Redirect to={`${url}/achievements`} />
+    //           </Switch>
+    //         )}
+    //       </UserProfile>
+    //     );
+    //   }}
+    // />,
+    // <Route
+    //   path="/master/:masterid"
+    //   key="/master/:masterid"
+    //   exact
+    //   component={MasterPage}
+    // />,
   ];
   return (
     <Suspense fallback={<Preloader height="80vh" />}>
