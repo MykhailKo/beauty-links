@@ -11,6 +11,7 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import styles from "./BaseReg.module.scss";
 import widths from "../../../assets/scss/_widths.scss";
 import { useHttp } from "../../../hooks/useHttp";
+import { Link } from "react-router-dom";
 
 const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
   const [width] = useWindowSize();
@@ -148,7 +149,7 @@ const BaseReg = ({ BaseData, setBaseData, nextStep }) => {
         />
       </form>
       <div className={styles.loginMes}>
-        Уже есть аккаунт? <a href="#">Войдите.</a>
+        Уже есть аккаунт? <Link to="/login">Войдите.</Link>
       </div>
     </ShBox>
   );

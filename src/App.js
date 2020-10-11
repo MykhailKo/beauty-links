@@ -40,7 +40,7 @@ class App extends React.Component {
       const tokenExpirationDate = new Date(expirationString);
       const isExpired = today > tokenExpirationDate;
       if (isExpired) {
-        await this.logout();
+        this.logout();
         // this.props.history.push("/login");
       } else {
         this.login({
@@ -55,7 +55,7 @@ class App extends React.Component {
       }
     } else {
       // this.props.history.push("/login");
-      await this.logout();
+      this.logout();
     }
   }
   login({ token, expires, roles, full_name, email, user_id, master_info }) {
@@ -90,11 +90,13 @@ class App extends React.Component {
       isAuthenticated: false,
       master_info: {}, //only for master
     });
-    fetch("/api/v1.0/auth/user/logout", {
-      method: "GET",
-      body: null,
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    });
+    if (!!localStorage.getItem("token")) {
+      fetch("/api/v1.0/auth/user/logout", {
+        method: "GET",
+        body: null,
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+    }
     localStorage.removeItem("token");
     localStorage.removeItem("expires");
     localStorage.removeItem("roles");
@@ -120,7 +122,7 @@ class App extends React.Component {
         }}
       >
         <Header />
-        {getRoutes(this.state.isAuthenticated)}
+        {getRoutes(this.state.isAuthenticated, this.state.roles)}
         <Footer />
       </AuthContext.Provider>
     );
