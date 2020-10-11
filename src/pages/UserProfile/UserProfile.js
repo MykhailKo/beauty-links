@@ -2,13 +2,18 @@ import React from "react";
 
 import ProfileMenu from "../../components/ProfileMenu/ProfileMenu";
 
+import MasterCalendar from "./MasterCalendar/MasterCalendar";
+
 import styles from "./UserProfile.module.scss";
 
-const UserProfile = (props) => {
+const UserProfile = ({ children, type }) => {
   return (
     <div className={styles.UserProfile}>
-      <ProfileMenu type={"client"} />
-      <section className={styles.profileContent}>{props.children}</section>
+      <ProfileMenu type={type} />
+      <section className={styles.profileContent}>
+        {/* {children} */}
+        <MasterCalendar />
+      </section>
     </div>
   );
 };

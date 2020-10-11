@@ -13,6 +13,9 @@ const FaveMasters = lazy(() =>
   import("./pages/UserProfile/FaveMasters/FaveMasters")
 );
 const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
+const MasterBasics = lazy(() =>
+  import("./pages/UserProfile/MasterBasics/MasterBasics")
+);
 const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
@@ -34,6 +37,9 @@ export default function getRoutes(isAuth) {
             <Route path={`${url}/favourites`} component={FaveMasters} exact />
             <Redirect to={`${url}/achievements`} />
           </Switch>
+          {/* <Switch>
+            <Route path={`${url}/basics`} component={MasterBasics} exact />
+          </Switch> */}
         </UserProfile>
       )}
     />,
