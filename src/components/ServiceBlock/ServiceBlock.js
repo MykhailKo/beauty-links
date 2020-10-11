@@ -12,17 +12,17 @@ const ServiceBlock = ({ service, services, setService }) => {
   // 0 - not active, 1 - active, 2 - ready, 3 - edit
   const [serviceState, setServiceState] = useState(0);
   useEffect(() => {
-    setServiceData(services.filter((s) => s.id === service.id)[0]);
+    setServiceData(services[service.id]);
     setServiceState(serviceData ? 2 : 0);
   }, [service.id, serviceData, services]);
 
   const [servicePrice, setServicePrice] = useState(
-    serviceData ? serviceData.price : null
+    serviceData ? serviceData.price : ""
   );
 
   const [width] = useWindowSize();
 
-  const mobileOffset = width < parseInt(widths.break_sm) && serviceState === 2;
+  // const mobileOffset = width < parseInt(widths.break_sm) && serviceState === 2;
 
   return (
     <div
@@ -51,8 +51,9 @@ const ServiceBlock = ({ service, services, setService }) => {
             else if (serviceState === 2) {
               setServiceState(0);
               setServicePrice(null);
-              services = services.filter((s) => s.id !== service.id);
-              setService(services);
+              const tempServices = { ...services };
+              delete tempServices[service.id];
+              setService(tempServices);
             } else if (serviceState === 3) setServiceState(2);
           }}
         />
@@ -78,7 +79,7 @@ const ServiceBlock = ({ service, services, setService }) => {
                 min={0}
                 placeholder={"0"}
                 id={"servicePrice"}
-                value={servicePrice ? servicePrice : null}
+                value={servicePrice ? servicePrice : ""}
                 onChange={(event) => setServicePrice(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.keyCode === 189 || event.keyCode === 187)
@@ -92,14 +93,12 @@ const ServiceBlock = ({ service, services, setService }) => {
             text={"Добавить услугу"}
             onClick={() => {
               setServiceState(2);
-              const editableServices = services.filter((ser) => {
-                return ser.id !== service.id;
-              });
-              editableServices.push({
-                id: service.id,
+              const editableServices = { ...services };
+              delete editableServices[service.id];
+              editableServices[service.id] = {
                 price: servicePrice,
                 duration: 60,
-              });
+              };
 
               setService(editableServices);
             }}

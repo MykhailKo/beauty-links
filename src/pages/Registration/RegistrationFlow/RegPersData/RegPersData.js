@@ -8,7 +8,6 @@ import Select from "../../../../components/Select/Select";
 import Button from "../../../../components/Button/Button";
 import SecTitle from "../../../../components/SecTitle/SecTitle";
 import SubTitle from "../../../../components/SubTitle/SubTitle";
-import { validateForm } from "../../../../components/validateForm";
 
 import styles from "./RegPersData.module.scss";
 import authContext from "../../../../context/auth.context";
@@ -78,7 +77,6 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
         { email: PersData.email, password: PersData.password },
         {}
       );
-      console.log(response);
       login({ ...response });
     } catch (error) {
       console.log(error);
@@ -249,11 +247,10 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
             disabled={buttonDisabled}
             loading={loading}
             onClick={(e) => {
-              if (validateForm("persForm")) {
-                PersData.user_role === "master"
-                  ? registerMaster(e)
-                  : registerCustomer(e);
-              }
+              e.preventDefault();
+              PersData.user_role === "master"
+                ? registerMaster()
+                : registerCustomer();
             }}
           />
         </div>
