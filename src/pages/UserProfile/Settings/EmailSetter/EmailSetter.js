@@ -9,9 +9,23 @@ import styles from "./EmailSetter.module.scss";
 
 const EmailSetter = (props) => {
   const [newEmail, setNewEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const { request, loading } = useHttp();
   const { token } = useContext(authContext);
 
+  const validateEmail = (email) => {
+    if (email === "") {
+      setEmailError("");
+    } else if (email === props.email) {
+      setEmailError("Почтовый адрес не изменён");
+    } else {
+      if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email)) {
+        setEmailError("Неверный формат");
+      } else {
+        setEmailError("");
+      }
+    }
+  };
   const submitNewEmail = async (e) => {
     e.preventDefault();
     try {
@@ -43,12 +57,21 @@ const EmailSetter = (props) => {
       />
       <Input
         name={"new-email"}
-        error={false}
+        error={emailError}
         value={newEmail}
-        onChange={(e) => setNewEmail(e.target.value)}
+        onChange={(e) => {
+          validateEmail(e.target.value);
+          setNewEmail(e.target.value);
+        }}
         placeholder="Введите новый e-mail"
       />
-      <Button text="Обновить e-mail" onClick={submitNewEmail} />
+      <Button
+        text="Обновить e-mail"
+        onClick={submitNewEmail}
+        disabled={
+          newEmail === "" || newEmail === props.email || emailError !== ""
+        }
+      />
     </form>
   );
 };
