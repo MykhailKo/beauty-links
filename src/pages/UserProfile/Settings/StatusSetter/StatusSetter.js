@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Preloader from "../../../../components/Preloader/Preloader";
 import Select from "../../../../components/Select/Select";
 import authContext from "../../../../context/auth.context";
@@ -19,6 +19,7 @@ const StatusSetter = (props) => {
         { Authorization: `Bearer ${token}` }
       );
       if (response.status === 200) {
+        props.update();
         alert("Данные успешно обновлены!");
       }
     } catch (error) {

@@ -11,8 +11,8 @@ const UserProfile = ({ children, type }) => {
     <div className={styles.UserProfile}>
       <ProfileMenu type={type} />
       <section className={styles.profileContent}>
-        {children}
-        {/* <MasterCalendar /> */}
+        {/* {children} */}
+        <MasterCalendar />
       </section>
     </div>
   );

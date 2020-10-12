@@ -22,6 +22,8 @@ const EmailSetter = (props) => {
         { Authorization: `Bearer ${token}` }
       );
       if (response.status === 200) {
+        setNewEmail("");
+        props.update();
         alert("Данные успешно обновлены!");
       }
     } catch (error) {
