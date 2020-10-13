@@ -14,65 +14,20 @@ const FaveMasters = lazy(() =>
   import("./pages/UserProfile/FaveMasters/FaveMasters")
 );
 const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
+const MasterBasics = lazy(() =>
+  import("./pages/UserProfile/MasterBasics/MasterBasics")
+);
+const MasterCalendar = lazy(() =>
+  import("./pages/UserProfile/MasterCalendar/MasterCalendar")
+);
+const MasterProfile = lazy(() =>
+  import("./pages/UserProfile/MasterProfile/MasterProfile")
+);
 const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function getRoutes(isAuth, roles) {
   const authRoutes = [
-    <Route
-      path="/user"
-      key="/user"
-      render={({ match: { url } }) => {
-        return (
-          <UserProfile type={roles.includes("master") ? "master" : "client"}>
-            {/* это роуты мастера */}
-            {roles.includes("master") ? (
-              <Switch>
-                <Route
-                  path={`${url}/achievements`}
-                  component={Achievements}
-                  exact
-                />
-                <Route path={`${url}/bookings`} component={Bookings} exact />
-                <Route path={`${url}/settings`} component={Settings} exact />
-                <Route
-                  path={`${url}/favourites`}
-                  component={FaveMasters}
-                  exact
-                />
-                <Redirect to={`${url}/achievements`} />
-              </Switch>
-            ) : (
-              <Switch>
-                <Route
-                  path={`${url}/achievements`}
-                  component={Achievements}
-                  exact
-                />
-                <Route path={`${url}/bookings`} component={Bookings} exact />
-                <Route path={`${url}/settings`} component={Settings} exact />
-                <Route
-                  path={`${url}/favourites`}
-                  component={FaveMasters}
-                  exact
-                />
-                <Redirect to={`${url}/achievements`} />
-              </Switch>
-            )}
-          </UserProfile>
-        );
-      }}
-    />,
-    <Route
-      path="/master/:masterid"
-      key="/master/:masterid"
-      exact
-      component={MasterPage}
-    />,
-  ];
-  const nonAuthRoutes = [
-    <Route path="/register" key="/register" component={Registration} />,
-    <Route path="/login" key="/login" component={Login} />,
     // <Route
     //   path="/user"
     //   key="/user"
@@ -117,12 +72,71 @@ export default function getRoutes(isAuth, roles) {
     //     );
     //   }}
     // />,
-    // <Route
-    //   path="/master/:masterid"
-    //   key="/master/:masterid"
-    //   exact
-    //   component={MasterPage}
-    // />,
+    <Route
+      path="/master/:masterid"
+      key="/master/:masterid"
+      exact
+      component={MasterPage}
+    />,
+  ];
+  const nonAuthRoutes = [
+    <Route path="/register" key="/register" component={Registration} />,
+    <Route path="/login" key="/login" component={Login} />,
+    <Route
+      path="/user"
+      key="/user"
+      render={({ match: { url } }) => {
+        return (
+          <UserProfile type={!roles.includes("master") ? "master" : "client"}>
+            {/* это роуты мастера */}
+            {!roles.includes("master") ? (
+              <Switch>
+                <Route
+                  path={`${url}/masterbasics`}
+                  component={MasterBasics}
+                  exact
+                />
+                <Route
+                  path={`${url}/calendar`}
+                  component={MasterCalendar}
+                  exact
+                />
+                <Route path={`${url}/bookings`} component={Bookings} exact />
+                <Route
+                  path={`${url}/masterprofile`}
+                  component={MasterProfile}
+                  exact
+                />
+                <Route path={`${url}/settings`} component={Settings} exact />
+                <Redirect to={`${url}/masterbasics`} />
+              </Switch>
+            ) : (
+              <Switch>
+                <Route
+                  path={`${url}/achievements`}
+                  component={Achievements}
+                  exact
+                />
+                <Route path={`${url}/bookings`} component={Bookings} exact />
+                <Route path={`${url}/settings`} component={Settings} exact />
+                <Route
+                  path={`${url}/favourites`}
+                  component={FaveMasters}
+                  exact
+                />
+                <Redirect to={`${url}/achievements`} />
+              </Switch>
+            )}
+          </UserProfile>
+        );
+      }}
+    />,
+    <Route
+      path="/master/:masterid"
+      key="/master/:masterid"
+      exact
+      component={MasterPage}
+    />,
   ];
   return (
     <Suspense fallback={<Preloader height="80vh" />}>
