@@ -3,7 +3,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import ProfileTitle from "../../../components/ProfileTitle/ProfileTitle";
 import CalendarItem from "../../../components/CalendarItem/CalendarItem";
 
-import UseHttp, { useHttp } from "../../../hooks/useHttp";
+import { useHttp } from "../../../hooks/useHttp";
 import styles from "./MasterCalendar.module.scss";
 
 const months = [

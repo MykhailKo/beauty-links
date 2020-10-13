@@ -13,6 +13,7 @@ class App extends React.Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.checkLocalStorage = this.checkLocalStorage.bind(this);
+    this.changeRegistering = this.changeRegistering.bind(this);
 
     this.state = {
       token: "",
@@ -23,6 +24,7 @@ class App extends React.Component {
       user_id: "",
       isAuthenticated: false,
       master_info: {}, //only for master
+      registrationIsOpen: false,
     };
   }
   componentWillMount() {
@@ -106,8 +108,11 @@ class App extends React.Component {
     localStorage.removeItem("master_info");
     // this.props.history.push("/");
   }
+  changeRegistering(value) {
+    console.log("changed to", value);
+    this.setState({ ...this.state, registrationIsOpen: value });
+  }
   render() {
-    console.log(this.state.isAuthenticated);
     return (
       <AuthContext.Provider
         value={{
@@ -119,10 +124,15 @@ class App extends React.Component {
           email: this.state.email,
           login: this.login,
           logout: this.logout,
+          changeRegistering: this.changeRegistering,
         }}
       >
         <Header />
-        {getRoutes(this.state.isAuthenticated, this.state.roles)}
+        {getRoutes(
+          this.state.isAuthenticated,
+          this.state.roles,
+          this.state.registrationIsOpen
+        )}
         <Footer />
       </AuthContext.Provider>
     );

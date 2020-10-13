@@ -20,7 +20,7 @@ const calendarOptions = [
 const howYouKnowOptions = [{ text: "По рекомендации" }, { text: "Из соцсети" }];
 
 const RegPersData = ({ PersData, setPersData, nextStep }) => {
-  const { login } = useContext(authContext);
+  const { login, changeRegistering } = useContext(authContext);
   const { loading, request } = useHttp();
   const history = useHistory();
 
@@ -82,9 +82,8 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
       console.log(error);
     }
   };
-  const registerCustomer = async (e) => {
+  const registerCustomer = async () => {
     try {
-      e.preventDefault();
       const response = await request(
         "/api/v1.0/auth/user",
         "POST",
@@ -101,17 +100,19 @@ const RegPersData = ({ PersData, setPersData, nextStep }) => {
         {}
       );
       console.log(response);
+
       await get_token_and_stuff();
-      history.push("/");
+      history.push("/user");
     } catch (error) {
       console.log(error);
       await get_token_and_stuff();
       history.push("/");
     }
   };
-  const registerMaster = async (e) => {
+  const registerMaster = async () => {
+    changeRegistering(true);
+
     try {
-      e.preventDefault();
       const response = await request(
         "/api/v1.0/auth/user",
         "POST",

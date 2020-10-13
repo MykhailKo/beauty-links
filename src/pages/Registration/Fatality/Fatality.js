@@ -9,7 +9,7 @@ import { useHttp } from "../../../hooks/useHttp";
 import styles from "./Fatality.module.scss";
 
 const Fatality = ({ avatar, setAvatar, nextStep }) => {
-  const { token } = useContext(authContext);
+  const { token, changeRegistering } = useContext(authContext);
   const { request, loading } = useHttp();
   const history = useHistory();
   const updateAvatar = (e) => {
@@ -39,6 +39,7 @@ const Fatality = ({ avatar, setAvatar, nextStep }) => {
         await sendAvatar();
       }
       history.push("/user");
+      changeRegistering(false);
     } catch (error) {
       console.log(error);
       alert();

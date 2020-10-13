@@ -17,7 +17,7 @@ const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
 const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
-export default function getRoutes(isAuth, roles) {
+export default function getRoutes(isAuth, roles, registerIsOpen) {
   const authRoutes = [
     <Route
       path="/user"
@@ -124,6 +124,11 @@ export default function getRoutes(isAuth, roles) {
     //   component={MasterPage}
     // />,
   ];
+  if (registerIsOpen) {
+    authRoutes.push(
+      <Route path="/register" key="/register" component={Registration} />
+    );
+  }
   return (
     <Suspense fallback={<Preloader height="80vh" />}>
       <Switch>
