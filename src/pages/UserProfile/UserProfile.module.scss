@@ -8,7 +8,6 @@
   .profileContent {
     padding: 1em 5em 5em 1em;
     width: calc(100% - 16.9em);
-    min-height: 80vh;
     @media (max-width: $break_lm) {
       width: 100%;
       padding: 1em;

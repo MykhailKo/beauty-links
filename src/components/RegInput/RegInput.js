@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styles from "./RegInput.module.scss";
 
 const RegInput = ({
+  theme = "reg",
   label,
   name,
   type = "text",
@@ -17,9 +18,12 @@ const RegInput = ({
   placeholder = "",
 }) => {
   const [visible, setVisible] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   return (
-    <div className={styles.inputWrap}>
+    <div
+      className={theme === "reg" ? styles.regInputWrap : styles.profInputWrap}
+    >
       <label htmlFor={name} className={styles.inputLabel}>
         {label}
       </label>
@@ -36,7 +40,7 @@ const RegInput = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        disabled={disabled}
+        disabled={theme === "prof" ? !edit : disabled}
       />
 
       {type === "password" && (
@@ -47,6 +51,19 @@ const RegInput = ({
             !visible
               ? { backgroundImage: `url('/assets/img/icons/unvis.png')` }
               : { backgroundImage: `url('/assets/img/icons/vis.png')` }
+          }
+        ></div>
+      )}
+      {theme === "prof" && (
+        <div
+          className={styles.edit}
+          onClick={() => setEdit(!edit)}
+          style={
+            !edit
+              ? {
+                  backgroundImage: `url('/assets/img/icons/edit-disabled.png')`,
+                }
+              : { backgroundImage: `url('/assets/img/icons/edit-enabled.png')` }
           }
         ></div>
       )}

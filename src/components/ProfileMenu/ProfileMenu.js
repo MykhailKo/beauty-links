@@ -37,19 +37,51 @@ const clientControls = [
 ];
 
 const masterControls = [
-  { name: "Основное", icon: "/assets/img/icons/basics.png", link: "" },
-  { name: "Календарь", icon: "/assets/img/icons/calendar.png", link: "" },
-  { name: "Бронирования", icon: "/assets/img/icons/bookings.png", link: "" },
-  { name: "Услуги", icon: "/assets/img/icons/services.png", link: "" },
+  {
+    name: "Основное",
+    icon: "/assets/img/icons/basics.png",
+    link: "/user/masterbasics/",
+  },
+  {
+    name: "Календарь",
+    icon: "/assets/img/icons/calendar.png",
+    link: "/user/calendar/",
+  },
+  {
+    name: "Бронирования",
+    icon: "/assets/img/icons/bookings.png",
+    link: "/user/bookings/",
+  },
+  {
+    name: "Услуги",
+    icon: "/assets/img/icons/services.png",
+    link: "user/services/",
+  },
   {
     name: "Рабочие часы",
     icon: "/assets/img/icons/workinghours.png",
-    link: "",
+    link: "/user/workinghours/",
   },
-  { name: "Локации", icon: "/assets/img/icons/locations.png", link: "" },
-  { name: "Мой профиль", icon: "/assets/img/icons/profile.png", link: "" },
-  { name: "Настройки", icon: "/assets/img/icons/settings.png", link: "" },
-  { name: "Пригласить людей", icon: "/assets/img/icons/invite.png", link: "" },
+  {
+    name: "Локации",
+    icon: "/assets/img/icons/locations.png",
+    link: "/user/locations/",
+  },
+  {
+    name: "Мой профиль",
+    icon: "/assets/img/icons/profile.png",
+    link: "/user/masterprofile/",
+  },
+  {
+    name: "Настройки",
+    icon: "/assets/img/icons/settings.png",
+    link: "/user/settings/",
+  },
+  {
+    name: "Пригласить людей",
+    icon: "/assets/img/icons/invite.png",
+    link: "/user/invite/",
+  },
   {
     name: "Выйти из аккаунта",
     icon: "/assets/img/icons/logout.png",
