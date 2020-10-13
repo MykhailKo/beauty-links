@@ -55,7 +55,7 @@ const masterControls = [
   {
     name: "Услуги",
     icon: "/assets/img/icons/services.png",
-    link: "user/services/",
+    link: "/user/services/",
   },
   {
     name: "Рабочие часы",
