@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback, useEffect } from "react";
 
 import { useHttp } from "../../../hooks/useHttp";
 import ProfileTitle from "../../../components/ProfileTitle/ProfileTitle";
@@ -11,9 +11,47 @@ import authContext from "../../../context/auth.context";
 import styles from "./MasterProfile.module.scss";
 
 const MasterProfile = () => {
-  const { request, loading } = useHttp();
+  const { request } = useHttp();
+  const { token } = useContext(authContext);
+  const [presInfo, setPresInfo] = useState({});
+  const [bio, setBio] = useState({});
+  const [contacts, setContacts] = useState({});
   const [medicalBook, setMedicalBook] = useState("");
 
+  // const fetchData = useCallback(async () => {
+  //   try {
+  //     const response = await request("/api/v1.0/auth/user/", "GET", null, {
+  //       Authorization: `Bearer ${token}`,
+  //     });
+  //     if(response.status === 200){
+  //       setPresInfo({name: response.name, birthday: ''})
+  //       setBio({bio: response.bio})
+  //       setContacts({email: response.email, phone: response.phone, link_to_work: response.link_to_work})
+  //     }
+  //   }catch(error) {
+  //     console.log(error);
+  //   }
+  // }, [request, token]);
+  // useEffect(() => fetchData(), [fetchData])
+
+  // const updateUser = async (e, updatedFileds, callback) => {
+  //   e.preventDefault();
+  //   try{
+  //     const response = await request(
+  //       "/api/v1.0/user",
+  //       "PUT",
+  //       updatedFileds,
+  //       { Authorization: `Bearer ${token}` }
+  //     );
+  //     if(response.status === 200) {
+  //       fetchData();
+  //       callback();
+  //       alert("Данные успешно обновлены.");
+  //     }
+  //   }catch(error){
+  //     console.log(error);
+  //   }
+  // }
   return (
     <div className={styles.profileWrap}>
       <ProfileTitle
@@ -43,6 +81,7 @@ const MasterProfile = () => {
           type={"date"}
           title={"Дата рождения "}
         />
+        <Button onClick={() => {}} text={"Обновить"} />
       </section>
       <section className={styles.bioSection}>
         <div className={styles.miniTitle}>Опыт работы </div>
@@ -53,6 +92,7 @@ const MasterProfile = () => {
           категории услуг отдельно.
         </div>
         <textarea placeholder={"Поле для ввода текста"} rows={7}></textarea>
+        <Button onClick={() => {}} text={"Обновить"} />
       </section>
       <section className={styles.inputsGroup}>
         <div className={styles.miniTitle}>Контакты</div>
@@ -78,6 +118,7 @@ const MasterProfile = () => {
           label={"Ссылка на работы"}
           title={"Ссылка на работы"}
         />
+        <Button onClick={() => {}} text={"Обновить"} />
       </section>
       <section className={styles.inputsGroup}>
         <div className={styles.miniTitle}>Санитарная книжка</div>
