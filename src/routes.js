@@ -14,6 +14,9 @@ const FaveMasters = lazy(() =>
   import("./pages/UserProfile/FaveMasters/FaveMasters")
 );
 const Settings = lazy(() => import("./pages/UserProfile/Settings/Settings"));
+const InvitePage = lazy(() =>
+  import("./pages/UserProfile/InvitePage/InvitePage")
+);
 const MasterBasics = lazy(() =>
   import("./pages/UserProfile/MasterBasics/MasterBasics")
 );
@@ -83,6 +86,7 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
     //               exact
     //             />
     //             <Route path={`${url}/settings`} component={Settings} exact />
+    //             <Route path={`${url}/invite`} component={InvitePage} exact />
     //             <Redirect to={`${url}/masterbasics`} />
     //           </Switch>
     //         )}
@@ -152,6 +156,7 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
                   exact
                 />
                 <Route path={`${url}/settings`} component={Settings} exact />
+                <Route path={`${url}/invite`} component={InvitePage} exact />
                 <Redirect to={`${url}/masterbasics`} />
               </Switch>
             )}
