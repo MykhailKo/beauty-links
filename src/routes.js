@@ -105,9 +105,9 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
       key="/user"
       render={({ match: { url } }) => {
         return (
-          <UserProfile type={roles.includes("master") ? "client" : "master"}>
+          <UserProfile type={!roles.includes("master") ? "client" : "master"}>
             {/* это роуты клиента */}
-            {roles.includes("master") ? (
+            {!roles.includes("master") ? (
               <Switch>
                 <Route
                   path={`${url}/achievements`}

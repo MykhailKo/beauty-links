@@ -6,7 +6,7 @@ import MasterServiceItem from "../../components/MasterServiceItem/MasterServiceI
 
 import styles from "./FaveItem.module.scss";
 
-const FaveItem = ({ masterData }) => {
+const FaveItem = ({ masterData, book }) => {
   return (
     <li className={styles.FaveItem}>
       <div className={styles.faveImg}></div>
@@ -34,7 +34,14 @@ const FaveItem = ({ masterData }) => {
         </div>
         <ul className={styles.masterServices}>
           {masterData.servives.map((service, key) => {
-            return <MasterServiceItem service={service} key={key} />;
+            return (
+              <MasterServiceItem
+                service={service}
+                key={key}
+                book={book}
+                master={masterData}
+              />
+            );
           })}
         </ul>
         <a href="" className={styles.masterLink}>

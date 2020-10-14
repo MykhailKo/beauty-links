@@ -114,7 +114,7 @@ const MasterLocations = (props) => {
       ) : (
         <>
           <div
-            className={styles.adress}
+            className={styles.address}
           >{`${currentLocation?.salon?.address?.country_name}, ${currentLocation?.salon?.address?.city}, ${currentLocation?.salon?.address?.address}, ${currentLocation?.salon?.address?.postcode}`}</div>
           <div className={styles.mapContainer}>
             <CustomMap

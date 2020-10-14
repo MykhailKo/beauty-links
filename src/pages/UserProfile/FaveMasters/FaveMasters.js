@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import ProfileTitle from "../../../components/ProfileTitle/ProfileTitle";
 import FaveItem from "../../../components/FaveItem/FaveItem";
+import BookingWindow from "../../../components/BookingWindow/BookingWindow";
 import useHttp from "../../../hooks/useHttp";
 
 import styles from "./FaveMasters.module.scss";
@@ -34,8 +35,11 @@ const faveMasters = [
 ];
 
 const FaveMasters = () => {
+  const [serviceToBook, setServiceToBook] = useState({});
+
   return (
     <div>
+      <BookingWindow service={serviceToBook} />
       <ProfileTitle
         title={"Избранные мастера"}
         subTitle={
@@ -44,7 +48,9 @@ const FaveMasters = () => {
       />
       <ul className={styles.favesList}>
         {faveMasters.map((master, key) => {
-          return <FaveItem masterData={master} key={key} />;
+          return (
+            <FaveItem masterData={master} key={key} book={setServiceToBook} />
+          );
         })}
       </ul>
     </div>
