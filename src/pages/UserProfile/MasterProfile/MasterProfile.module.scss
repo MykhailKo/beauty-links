@@ -6,6 +6,9 @@
   .inputsGroup {
     padding: 1em 45% 1em 0;
     border-bottom: 1px solid $main;
+    & > button {
+      margin-top: 0.5em;
+    }
   }
   .bioSection {
     padding: 1em 0;
@@ -20,6 +23,7 @@
       border: 1px solid $main;
       border-radius: 0.5em;
       padding: 0.7em;
+      margin-bottom: 1em;
       font-size: 1em;
       outline: none;
       resize: vertical;
