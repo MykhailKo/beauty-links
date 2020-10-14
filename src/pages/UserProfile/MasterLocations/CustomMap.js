@@ -15,11 +15,18 @@ const CustomMap = (props) => {
   return (
     <GoogleMap
       mapContainerStyle={{ width: "100%", height: "100%" }}
-      zoom={15}
+      zoom={18}
       center={props.marker}
       onClick={props.sendLocation}
     >
-      <Marker clickable={false} position={props.marker} />
+      <Marker
+        clickable={false}
+        position={props.marker}
+        icon={{
+          url: "/assets/img/mapMarker.svg",
+          scaledSize: new window.google.maps.Size(50, 50),
+        }}
+      />
     </GoogleMap>
   );
 };
