@@ -10,7 +10,12 @@ import { useHttp } from "../../../../hooks/useHttp";
 
 import styles from "./RegSchedule.module.scss";
 
-const RegScheduleDay = ({ day, setDay, scheduleType, setDisableNext }) => {
+export const RegScheduleDay = ({
+  day,
+  setDay,
+  scheduleType,
+  setDisableNext,
+}) => {
   const setActive = (active) => {
     day.active = active;
     day.available = {};
