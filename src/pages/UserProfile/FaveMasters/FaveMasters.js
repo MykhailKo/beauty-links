@@ -39,7 +39,7 @@ const FaveMasters = () => {
 
   return (
     <div>
-      <BookingWindow service={serviceToBook} />
+      <BookingWindow service={serviceToBook} setService={setServiceToBook} />
       <ProfileTitle
         title={"Избранные мастера"}
         subTitle={
