@@ -9,7 +9,7 @@ import authContext from "../../context/auth.context";
 
 import styles from "./BookingWindow.module.scss";
 
-const BookingWindow = ({ service }) => {
+const BookingWindow = ({ service, setService }) => {
   const { token } = useContext(authContext);
   const { request } = useHttp();
   const [openBooking, setOpenBooking] = useState(false);
@@ -17,6 +17,9 @@ const BookingWindow = ({ service }) => {
   const [curDay, setCurDay] = useState(now);
   const [bookedTimes, setBookedTimes] = useState([]);
   const [freeTimes, setFreeTimes] = useState(["12:00", "13:00", "14:00"]);
+  useEffect(() => {
+    if (!openBooking) setService({});
+  }, [openBooking]);
   useEffect(
     () =>
       Object.keys(service).length !== 0
