@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 
 import useWindowSize from "../../hooks/useWindowSize";
 import Stars from "../Stars/Stars";
@@ -95,9 +95,12 @@ const ProfileMenu = ({
   reviews = 0,
   masterName = "Mary K.",
 }) => {
+  const location = useLocation();
   const currentControls = type === "client" ? clientControls : masterControls;
 
-  const [currentControl, setControl] = useState(currentControls[0].name);
+  const [currentControl, setControl] = useState(
+    currentControls.find((el) => el.link.includes(location.pathname)).name
+  );
 
   const [mobileMenuOpened, setMobileMenuOpened] = useState(false);
 
