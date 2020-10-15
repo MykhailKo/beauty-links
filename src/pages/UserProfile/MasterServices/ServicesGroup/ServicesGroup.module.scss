@@ -1,0 +1,35 @@
+@import "../../../../assets/scss/colors";
+
+.groupWrap {
+  width: 100%;
+  margin-bottom: 6em;
+  .catTitle {
+    font-size: 1.45em;
+    font-weight: 600;
+    margin-bottom: 1em;
+  }
+  .searchWrap {
+    position: relative;
+    width: 80%;
+    padding-bottom: 1em;
+    & > input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid $pale-text-color;
+      padding: 0.5em 0 0.5em 2em;
+      outline: none;
+    }
+    & > span {
+      position: absolute;
+      top: 0.25em;
+      left: 0;
+      width: 1.5em;
+      height: 1.5em;
+      background-image: url("/assets/img/icons/search3.png");
+      background-size: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: 0.3s background-size;
+    }
+  }
+}

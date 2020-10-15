@@ -118,7 +118,7 @@ const RegServiceData = ({ nextStep, setServiceData, ServiceData }) => {
           </div>
           <div className={styles.serviceListWrap}>
             {matches.length === 0 ? (
-              <p>По в вашему запросы сервисов не найдено.</p>
+              <p>По в вашему запросу сервисов не найдено.</p>
             ) : (
               matches.map((service, key) => {
                 return (

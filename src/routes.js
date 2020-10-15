@@ -32,6 +32,9 @@ const WorkingHoursPage = lazy(() =>
 const MasterLocations = lazy(() =>
   import("./pages/UserProfile/MasterLocations/MasterLocations")
 );
+const MasterServices = lazy(() =>
+  import("./pages/UserProfile/MasterServices/MasterServices")
+);
 const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
@@ -75,7 +78,7 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
     //             <Route path={`${url}/bookings`} component={Bookings} exact />
     //             <Route
     //               path={`${url}/services`}
-    //               component={MasterBasics}
+    //               component={MasterServices}
     //               exact
     //             />
     //             <Route
@@ -150,7 +153,7 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
                 <Route path={`${url}/bookings`} component={Bookings} exact />
                 <Route
                   path={`${url}/services`}
-                  component={MasterBasics}
+                  component={MasterServices}
                   exact
                 />
                 <Route
