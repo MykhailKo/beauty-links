@@ -26,6 +26,9 @@ const MasterCalendar = lazy(() =>
 const MasterProfile = lazy(() =>
   import("./pages/UserProfile/MasterProfile/MasterProfile")
 );
+const WorkingHoursPage = lazy(() =>
+  import("./pages/UserProfile/WorkingHoursPage/WorkingHoursPage")
+);
 const MasterLocations = lazy(() =>
   import("./pages/UserProfile/MasterLocations/MasterLocations")
 );
@@ -73,6 +76,11 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
     //             <Route
     //               path={`${url}/services`}
     //               component={MasterBasics}
+    //               exact
+    //             />
+    //             <Route
+    //               path={`${url}/workinghours`}
+    //               component={WorkingHoursPage}
     //               exact
     //             />
     //             <Route
@@ -143,6 +151,11 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
                 <Route
                   path={`${url}/services`}
                   component={MasterBasics}
+                  exact
+                />
+                <Route
+                  path={`${url}/workinghours`}
+                  component={WorkingHoursPage}
                   exact
                 />
                 <Route
