@@ -1,0 +1,55 @@
+@import "../../assets/scss/fonts";
+@import "../../assets/scss/widths";
+@import "../../assets/scss/common";
+@import "../../assets/scss/widths";
+
+.Footer {
+  // width: 100%;
+  background: #272727;
+  & .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @media (min-width: $break-lg) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  @media (min-width: $break-xl) {
+    padding-top: 1rem;
+    padding-bottom: 1.625rem;
+  }
+}
+
+.mobileFooterLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 0px;
+  padding: 0px;
+  @media (min-width: $break-sm) {
+    padding: 0px 1rem;
+    font-size: 18px;
+  }
+}
+
+.BlockLink {
+  display: block;
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.FooterColumn {
+  flex: 1 1 0px;
+  padding: 0px;
+  @media (min-width: $break-sm) {
+    padding: 0px 1rem;
+  }
+}

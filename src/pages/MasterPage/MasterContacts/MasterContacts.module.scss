@@ -1,0 +1,109 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/widths";
+
+.contactsWrap {
+  width: 100%;
+  font-family: "Gilroy";
+  .map {
+    width: 100%;
+    height: 13em;
+    @media (max-width: $break_md) {
+      display: none;
+    }
+  }
+  .address {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+    font-size: 1em;
+    padding-left: 1em;
+    color: $pale-text-color;
+    @media (max-width: $break_md) {
+      position: absolute;
+      width: 15em;
+      top: 6.5em;
+      left: 9em;
+    }
+    & > span {
+      display: flex;
+      width: 1.1em;
+      height: 1.1em;
+      background-image: url("/assets/img/icons/map-marker.png");
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      margin-right: 0.5em;
+    }
+  }
+  .phoneBlock {
+    padding-left: 1em;
+    margin-top: 1em;
+    @media (max-width: $break_md) {
+      position: absolute;
+      width: 15em;
+      top: 8em;
+      left: 9em;
+    }
+    .showPhone {
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      color: $main;
+      text-decoration: underline;
+      cursor: pointer;
+      & > span {
+        display: flex;
+        width: 1.1em;
+        height: 1.1em;
+        background-image: url("/assets/img/icons/phone.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin-right: 0.5em;
+      }
+    }
+    & > a {
+      display: flex;
+      margin-top: 0.5em;
+      color: $main;
+      text-decoration: none;
+    }
+  }
+  .socNet {
+    display: flex;
+    align-items: center;
+    color: $label-color;
+    margin-top: 0.8em;
+    padding-left: 1em;
+    @media (max-width: $break_md) {
+      position: absolute;
+      top: 2em;
+      right: 0.5em;
+    }
+    & > span {
+      @media (max-width: $break_md) {
+        display: none;
+      }
+    }
+    & > ul {
+      display: flex;
+      @media (max-width: $break_md) {
+        flex-flow: column;
+      }
+      & > a > li {
+        list-style: none;
+        width: 1.6em;
+        height: 1.6em;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 0.5em;
+        @media (max-width: $break_md) {
+          width: 2.5em;
+          height: 2.5em;
+          margin-bottom: 0.5em;
+        }
+      }
+    }
+  }
+}

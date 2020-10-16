@@ -1,0 +1,58 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/widths";
+
+.calendarWrap {
+  width: 100%;
+  font-family: "Gilroy";
+  .calendarLegend {
+    display: flex;
+    padding: 1em 0;
+    & > li {
+      list-style: none;
+      margin-right: 1em;
+      width: 9em;
+      text-align: center;
+      padding: 0.5em 0;
+      color: $text-color;
+      &:nth-of-type(1) {
+        background-color: #ededed;
+      }
+      &:nth-of-type(2) {
+        background-color: #ffd6d6;
+      }
+      &:nth-of-type(3) {
+        background-color: #d6ffdf;
+      }
+    }
+  }
+  .monthTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 600;
+    padding: 0.5em 0 1.5em 0;
+  }
+  .calendarBorder {
+    width: 100%;
+    height: 43em;
+    background-color: $main;
+    padding: 0 1px;
+  }
+  .calendar {
+    width: inherit;
+    height: inherit;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 0.25fr repeat(5, 1fr) 0.1fr;
+    grid-gap: 1px;
+    & > span {
+      display: flex;
+      background-color: $white;
+      align-items: center;
+      justify-content: center;
+    }
+    .calendarBottom {
+      grid-row: 7/8;
+    }
+  }
+}

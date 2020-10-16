@@ -1,0 +1,42 @@
+@import "../../../../assets/scss/fonts";
+@import "../../../../assets/scss/widths";
+
+.RegKnowledgeData {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: $break_xs) {
+    width: 95%;
+    font-size: 1.2em;
+  }
+  & > div {
+    width: 100%;
+    padding: 1em 0;
+    @media (max-width: $break_xs) {
+      padding: 0;
+    }
+  }
+}
+
+.MedicalBlock {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 1.5rem;
+  color: #4c4c4c;
+  & > div {
+    color: #000000;
+    margin: 1rem;
+  }
+  @media (min-width: $break-md) {
+    display: flex;
+    align-items: center;
+    & > div {
+      margin: 0rem 1rem;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../../assets/scss/widths";
+
+.masterCertsWrap {
+  width: 100%;
+  .title {
+    display: flex;
+    align-items: center;
+    @media (max-width: $break_md) {
+      flex-flow: row-reverse;
+      justify-content: flex-end;
+      font-size: 1.3em;
+      font-weight: 700;
+    }
+    & > span {
+      display: flex;
+      width: 1em;
+      height: 1.5em;
+      background-image: url("/assets/img/icons/cert.png");
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-right: 0.5em;
+      @media (max-width: $break_md) {
+        margin-left: 0.5em;
+      }
+    }
+  }
+}

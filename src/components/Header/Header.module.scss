@@ -1,0 +1,12 @@
+@import "../../assets/scss/widths";
+
+.header {
+  width: 100%;
+  height: 7.5em;
+  font-size: 18px;
+  display: flex;
+  flex-flow: column;
+  @media (max-width: $break-sm) {
+    height: 5.5em;
+  }
+}

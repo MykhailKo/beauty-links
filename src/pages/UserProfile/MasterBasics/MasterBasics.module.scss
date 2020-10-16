@@ -1,0 +1,54 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/widths";
+
+.basicsWrap {
+  .basicActions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0 2.5em 0;
+    border-bottom: 1px solid $main;
+  }
+  .ordersDashboardWrap {
+    width: 100%;
+    padding: 2.5em 0;
+    border-bottom: 1px solid $main;
+    margin-bottom: 1.5em;
+    font-family: "Gilroy";
+    & > h2 {
+      font-size: 1.3em;
+      color: $text-color;
+    }
+    .ordersDashboard {
+      margin-top: 1.5em;
+      width: inherit;
+      height: 5em;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-between;
+      & > li {
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        & > p {
+          font-size: 1em;
+          color: $text-color;
+        }
+        & > span {
+          font-size: 1.6em;
+          color: $main;
+          font-weight: 300;
+        }
+        &:last-of-type > span {
+          color: $text-color;
+        }
+      }
+    }
+  }
+  & > a {
+    font-size: 1.3em;
+    color: $text-color;
+  }
+}

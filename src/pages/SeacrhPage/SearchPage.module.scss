@@ -1,0 +1,71 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.searchPageWrap {
+  margin-top: 0.5em;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: auto 40em auto;
+  justify-items: center;
+  font-family: "Gilroy";
+  @media (max-width: $break_md) {
+    background-image: url("/assets/img/search-bg-mobile.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  @media (max-width: $break_sm) {
+    grid-template-columns: auto 85% auto;
+  }
+  .rightBg,
+  .leftBg {
+    height: inherit;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .leftBg {
+    @media (min-width: $break_md) {
+      background-image: url("/assets/img/search-bg-left.png");
+    }
+  }
+  .rightBg {
+    @media (min-width: $break_md) {
+      background-image: url("/assets/img/search-bg-right.png");
+    }
+  }
+  .searchPageContent {
+    width: 80%;
+    height: 100%;
+    .searchTitle {
+      width: 100%;
+      text-align: center;
+      padding: 1em 0;
+      @media (max-width: $break_sm) {
+        margin-bottom: 3em;
+      }
+    }
+    .searchForm {
+      & input,
+      & select {
+        @media (max-width: $break_sm) {
+          font-size: 1.2em;
+        }
+      }
+    }
+    .map {
+      width: 100%;
+      height: 20em;
+      padding-bottom: 1em;
+    }
+    .hint {
+      margin-top: 1em;
+      @media (max-width: $break_sm) {
+        margin-top: 6em;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.similarMasterWrap {
+  position: relative;
+  width: 20em;
+  height: 13em;
+  margin-bottom: 1em;
+  @media (max-width: $break_md) {
+    width: 100%;
+  }
+  cursor: pointer;
+  .shadedBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    background-color: $text-color;
+    opacity: 0;
+    transition: 0.4s opacity;
+    z-index: 3;
+  }
+  &:hover > .shadedBg {
+    opacity: 0.4;
+  }
+  .similarMasterBlock {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    padding: 1.5em;
+    font-family: "Gilroy";
+    color: $white;
+    .name {
+      position: relative;
+      font-size: 1.2em;
+      font-weight: 300;
+      margin-bottom: 0.2em;
+      z-index: 4;
+    }
+    .location {
+      position: relative;
+      display: flex;
+      font-size: 0.9em;
+      z-index: 4;
+      & > span {
+        display: flex;
+        width: 1.2em;
+        height: 1.2em;
+        background-image: url("/assets/img/icons/map-marker-light.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5em;
+      }
+    }
+  }
+}

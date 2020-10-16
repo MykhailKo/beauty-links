@@ -1,0 +1,62 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.reviewWrap {
+  margin: 1.5em 0;
+}
+.reviewBody {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 2;
+  grid-template-columns: 1fr 8fr 2fr;
+  grid-gap: 0.5em 0.5em;
+  font-family: "Gilroy";
+  @media (max-width: $break_md) {
+    align-items: center;
+  }
+  .authorAvatar {
+    display: flex;
+    grid-area: 1/1/3/2;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @media (max-width: $break_md) {
+      grid-area: 1/1/2/2;
+      height: 3em;
+      width: 3em;
+    }
+  }
+  .authorName {
+    display: flex;
+    grid-area: 1/2/2/3;
+    font-weight: 700;
+    color: $pale-text-color;
+    @media (max-width: $break_md) {
+      font-size: 1.2em;
+    }
+    .date {
+      margin-left: 1em;
+      color: $label-color;
+      font-weight: 400;
+      @media (max-width: $break_md) {
+        display: none;
+      }
+    }
+  }
+  .rating {
+    display: flex;
+    grid-area: 1/3/2/4;
+  }
+  .text {
+    display: flex;
+    grid-area: 2/2/3/4;
+    @media (max-width: $break_md) {
+      grid-area: 2/1/3/4;
+      padding-top: 1em;
+      line-height: 1.3em;
+    }
+  }
+}

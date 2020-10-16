@@ -1,0 +1,43 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/widths";
+
+.baseRegForm {
+  width: 80%;
+  padding-top: 1.5em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  @media (max-width: $break_md) {
+    width: 95%;
+    font-size: 1.2em;
+  }
+  .confPols {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.5em 0 0.5em 0;
+    margin-bottom: 2em;
+    .confPolsDesc {
+      width: 95%;
+      font-size: 1.133em;
+      color: $text-color;
+      font-family: "Gilroy";
+      font-weight: 500;
+      a {
+        color: $link-color;
+      }
+    }
+  }
+}
+.loginMes {
+  padding-top: 1.5em;
+  font-size: 1em;
+  color: $text-color;
+  font-family: "Gilroy";
+  font-weight: 500;
+  margin-bottom: 1em;
+  a {
+    color: $link-color;
+  }
+}

@@ -1,0 +1,46 @@
+@import "../../assets/scss/colors";
+
+.selectWrap {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 1em 0;
+  .selectLabel {
+    color: $label-color;
+    font-family: "Gilroy";
+    font-weight: 400;
+    font-size: 1em;
+  }
+  .selectReg {
+    width: 100%;
+    color: $text-color;
+    font-family: "Gilroy";
+    font-size: 1.333em;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid $pale-text-color;
+    outline: none;
+    padding: 0.1em 0;
+    transition: 0.3s padding;
+    &:focus {
+      padding: 0.4em 0 0.1em 0;
+    }
+  }
+  .selectCommon {
+    font-size: 1em;
+    border: 1px solid $main;
+    border-radius: 0.5em;
+    padding: 0.4em 1em;
+  }
+  .filledCommon {
+    @extend .selectCommon;
+    background-color: $pale-main-blue;
+    border: none;
+  }
+  .selectError {
+    color: $red;
+    font-family: "Gilroy";
+    font-size: 0.666em;
+    font-weight: 500;
+  }
+}

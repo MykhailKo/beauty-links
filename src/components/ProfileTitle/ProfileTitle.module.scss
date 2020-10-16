@@ -1,0 +1,31 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.titleWrap {
+  width: 100%;
+  margin: 1.5em 0;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  font-family: "Gilroy";
+  border-bottom: 1px solid $main;
+  padding: 0.5em;
+  @media (max-width: $break_sm) {
+    margin-top: 0;
+  }
+  .title {
+    font-size: 1.77em;
+    font-weight: 600;
+    color: $text-color;
+  }
+  .subTitle {
+    width: 100%;
+    padding-top: 1em;
+    font-size: 1em;
+    font-weight: 300;
+    color: $pale-text-color;
+    @media (min-width: $break-md) {
+      width: 70%;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import "../../../assets/scss/widths";
+@import "../../../assets/scss/fonts";
+
+.SubGuarantie {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 0px;
+  @media (min-width: $break-md) {
+    flex-direction: column;
+  }
+}
+.image {
+  margin: 1rem;
+  width: 20%;
+  & img {
+    width: 100%;
+  }
+  @media (min-width: $break-sm) {
+    width: 15%;
+  }
+  @media (min-width: $break-md) {
+    margin-bottom: 3rem;
+    width: auto;
+  }
+  @media (min-width: $break-lg) {
+    margin-bottom: 4.5rem;
+    width: auto;
+  }
+}
+
+.title {
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  color: #000000;
+  @media (min-width: $break-sm) {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  @media (min-width: $break-md) {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
+  }
+  @media (min-width: $break-lg) {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+    color: #000000;
+  }
+}

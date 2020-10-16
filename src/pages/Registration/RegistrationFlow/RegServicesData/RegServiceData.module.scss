@@ -1,0 +1,66 @@
+@import "../../../../assets/scss/colors";
+@import "../../../../assets//scss//widths";
+
+.regServiceWrap {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  .searchWrap {
+    width: 80%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding: 1.5em 0;
+    @media (max-width: $break_lg) {
+      width: 97%;
+    }
+    button {
+      width: 2.1em;
+      height: 2.1em;
+      border: none;
+      border-radius: 0.3em;
+      outline: none;
+      cursor: pointer;
+      background-color: transparent;
+      background-image: url("/assets/img/icons/search2.png");
+      background-position: center;
+      background-size: 45%;
+      background-repeat: no-repeat;
+      box-shadow: 0 2px 8px #d2d2d2;
+      @media (max-width: $break-md) {
+        width: 2.7em;
+        height: 2.7em;
+      }
+    }
+    input {
+      width: 25%;
+      padding: 0.8em 0.8em;
+      margin-left: 1em;
+      box-shadow: 0 2px 8px #d2d2d2;
+      border-radius: 0.3em;
+      border: none;
+      outline: none;
+      color: $text-color;
+      font-family: "Gilroy";
+      font-weight: 400;
+      font-size: 0.8em;
+      @media (max-width: $break-md) {
+        font-size: 1em;
+        width: 65%;
+      }
+    }
+  }
+  .serviceListWrap {
+    width: 80%;
+    padding-bottom: 2em;
+    @media (max-width: $break_lg) {
+      width: 97%;
+    }
+    p {
+      color: $text-color;
+      font-family: "Gilroy";
+      font-weight: 400;
+    }
+  }
+}

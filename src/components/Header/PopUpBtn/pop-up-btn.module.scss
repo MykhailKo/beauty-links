@@ -1,0 +1,10 @@
+.popUpBtn {
+    font-family: 'Gilroy';
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--text-color);
+    cursor: pointer;
+    @media (max-width: 1100px) {
+        display: none;
+    }
+}

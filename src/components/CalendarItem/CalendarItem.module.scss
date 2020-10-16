@@ -1,0 +1,29 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.dayBlock {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  background-color: $white;
+  padding: 0.1em 0.3em;
+  overflow: hidden;
+  & > span {
+    position: absolute;
+    top: 0.2em;
+    left: 0.2em;
+    font-weight: 800;
+  }
+  .bookingsList {
+    margin-top: 1.3em;
+    & > li {
+      list-style: none;
+      font-size: 0.6em;
+      font-weight: 500;
+      margin: 0.15em 0;
+      & > span {
+        margin-left: 0.5em;
+      }
+    }
+  }
+}

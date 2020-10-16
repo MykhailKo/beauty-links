@@ -1,0 +1,32 @@
+@import "../../../assets/scss/widths";
+@import "../../../assets/scss/fonts";
+
+.ChooseFighter {
+  width: 85%;
+  display: flex;
+  justify-content: space-around;
+  @media (max-width: $break_xs) {
+    width: 95%;
+  }
+}
+
+.SubTitle {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1em;
+  line-height: 1.222em;
+  text-align: center;
+  color: #4c4c4c;
+  margin: 0.8em 0 2.5em 0;
+}
+
+.SelectorBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: $break-md) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

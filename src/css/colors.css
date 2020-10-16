@@ -1,0 +1,17 @@
+:root {
+    --main-blue: #00C6C6;
+    --pale-main-blue: rgba(0, 198, 198, 0.3);
+    --text-color: #000;
+    --pale-text-color: #555;
+    --label-color: #c4c4c4;
+    --btn-text-color: #fff;
+    --footer-bg-color: #272727;
+    --header-bg-color: #F5F5F5;
+    --input-text-color: #4c4c4c;
+    --input-bg-color: #fff;
+    --border-color: #e5e5e5;
+    --btn-hover-bg-color: #03B5B5;
+    --error-color: #CB2026;
+    --shadow-color: #rgba(0, 0, 0, 0.1);
+    --pale-blue: #80E3E3;
+}

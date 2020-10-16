@@ -1,0 +1,33 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.actionWrap {
+  width: 8em;
+  height: 8em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 0.5em;
+  border: 1px solid $main;
+  border-radius: 0.3em;
+  .actionName {
+    font-size: 0.9em;
+    color: $pale-text-color;
+    font-family: "Gilroy";
+    line-height: 1.3em;
+    text-align: center;
+  }
+  .actionCompleted {
+    width: 1.7em;
+    height: 1.7em;
+    background-image: url("/assets/img/check.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .actionUncompleted {
+    @extend .actionCompleted;
+    background-image: url("/assets/img/cross.png");
+  }
+}

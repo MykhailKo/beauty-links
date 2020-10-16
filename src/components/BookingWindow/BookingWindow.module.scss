@@ -1,0 +1,137 @@
+@import "../../assets/scss/colors";
+
+.bookingWrap {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-bottom: 2em;
+  .title {
+    font-size: 1.4em;
+    color: $text-color;
+    font-weight: 600;
+    padding: 0.5em 0;
+  }
+  .month {
+    font-weight: 600;
+    padding: 1em 0 1.5em 0;
+  }
+  .datesBlock {
+    width: 100%;
+    .dayNames,
+    .dayNumbers {
+      display: flex;
+      width: 100%;
+      padding: 0.5em 0;
+      align-items: center;
+      justify-content: space-around;
+      border-top: 1px solid $label-color;
+      border-bottom: 1px solid $label-color;
+      & > li {
+        list-style: none;
+        padding: 0.5rem 1em;
+        color: $pale-text-color;
+        cursor: pointer;
+      }
+    }
+    .dayNumbers {
+      border-top: none;
+      & > li {
+        font-size: 1.3em;
+        font-weight: 300;
+        color: $label-color;
+      }
+      .curDay {
+        color: $main;
+        border: 1px solid $main;
+      }
+    }
+  }
+  .freeTimes {
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0 1em 0;
+    border-bottom: 1px solid $label-color;
+    & > div {
+      width: 100%;
+      text-align: center;
+      color: $pale-text-color;
+      padding-bottom: 1em;
+    }
+    & > li {
+      list-style: none;
+      padding: 0.7em 1.5em;
+      margin: 0.7em;
+      border: 1px solid $pale-text-color;
+      color: $pale-text-color;
+      cursor: pointer;
+    }
+    .bookedTime {
+      color: $main;
+      border-color: $main;
+      background-color: $pale-pale-blue-color;
+    }
+  }
+  .bookedTimes {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 1em 0 0 0;
+    border-bottom: 1px solid $label-color;
+    & > li {
+      width: 90%;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 1fr 1fr 0.1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 1em 0.7em;
+      margin-bottom: 1em;
+      & > div {
+        display: grid;
+        font-size: 1.1em;
+        font-weight: 700;
+        &:nth-of-type(2),
+        &:nth-of-type(4) {
+          font-size: 0.9em;
+          color: $label-color;
+          font-weight: 400;
+        }
+        &:nth-of-type(3),
+        &:nth-of-type(4) {
+          justify-items: end;
+        }
+      }
+      & > button {
+        margin-left: 1em;
+        background: none;
+        border: none;
+        width: 1em;
+        height: 1em;
+        background-image: url("/assets/img/icons/close.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+    }
+  }
+  .promoCode {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 1em 0 2em 0;
+    & > label {
+      width: 7em;
+      font-size: 1em;
+      font-weight: 700;
+      margin-right: 2em;
+    }
+    & input {
+      width: 50% !important;
+    }
+  }
+}

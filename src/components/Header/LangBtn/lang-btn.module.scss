@@ -1,0 +1,20 @@
+@import "../../../assets/scss/widths";
+
+.langBtn,
+.langBtnActive {
+  color: var(--pale-text-color);
+  font-family: "Gilroy";
+  font-weight: 500;
+  font-size: 1.05em;
+  color: var(--text-color);
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.5;
+  @media (max-width: $break-md) {
+    font-size: 1.2em;
+    color: var(--btn-text-color);
+  }
+}
+.langBtnActive {
+  opacity: 1;
+}

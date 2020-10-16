@@ -1,0 +1,67 @@
+@import "../../assets/scss/widths";
+@import "../../assets/scss/colors";
+
+.carouselWrap {
+  width: 100%;
+  position: relative;
+
+  .carouselWindow {
+    width: 97%;
+    overflow: hidden;
+    padding: 1em 0.2em;
+    transform: translateX(-3%);
+    @media (max-width: $break-md) {
+      width: 89%;
+      transform: translateX(-2%);
+    }
+    .carouselTape {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      justify-content: space-between;
+      .carouselItem,
+      .carouselItemActive {
+        list-style: none;
+        display: flex;
+        padding: 0.5em;
+        margin-right: 2em;
+        font-size: 1em;
+        font-family: "Gilroy";
+        font-weight: 400;
+        color: $text-color;
+        border-radius: 0.3em;
+        box-shadow: 0 2px 8px #d2d2d2;
+        cursor: pointer;
+        @media (max-width: $break-md) {
+          padding: 0.7em 0.5em;
+        }
+      }
+      .carouselItemActive {
+        background-color: $main;
+        color: $white;
+      }
+    }
+  }
+  .carouselBtn {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 0.3em;
+    background-image: url("/assets/img/icons/arrow-right.png");
+    background-position: center;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    background-color: $white;
+    box-shadow: 0 2px 8px #d2d2d2;
+    cursor: pointer;
+    @media (max-width: $break-md) {
+      width: 2.7em;
+      height: 2.7em;
+      top: 22%;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.stepsContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 95%;
+    height: 1px;
+    background-color: $label-color;
+    transform: translateY(1.666em) translateX(2.5%);
+    z-index: 1;
+    @media (max-width: $break_xs) {
+      width: 100%;
+      transform: translateY(1em) translateX(0%);
+    }
+  }
+  .stepBlock {
+    position: relative;
+    list-style: none;
+    width: 4.6em;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    z-index: 2;
+    .stepCircle {
+      width: 3.333em;
+      height: 3.333em;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-position: center;
+      background-size: 30%;
+      background-repeat: no-repeat;
+      color: $white;
+      font-family: "Gilroy";
+      font-size: 1em;
+      font-weight: 500;
+      @media (max-width: $break_xs) {
+        width: 2.2em;
+        height: 2.2em;
+        background-size: 50%;
+      }
+    }
+    .stepDesc {
+      width: 100%;
+      font-size: 0.666em;
+      font-family: "Gilroy";
+      font-weight: 400;
+      color: $pale-text-color;
+      text-align: center;
+      margin-top: 1em;
+      @media (max-width: $break_xs) {
+        display: none;
+      }
+    }
+  }
+}

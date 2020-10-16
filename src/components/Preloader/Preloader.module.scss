@@ -1,0 +1,14 @@
+.preloaderWrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .preloader {
+    width: 12em;
+    height: 3em;
+    background-image: url("/assets/img/preloader.gif");
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,39 @@
+@import "../../../assets/scss/widths";
+
+.BeautyColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1;
+  padding: 0px;
+  margin: 1rem 0rem;
+  @media (min-width: $break-sm) {
+    padding: 0px 1rem;
+    margin: 2rem 0rem 0rem;
+  }
+}
+
+.MainLogoBlock {
+  margin: 0rem 0rem 2rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  & img {
+    width: 100%;
+    @media (min-width: $break-sm) {
+      width: auto;
+      margin: 0px 1rem;
+    }
+  }
+}
+
+.Contacts {
+  display: block;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  & a {
+    display: block;
+  }
+}

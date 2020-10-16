@@ -1,0 +1,41 @@
+@import "../../assets/scss/fonts";
+@import "../../assets/scss/widths";
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  & img {
+    @media (max-width: $break-md) {
+      width: 80%;
+    }
+  }
+}
+
+.errorCode {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 72px;
+  line-height: 83px;
+  color: #00c7c7;
+}
+
+.description {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+}
+.link {
+  color: #00c7c7;
+  font-weight: 700;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

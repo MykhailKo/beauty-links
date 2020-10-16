@@ -1,0 +1,121 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/widths";
+
+.sideBarMenu {
+  position: relative;
+  width: 19.5em;
+  padding: 1em 0;
+  z-index: 9;
+  background-color: $white;
+  margin-top: 0.5em;
+  @media (max-width: $break_lm) {
+    margin: 0.5em auto 0 auto;
+    width: 50%;
+    padding-top: 0;
+  }
+  @media (max-width: $break_lg) {
+    margin: 1.5em auto 0 auto;
+  }
+  @media (max-width: $break_md) {
+    width: 90%;
+    margin: 0.5em auto 0 auto;
+  }
+  @media (max-width: $break_sm) {
+    font-size: 1.4em;
+    padding: 0;
+  }
+  .profileControls {
+    width: 100%;
+    padding: 0.5em 0;
+    transition: 0.4s height;
+    background-color: $white;
+    @media (max-width: $break_lm) {
+      position: absolute;
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+      box-shadow: 0px 15px 15px #d2d2d2;
+    }
+    .control {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0.7em 2em;
+      margin: 1em 0;
+      background-color: $white;
+      font-size: 1em;
+      font-weight: 500;
+      color: $text-color;
+      @media (max-width: $break_lm) {
+        margin: 0;
+        padding: 0.7em 1em;
+        font-size: 0.888em;
+      }
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      .controlIcon {
+        display: inline-flex;
+        width: 1.6em;
+        height: 1.6em;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-right: 1.2em;
+      }
+      a:active {
+        outline: none;
+      }
+    }
+    .controlActive {
+      @extend .control;
+      background-color: $pale-pale-blue-color;
+    }
+  }
+  .masterMenuHeader {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 1em 5em 0 0;
+    font-family: "Gilroy";
+    .masterName {
+      font-size: 1.666em;
+      font-weight: 300;
+      color: $grey-most;
+    }
+    .reviewsCount {
+      font-size: 0.777em;
+      font-weight: 800;
+      padding-top: 0.5rem;
+    }
+  }
+  .clientMenuHeader {
+    height: 2em;
+  }
+  .mobileMenuHeader {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1em 0 0.5em 0;
+    cursor: pointer;
+    & > div {
+      font-family: "Gilroy";
+      font-size: 1.222em;
+      color: $text-color;
+      font-weight: 600;
+    }
+    .arrow {
+      color: $main;
+      position: absolute;
+      right: 0.5em;
+      transform-origin: 50% 45%;
+      transition: 0.4s transform;
+    }
+    .rotateArrow {
+      @extend .arrow;
+      transform: rotateZ(180deg);
+    }
+  }
+}
