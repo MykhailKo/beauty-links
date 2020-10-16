@@ -4,6 +4,7 @@ import styles from "./Select.module.scss";
 
 const Select = ({
   theme = "reg",
+  filled = false,
   label,
   options,
   id,
@@ -23,7 +24,13 @@ const Select = ({
       <select
         id={id}
         name={id}
-        className={theme === "reg" ? styles.selectReg : styles.selectCommon}
+        className={
+          theme === "reg"
+            ? styles.selectReg
+            : filled
+            ? styles.filledCommon
+            : styles.selectCommon
+        }
         required={required}
         value={value}
         onChange={onChange}

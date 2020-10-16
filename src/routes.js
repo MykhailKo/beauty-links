@@ -32,86 +32,91 @@ const WorkingHoursPage = lazy(() =>
 const MasterLocations = lazy(() =>
   import("./pages/UserProfile/MasterLocations/MasterLocations")
 );
+const MasterServices = lazy(() =>
+  import("./pages/UserProfile/MasterServices/MasterServices")
+);
 const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
+const SearchPage = lazy(() => import("./pages/SeacrhPage/SeacrhPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function getRoutes(isAuth, roles, registerIsOpen) {
   const authRoutes = [
-    <Route
-      path="/user"
-      key="/user"
-      render={({ match: { url } }) => {
-        return (
-          <UserProfile type={!roles.includes("master") ? "client" : "master"}>
-            {/* это роуты клиента */}
-            {!roles.includes("master") ? (
-              <Switch>
-                <Route
-                  path={`${url}/achievements`}
-                  component={Achievements}
-                  exact
-                />
-                <Route path={`${url}/bookings`} component={Bookings} exact />
-                <Route path={`${url}/settings`} component={Settings} exact />
-                <Route
-                  path={`${url}/favourites`}
-                  component={FaveMasters}
-                  exact
-                />
-                <Redirect to={`${url}/achievements`} />
-              </Switch>
-            ) : (
-              <Switch>
-                <Route
-                  path={`${url}/masterbasics`}
-                  component={MasterBasics}
-                  exact
-                />
-                <Route
-                  path={`${url}/calendar`}
-                  component={MasterCalendar}
-                  exact
-                />
-                <Route path={`${url}/bookings`} component={Bookings} exact />
-                <Route
-                  path={`${url}/services`}
-                  component={MasterBasics}
-                  exact
-                />
-                <Route
-                  path={`${url}/workinghours`}
-                  component={WorkingHoursPage}
-                  exact
-                />
-                <Route
-                  path={`${url}/locations`}
-                  component={MasterLocations}
-                  exact
-                />
-                <Route
-                  path={`${url}/masterprofile`}
-                  component={MasterProfile}
-                  exact
-                />
-                <Route path={`${url}/settings`} component={Settings} exact />
-                <Route path={`${url}/invite`} component={InvitePage} exact />
-                <Redirect to={`${url}/masterbasics`} />
-              </Switch>
-            )}
-          </UserProfile>
-        );
-      }}
-    />,
-    <Route
-      path="/master/:masterid"
-      key="/master/:masterid"
-      exact
-      component={MasterPage}
-    />,
+    // <Route
+    //   path="/user"
+    //   key="/user"
+    //   render={({ match: { url } }) => {
+    //     return (
+    //       <UserProfile type={!roles.includes("master") ? "client" : "master"}>
+    //         {/* это роуты клиента */}
+    //         {!roles.includes("master") ? (
+    //           <Switch>
+    //             <Route
+    //               path={`${url}/achievements`}
+    //               component={Achievements}
+    //               exact
+    //             />
+    //             <Route path={`${url}/bookings`} component={Bookings} exact />
+    //             <Route path={`${url}/settings`} component={Settings} exact />
+    //             <Route
+    //               path={`${url}/favourites`}
+    //               component={FaveMasters}
+    //               exact
+    //             />
+    //             <Redirect to={`${url}/achievements`} />
+    //           </Switch>
+    //         ) : (
+    //           <Switch>
+    //             <Route
+    //               path={`${url}/masterbasics`}
+    //               component={MasterBasics}
+    //               exact
+    //             />
+    //             <Route
+    //               path={`${url}/calendar`}
+    //               component={MasterCalendar}
+    //               exact
+    //             />
+    //             <Route path={`${url}/bookings`} component={Bookings} exact />
+    //             <Route
+    //               path={`${url}/services`}
+    //               component={MasterServices}
+    //               exact
+    //             />
+    //             <Route
+    //               path={`${url}/workinghours`}
+    //               component={WorkingHoursPage}
+    //               exact
+    //             />
+    //             <Route
+    //               path={`${url}/locations`}
+    //               component={MasterLocations}
+    //               exact
+    //             />
+    //             <Route
+    //               path={`${url}/masterprofile`}
+    //               component={MasterProfile}
+    //               exact
+    //             />
+    //             <Route path={`${url}/settings`} component={Settings} exact />
+    //             <Route path={`${url}/invite`} component={InvitePage} exact />
+    //             <Redirect to={`${url}/masterbasics`} />
+    //           </Switch>
+    //         )}
+    //       </UserProfile>
+    //     );
+    //   }}
+    // />,
+    // <Route
+    //   path="/master/:masterid"
+    //   key="/master/:masterid"
+    //   exact
+    //   component={MasterPage}
+    // />,
   ];
   const nonAuthRoutes = [
     <Route path="/register" key="/register" component={Registration} />,
     <Route path="/login" key="/login" component={Login} />,
+    <Route path="/search" key="/search" component={SearchPage} />,
     <Route
       path="/user"
       key="/user"
@@ -150,7 +155,7 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
                 <Route path={`${url}/bookings`} component={Bookings} exact />
                 <Route
                   path={`${url}/services`}
-                  component={MasterBasics}
+                  component={MasterServices}
                   exact
                 />
                 <Route

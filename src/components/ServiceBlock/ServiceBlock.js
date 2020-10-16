@@ -7,17 +7,23 @@ import widths from "../../assets/scss/_widths.scss";
 
 import useWindowSize from "../../hooks/useWindowSize";
 
-const ServiceBlock = ({ service, services, setService }) => {
+const ServiceBlock = ({
+  service,
+  services,
+  setService,
+  theme = "reg",
+  price = 0,
+}) => {
   const [serviceData, setServiceData] = useState([]);
   // 0 - not active, 1 - active, 2 - ready, 3 - edit
   const [serviceState, setServiceState] = useState(0);
   useEffect(() => {
     setServiceData(services[service.id]);
-    setServiceState(serviceData ? 2 : 0);
+    setServiceState(serviceData || price !== 0 ? 2 : 0);
   }, [service.id, serviceData, services]);
 
   const [servicePrice, setServicePrice] = useState(
-    serviceData ? serviceData.price : ""
+    price !== 0 ? price : serviceData ? serviceData.price : ""
   );
 
   const [width] = useWindowSize();
@@ -26,7 +32,9 @@ const ServiceBlock = ({ service, services, setService }) => {
 
   return (
     <div
-      className={styles.serviceBlock}
+      className={
+        theme === "reg" ? styles.serviceBlock : styles.serviceBlockProf
+      }
       style={
         width < parseInt(widths.break_sm) && serviceState === 2
           ? { marginBottom: "2.5em" }
