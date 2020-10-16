@@ -11,6 +11,7 @@ const ServiceBlock = ({
   service,
   services,
   setService,
+  updateService = () => {},
   theme = "reg",
   price = 0,
 }) => {
@@ -62,7 +63,12 @@ const ServiceBlock = ({
               const tempServices = { ...services };
               delete tempServices[service.id];
               setService(tempServices);
-            } else if (serviceState === 3) setServiceState(2);
+            } else if (serviceState === 3) {
+              setServiceState(2);
+              const tempServices = { ...services };
+              delete tempServices[service.id];
+              updateService(tempServices);
+            }
           }}
         />
         {(serviceState === 2 || serviceState === 3) && (
