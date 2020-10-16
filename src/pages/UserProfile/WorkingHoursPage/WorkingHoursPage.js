@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import ProfileTitle from "../../../components/ProfileTitle/ProfileTitle";
 import Button from "../../../components/Button/Button";
 import TimeInput from "../../../components/TimeInput/TimeInput";
 import Switcher from "../../../components/Switcher/Switcher";
+import Preloader from "../../../components/Preloader/Preloader";
 
 import { useHttp } from "../../../hooks/useHttp";
 import authContext from "../../../context/auth.context";
@@ -87,37 +88,95 @@ const WorkingHoursPage = () => {
   const [scheduleType, setScheduleType] = useState("salon");
   const [disableSubmit, setDisableSubmit] = useState(false);
   const { token } = useContext(authContext);
-  const { request } = useHttp();
+  const { request, loading } = useHttp();
+
+  const setFetchedData = (salon, mobile) => {
+    if (salon !== null) {
+      const preparedSalon = JSON.parse(JSON.stringify(workingHoursData.salon));
+      for (const day in preparedSalon) {
+        if (preparedSalon.hasOwnProperty(day)) {
+          preparedSalon[day] = {
+            ...preparedSalon[day],
+            ...salon[day],
+            active: salon[day]?.available ? true : false,
+          };
+        }
+      }
+      setWorkingHoursData({ ...workingHoursData, salon: preparedSalon });
+    }
+    if (mobile !== null) {
+      const preparedMobile = JSON.parse(
+        JSON.stringify(workingHoursData.mobile)
+      );
+      for (const day in preparedMobile) {
+        if (preparedMobile.hasOwnProperty(day)) {
+          preparedMobile[day] = {
+            ...preparedMobile[day],
+            ...mobile[day],
+            active: mobile[day]?.available ? true : false,
+          };
+        }
+      }
+      setWorkingHoursData({ ...workingHoursData, mobile: preparedMobile });
+    }
+  };
+  const fetchSchedule = useCallback(async () => {
+    const response = await request(
+      "/api/v1.0/profile/master/availability",
+      "GET",
+      null,
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+    const salon = response.salon ? Object.values(response.salon)[0] : null;
+    const mobile = response.mobile ? Object.values(response.mobile)[0] : null;
+    setFetchedData(salon, mobile);
+  }, [request, token]);
+
+  useEffect(() => {
+    fetchSchedule();
+  }, [fetchSchedule]);
 
   const prepareData = () => {
     const readyData = JSON.parse(JSON.stringify(workingHoursData));
     for (const key in readyData.salon) {
       if (readyData.salon.hasOwnProperty(key)) {
+        if (!readyData.salon[key].active) {
+          delete readyData.salon[key].available;
+        }
         delete readyData.salon[key].name;
         delete readyData.salon[key].active;
       }
     }
     for (const key in readyData.mobile) {
       if (readyData.mobile.hasOwnProperty(key)) {
+        if (!readyData.mobile[key].active) {
+          delete readyData.mobile[key].available;
+        }
         delete readyData.mobile[key].name;
         delete readyData.mobile[key].active;
       }
     }
-    const result = { 1: { 13: readyData.salon }, 2: { 13: readyData.mobile } };
-    if (Object.values(result[2]).length === 0) {
-      delete result[2];
+    const result = {
+      salon: { 13: readyData.salon },
+      mobile: { ...readyData.mobile },
+    };
+    if (Object.values(result.mobile).length === 0) {
+      delete result.mobile;
     }
-    if (Object.values(result[1]).length === 0) {
-      delete result[1];
+    if (Object.values(result.salon).length === 0) {
+      delete result.salon;
     }
     return result;
   };
   const updateSchedule = async () => {
     try {
       const readyData = prepareData();
+      console.log(readyData);
       const response = await request(
-        "/api/v1.0/master/availability",
-        "POST",
+        "/api/v1.0/profile/master/availability",
+        "PUT",
         readyData,
         { Authorization: `Bearer ${token}` }
       );
@@ -138,54 +197,60 @@ const WorkingHoursPage = () => {
           "Здесь вы можете  контролировать своё время  и вносить изменения в свой рабочий график."
         }
       />
-      <div className={styles.scheduleWrap}>
-        <div className={styles.scheduleTypes}>
-          <li
-            className={
-              scheduleType !== "salon" ? styles.typeDisabled : styles.type
-            }
-            onClick={() => {
-              setScheduleType("salon");
-            }}
-          >
-            Салон
-          </li>
-          <li
-            className={
-              scheduleType !== "mobile" ? styles.typeDisabled : styles.type
-            }
-            onClick={() => {
-              setScheduleType("mobile");
-            }}
-          >
-            Выездные услуги
-          </li>
-        </div>
-        <form className={styles.scheduleDays} id={"scheduleForm"}>
-          {Object.entries(workingHoursData[scheduleType]).map(
-            (dayArray, key) => {
-              return (
-                <ScheduleDay
-                  key={key}
-                  day={dayArray[1]}
-                  scheduleType={scheduleType}
-                  setDay={(day) => {
-                    workingHoursData[scheduleType][dayArray[0]] = day;
-                    setWorkingHoursData(workingHoursData);
-                    triggerUpdate(update + 1);
-                  }}
-                  setDisableSubmit={setDisableSubmit}
-                />
-              );
-            }
-          )}
-        </form>
-      </div>
-      <Button
-        text={"Обновить рассписание"}
-        onClick={() => updateSchedule()}
-        disabled={disableSubmit}
-      />
+      {loading ? (
+        <Preloader />
+      ) : (
+        <>
+          <div className={styles.scheduleWrap}>
+            <div className={styles.scheduleTypes}>
+              <li
+                className={
+                  scheduleType !== "salon" ? styles.typeDisabled : styles.type
+                }
+                onClick={() => {
+                  setScheduleType("salon");
+                }}
+              >
+                Салон
+              </li>
+              <li
+                className={
+                  scheduleType !== "mobile" ? styles.typeDisabled : styles.type
+                }
+                onClick={() => {
+                  setScheduleType("mobile");
+                }}
+              >
+                Выездные услуги
+              </li>
+            </div>
+            <form className={styles.scheduleDays} id={"scheduleForm"}>
+              {Object.entries(workingHoursData[scheduleType]).map(
+                (dayArray, key) => {
+                  return (
+                    <ScheduleDay
+                      key={key}
+                      day={dayArray[1]}
+                      scheduleType={scheduleType}
+                      setDay={(day) => {
+                        workingHoursData[scheduleType][dayArray[0]] = day;
+                        setWorkingHoursData(workingHoursData);
+                        triggerUpdate(update + 1);
+                      }}
+                      setDisableSubmit={setDisableSubmit}
+                    />
+                  );
+                }
+              )}
+            </form>
+          </div>
+          <Button
+            text={"Обновить рассписание"}
+            onClick={() => updateSchedule()}
+            disabled={disableSubmit}
+          />
+        </>
+      )}
     </div>
   );
 };
