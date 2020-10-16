@@ -36,6 +36,7 @@ const MasterServices = lazy(() =>
   import("./pages/UserProfile/MasterServices/MasterServices")
 );
 const MasterPage = lazy(() => import("./pages/MasterPage/MasterPage"));
+const SearchPage = lazy(() => import("./pages/SeacrhPage/SeacrhPage"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function getRoutes(isAuth, roles, registerIsOpen) {
@@ -115,6 +116,7 @@ export default function getRoutes(isAuth, roles, registerIsOpen) {
   const nonAuthRoutes = [
     <Route path="/register" key="/register" component={Registration} />,
     <Route path="/login" key="/login" component={Login} />,
+    <Route path="/search" key="/search" component={SearchPage} />,
     <Route
       path="/user"
       key="/user"

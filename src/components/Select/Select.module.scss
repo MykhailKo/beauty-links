@@ -32,6 +32,11 @@
     border-radius: 0.5em;
     padding: 0.4em 1em;
   }
+  .filledCommon {
+    @extend .selectCommon;
+    background-color: $pale-main-blue;
+    border: none;
+  }
   .selectError {
     color: $red;
     font-family: "Gilroy";
