@@ -17,6 +17,7 @@ const BookingWindow = ({ service, setService }) => {
   const [curDay, setCurDay] = useState(now);
   const [bookedTimes, setBookedTimes] = useState([]);
   const [freeTimes, setFreeTimes] = useState(["12:00", "13:00", "14:00"]);
+  const masterId = service.master;
   useEffect(() => {
     if (!openBooking) setService({});
   }, [openBooking]);

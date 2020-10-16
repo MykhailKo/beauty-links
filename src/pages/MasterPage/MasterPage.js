@@ -13,6 +13,7 @@ import MasterCerts from "./MasterCerts/MasterCerts";
 import PagesControl from "../../components/PagesControl/PagesControl";
 import ReviewItem from "../../components/ReviewItem/ReviewItem";
 import SimilarMasterItem from "../../components/SimilarMasterItem/SimilarMasterItem";
+import BookingWindow from "../../components/BookingWindow/BookingWindow";
 
 import styles from "./MasterPage.module.scss";
 import { useEffect } from "react";
@@ -22,6 +23,7 @@ const MasterPage = () => {
   const { request, loading } = useHttp();
   const [reviewsPage, setReviewsPage] = useState(1);
   const [masterData, setMasterData] = useState(null);
+  const [serviceToBook, setServiceToBook] = useState({});
 
   const getMaster = useCallback(
     async (id) => {
@@ -193,6 +195,10 @@ const MasterPage = () => {
       ) : (
         <div>
           <div className={"container"}>
+            <BookingWindow
+              service={serviceToBook}
+              setService={setServiceToBook}
+            />
             <div className={styles.masterInfoWrap}>
               <section className={styles.masterDescription}>
                 <div
@@ -264,7 +270,10 @@ const MasterPage = () => {
                 <SecTitle align="left" title={"Забронируйте визит "} />
               </section>
               <section className={styles.masterBookings}>
-                <MasterServices masterId={masterid} />
+                <MasterServices
+                  masterId={masterid}
+                  setServiceToBook={serviceToBook}
+                />
               </section>
               <section className={styles.masterCerts}>
                 <MasterCerts certs={masterData.certificate_images} />

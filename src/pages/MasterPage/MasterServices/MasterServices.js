@@ -7,7 +7,7 @@ import { useHttp } from "../../../hooks/useHttp";
 
 import styles from "./MasterServices.module.scss";
 
-const MasterServices = ({ masterId }) => {
+const MasterServices = ({ masterId, setServicesToBook }) => {
   const [services, setServices] = useState([]);
   const { request, loading } = useHttp();
   const fetchServices = useCallback(async () => {
@@ -37,7 +37,13 @@ const MasterServices = ({ masterId }) => {
           <div className={styles.title}>Услуги</div>
           <ul className={styles.masterServices}>
             {services.map((service, key) => {
-              return <MasterServiceItem key={key} service={service} />;
+              return (
+                <MasterServiceItem
+                  key={key}
+                  service={service}
+                  master={masterId}
+                />
+              );
             })}
           </ul>
         </div>

@@ -9,6 +9,7 @@ import styles from "./FaveMasters.module.scss";
 
 const faveMasters = [
   {
+    id: 1,
     name: "Anna Brown",
     avatar: "/assets/img/anna-brown.png",
     phone: "+38 099 123-45-67",
@@ -21,6 +22,7 @@ const faveMasters = [
     ],
   },
   {
+    id: 2,
     name: "Anna Brown",
     avatar: "/assets/img/anna-brown.png",
     phone: "+38 099 123-45-67",
@@ -49,7 +51,11 @@ const FaveMasters = () => {
       <ul className={styles.favesList}>
         {faveMasters.map((master, key) => {
           return (
-            <FaveItem masterData={master} key={key} book={setServiceToBook} />
+            <FaveItem
+              masterData={master.id}
+              key={key}
+              book={setServiceToBook}
+            />
           );
         })}
       </ul>
