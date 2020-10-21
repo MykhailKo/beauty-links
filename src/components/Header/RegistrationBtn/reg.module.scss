@@ -1,18 +1,24 @@
 @import "../../../assets/scss/widths";
 
-.regBtn {
-  width: 12.2em;
-  height: 2.7em;
-  border-radius: 1em;
-  background-color: var(--main-blue);
-  color: var(--btn-text-color);
-  font-size: 0.888em;
-  font-family: "Gilroy";
-  font-weight: 500;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  @media (max-width: $break-sm) {
-    display: none;
+.regWrap {
+  .regBtn {
+    padding: 0.9em 1.5em;
+    margin: 0 0.2em;
+    border-radius: 1em;
+    background-color: var(--main-blue);
+    color: var(--btn-text-color);
+    font-size: 0.888em;
+    font-family: "Gilroy";
+    font-weight: 500;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s background-color;
+    &:hover {
+      background-color: var(--btn-hover-bg-color);
+    }
+    @media (max-width: $break-sm) {
+      display: none;
+    }
   }
 }

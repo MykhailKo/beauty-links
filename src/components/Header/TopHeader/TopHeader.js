@@ -9,7 +9,7 @@ import ContactBtn from "../ContactBtn/ContactBtn";
 import useWindowSize from "../../../hooks/useWindowSize";
 
 import widths from "../../../assets/scss/_widths.scss";
-import styles from "./top-header.module.scss";
+import styles from "./top-header.module.scss"; 
 import authContext from "../../../context/auth.context";
 
 const TopHeader = () => {
@@ -28,7 +28,7 @@ const TopHeader = () => {
             <b>{full_name}</b>
           </div>
         ) : (
-          <Registration onClick={() => history.push("/register")} />
+          <Registration />
         )}
 
         {width >= parseInt(widths.break_md) && <LanguageBlock />}
