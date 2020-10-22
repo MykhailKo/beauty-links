@@ -7,6 +7,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 
 import styles from "./Footer.module.scss";
 import widths from "../../assets/scss/_widths.scss";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [width] = useWindowSize();
@@ -26,9 +27,9 @@ const Footer = () => {
             </div>
             <div style={{ marginTop: "1rem" }}>
               <BlockTitle text={"Клиенту/специалисту"} />
-              <a href={"/"} className={styles.BlockLink}>
+              <Link to="/user" className={styles.BlockLink}>
                 Кабинет клиента
-              </a>
+              </Link>
             </div>
           </div>
           <div className={styles.FooterColumn}>
@@ -86,8 +87,10 @@ const Footer = () => {
       ) : (
         <div className={styles.container}>
           <div className={styles.mobileFooterLinks}>
-            <BlockTitle text={"О нас"} link={""} />
-            <BlockTitle text={"Клиенту/специалисту"} />
+            <BlockTitle text={"О нас"} />
+            <Link to="/user" style={{ textDecoration: "none" }}>
+              <BlockTitle text={"Клиенту/специалисту"} />
+            </Link>
             <BlockTitle text={"Услуги"} />
             <BlockTitle text={"Поддержка"} />
           </div>
