@@ -4,6 +4,7 @@ import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import Button from "../../components/Button/Button";
 
+import {useHistory} from "react-router-dom";
 import { useHttp } from "../../hooks/useHttp";
 
 import styles from "./SearchPage.module.scss";
@@ -11,8 +12,9 @@ import styles from "./SearchPage.module.scss";
 import servs from "../../pages/UserProfile/MasterServices/services.json";
 
 const SearchPage = () => {
-  const [searchAddress, setSearchAddress] = useState("Украина, Харьков");
-  const [searchCategory, setSearchCategory] = useState();
+  const history = useHistory();
+  const [searchAddress, setSearchAddress] = useState(history.location.state.searchAddress || "Украина, Харьков");
+  const [searchCategory, setSearchCategory] = useState(history.location.state.searchCategory || '');
   const [services, setServices] = useState(servs);
   const { request } = useHttp();
 
@@ -30,7 +32,6 @@ const SearchPage = () => {
   // }
 
   const categories = services.map((s) => new Object({ text: s.name }));
-  console.log(categories);
 
   return (
     <div className={styles.searchPageWrap}>
@@ -54,6 +55,7 @@ const SearchPage = () => {
             options={categories}
             theme={"common"}
             filled={true}
+            selected={services.indexOf(services.find((s) => s.name === searchCategory))}
             id={"category"}
           />
           <Button
