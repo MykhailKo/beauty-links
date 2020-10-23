@@ -1,5 +1,6 @@
 import React from "react";
 
+import {useHistory} from "react-router-dom";
 import SecTitle from "../../../components/SecTitle/SecTitle";
 import Button from "../../../components/Button/Button";
 import SearchBannerText from "../SearchBannerText/SearchBannerText";
@@ -7,6 +8,8 @@ import SearchBannerText from "../SearchBannerText/SearchBannerText";
 import styles from "./SearchBanner.module.scss";
 
 const SearchBanner = ({ title }) => {
+
+  const history = useHistory();
   return (
     <section className={styles.searchBannerSec}>
       <SecTitle title={title} />
@@ -26,7 +29,7 @@ const SearchBanner = ({ title }) => {
           />
         </div>
       </div>
-      <Button text={"Найти специалиста"} />
+      <Button text={"Найти специалиста"} onClick={() => history.push('/search')} />
     </section>
   );
 };

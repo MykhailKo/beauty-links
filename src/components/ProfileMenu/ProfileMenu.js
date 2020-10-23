@@ -29,11 +29,11 @@ const clientControls = [
     icon: "/assets/img/icons/favs.png",
     link: "/user/favourites/",
   },
-  {
-    name: "Выйти из аккаунта",
-    icon: "/assets/img/icons/logout.png",
-    link: "user/logout/",
-  },
+  // {
+  //   name: "Выйти из аккаунта",
+  //   icon: "/assets/img/icons/logout.png",
+  //   link: "/user/logout/",
+  // },
 ];
 
 const masterControls = [
@@ -82,11 +82,11 @@ const masterControls = [
     icon: "/assets/img/icons/invite.png",
     link: "/user/invite/",
   },
-  {
-    name: "Выйти из аккаунта",
-    icon: "/assets/img/icons/logout.png",
-    link: "user/logout/",
-  },
+  // {
+  //   name: "Выйти из аккаунта",
+  //   icon: "/assets/img/icons/logout.png",
+  //   link: "/user/logout/",
+  // },
 ];
 
 const ProfileMenu = ({
@@ -137,7 +137,7 @@ const ProfileMenu = ({
         className={styles.profileControls}
         style={
           width < parseInt(widths.break_lm) && mobileMenuOpened
-            ? { height: `${2.7 * currentControls.length}em` }
+            ? { height: `${2.7 * currentControls.length + 1}em` }
             : { height: "0" }
         }
       >
@@ -158,6 +158,22 @@ const ProfileMenu = ({
             </li>
           );
         })}
+        <li onClick={() => {
+          setControl("Выйти из аккаунта");
+          //logout user clear tokens
+        }}>
+          <NavLink
+            to={'/'}
+            activeClassName={styles.controlActive}
+            className={styles.control}
+          >
+            <span
+              className={styles.controlIcon}
+              style={{ backgroundImage: `url(/assets/img/icons/logout.png)` }}
+            ></span>
+            Выйти из аккаунта
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
