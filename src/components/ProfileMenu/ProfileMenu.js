@@ -137,7 +137,7 @@ const ProfileMenu = ({
         className={styles.profileControls}
         style={
           width < parseInt(widths.break_lm) && mobileMenuOpened
-            ? { height: `${2.7 * currentControls.length + 1}em` }
+            ? { height: `${2.7 * (currentControls.length + 1) + 1}em` }
             : { height: "0" }
         }
       >
@@ -158,21 +158,25 @@ const ProfileMenu = ({
             </li>
           );
         })}
-        <li onClick={() => {
-          setControl("Выйти из аккаунта");
-          //logout user clear tokens
-        }}>
-          <NavLink
-            to={'/'}
-            activeClassName={styles.controlActive}
+        <li
+          onClick={() => {
+            setControl("Выйти из аккаунта");
+            //logout user clear tokens
+          }}
+        >
+          <button
             className={styles.control}
+            onClick={() => {
+              logout();
+              history.push("/");
+            }}
           >
             <span
               className={styles.controlIcon}
               style={{ backgroundImage: `url(/assets/img/icons/logout.png)` }}
             ></span>
             Выйти из аккаунта
-          </NavLink>
+          </button>
         </li>
       </ul>
     </nav>
