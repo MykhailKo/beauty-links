@@ -29,7 +29,10 @@ const SearchBanner = ({ title }) => {
           />
         </div>
       </div>
-      <Button text={"Найти специалиста"} onClick={() => history.push('/search')} />
+      <Button text={"Найти специалиста"} onClick={() => history.push({
+        pathname: '/search',
+				state: { searchAddress: '', searchCategory: '' }
+      })} />
     </section>
   );
 };
