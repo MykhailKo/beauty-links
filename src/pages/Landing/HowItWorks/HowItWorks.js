@@ -1,10 +1,13 @@
 import React from "react";
+
+import {useHistory} from "react-router-dom";
 import SecTitle from "../../../components/SecTitle/SecTitle";
 import Button from "../../../components/Button/Button";
 import styles from "./HowItWorks.module.scss";
 import Step from "../Step/Step";
 
 const HowItWorks = () => {
+  const history = useHistory();
   const steps = [
     "Введите желаемые услуги и местоположение",
     "Выберите желаемую дату и место где Вы хотели бы получить услугу (Дом, офис, салон)",
@@ -19,7 +22,7 @@ const HowItWorks = () => {
           return <Step text={step} number={index + 1} key={index} />;
         })}
       </div>
-      <Button text={"Начать"} />
+      <Button text={"Начать"} onClick={() => history.push('/register')} />
     </div>
   );
 };

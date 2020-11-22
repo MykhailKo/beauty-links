@@ -12,6 +12,7 @@ const Select = ({
   required = false,
   value,
   onChange,
+  selected = 0
 }) => {
   return (
     <div className={styles.selectWrap}>
@@ -36,7 +37,8 @@ const Select = ({
         onChange={onChange}
       >
         {options.map((option, key) => {
-          return <option key={key}>{option.text}</option>;
+          console.log(key===selected)
+          return <option key={key} selected={key===selected}>{option.text}</option>;
         })}
       </select>
       {error && <span className={styles.selectEerror}>{error}</span>}

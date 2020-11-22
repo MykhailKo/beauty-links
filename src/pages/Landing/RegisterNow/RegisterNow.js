@@ -1,9 +1,11 @@
 import React from "react";
 
+import {useHistory} from "react-router-dom";
 import styles from "./RegisterNow.module.scss";
 import SecTitle from "../../../components/SecTitle/SecTitle";
 import Button from "../../../components/Button/Button";
 const RegisterNow = () => {
+  const history = useHistory();
   return (
     <div className={styles.RegisterNowBlock}>
       <div className={styles.container}>
@@ -31,7 +33,7 @@ const RegisterNow = () => {
             <Button text={"Узнать больше"} filled={false} />
           </div>
           <div>
-            <Button text={"Зарегистрироваться"} />
+            <Button text={"Зарегистрироваться"} onClick={() => history.push('/register')} />
           </div>
         </div>
       </div>
