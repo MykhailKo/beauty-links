@@ -33,7 +33,7 @@ const FaveItem = ({ masterData, book }) => {
           <button className={styles.deleteFave}></button>
         </div>
         <ul className={styles.masterServices}>
-          {masterData.servives.map((service, key) => {
+          {masterData?.servives.map((service, key) => {
             return (
               <MasterServiceItem
                 service={service}
@@ -42,7 +42,7 @@ const FaveItem = ({ masterData, book }) => {
                 master={masterData}
               />
             );
-          })}
+          }) || null}
         </ul>
         <a href="" className={styles.masterLink}>
           Перейти в профиль мастера <span>&#10095;</span>
