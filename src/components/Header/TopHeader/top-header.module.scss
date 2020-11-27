@@ -2,7 +2,7 @@
 
 .topHeader {
   width: 100%;
-  background-color: var(--header-bg-color);
+  background-color: var(--header-bg-color) !important;
   padding: 0 3vw;
   display: flex;
   justify-content: center;
